@@ -1,0 +1,26 @@
+{
+  "port": 6666,
+
+  "db_host": "localhost",
+  "db_port": 5432,
+
+  "out_log_file": "logs/out.log",
+  "err_log_file": "logs/err.log",
+
+  "db_name": "studs",
+
+  "db_user": "s264429",
+  "db_password": "hku668",
+
+  "jdbc_driver": "org.postgresql.Driver",
+  "jdbc_lang_protocol": "postgresql",
+
+  "smtp_host": "in-v3.mailjet.com",
+  "smtp_port": 587,
+  "smtp_ssl_enabled": false,
+
+  "mail_username": "458e9d219d836497158992d00dfd6db8",
+  "mail_password": "6cbffd368e655b4104b293bed4d6d7ea",
+
+  "email_from": "david-d25@yandex.ru"
+}

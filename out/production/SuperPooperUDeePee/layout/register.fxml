@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx" maxWidth="600" minWidth="300"
+      xmlns:fx="http://javafx.com/fxml"
+      prefHeight="300.0" prefWidth="350.0">
+
+
+    <VBox alignment="CENTER">
+        <Label alignment="TOP_CENTER" text="registration" >
+            <VBox.margin>
+                <Insets topRightBottomLeft="10">
+                </Insets>
+            </VBox.margin>
+        </Label>
+
+        <TextField promptText="email" alignment="CENTER">
+            <VBox.margin>
+                <Insets topRightBottomLeft="10"></Insets>
+            </VBox.margin>
+        </TextField>
+
+        <TextField promptText="name" alignment="CENTER">
+            <VBox.margin>
+                <Insets topRightBottomLeft="10"></Insets>
+            </VBox.margin>
+        </TextField>
+
+        <Button text="send password" alignment="CENTER" textAlignment="CENTER" ><!--onAction=""-->>
+            <VBox.margin>
+                <Insets topRightBottomLeft="10"></Insets>
+            </VBox.margin>
+        </Button>
+
+    </VBox>
+</VBox>
