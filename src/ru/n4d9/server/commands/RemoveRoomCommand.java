@@ -22,6 +22,8 @@ public class RemoveRoomCommand implements RequiresAuthorization, Command {
         Connection connection = controller.getConnection();
         Room room = (Room) message.getAttachment();
 
+        controller.removeRoom(room);
+
         PreparedStatement statement = connection.prepareStatement(
                 "select * from " + "users where id = ? and email = ? and password_hash = ?"
         );
@@ -43,7 +45,7 @@ public class RemoveRoomCommand implements RequiresAuthorization, Command {
 
         int removed = 0;
         while (resultSet.next()) {
-            if (removeRoomById(resultSet.getInt("id"), connection))
+            if (Controller.removeRoomById(resultSet.getInt("id"), connection))
                 removed++;
         }
 
@@ -52,26 +54,4 @@ public class RemoveRoomCommand implements RequiresAuthorization, Command {
 
     }
 
-    /**
-     * Удаляет комнату по id
-     *
-     * @param id id комнаты, которую нужно удалить
-     * @return true, если комната удалилась, во всех остальных случаях false
-     */
-    static boolean removeRoomById(int id, Connection connection) throws SQLException {
-        if (connection == null)
-            return false;
-
-        PreparedStatement statement = connection.prepareStatement(
-                "delete from rooms where id = ?"
-        );
-        statement.setInt(1, id);
-        int removed = statement.executeUpdate();
-        statement = connection.prepareStatement(
-                "delete from things where room_id = ?"
-        );
-        statement.setInt(1, id);
-        statement.execute();
-        return removed != 0;
-    }
 }

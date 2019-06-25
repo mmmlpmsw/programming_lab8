@@ -3,6 +3,7 @@
     <words>
       <w>clientpool</w>
       <w>smtp</w>
+      <w>userid</w>
     </words>
   </dictionary>
 </component>

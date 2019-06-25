@@ -15,12 +15,12 @@
       <ObjectId>16393</ObjectId>
       <StateNumber>570</StateNumber>
       <Owner>s264429</Owner>
-      <IntrospectionStateNumber>1430</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1494</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
       <Relations>sequence|table|17371|17373|1
-sequence|table|17384|17386|1
-sequence|table|17406|17408|1
+sequence|table|17418|17420|1
+sequence|table|17429|17431|1
 </Relations>
     </database>
     <role id="4" parent="1" name="pg_execute_server_program">
@@ -106,7 +106,7 @@ sequence|table|17406|17408|1
       <Comment>standard public schema</Comment>
       <StateNumber>360</StateNumber>
       <Owner>s264429</Owner>
-      <IntrospectionStateNumber>1431</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1495</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -167,16 +167,16 @@ sequence|table|17406|17408|1
       <SchemaId>11</SchemaId>
     </extension>
     <sequence id="26" parent="18" name="rooms_id_seq">
-      <ObjectId>17406</ObjectId>
-      <StateNumber>1362</StateNumber>
+      <ObjectId>17418</ObjectId>
+      <StateNumber>1455</StateNumber>
       <Owner>s264429</Owner>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="27" parent="18" name="things_id_seq">
-      <ObjectId>17384</ObjectId>
-      <StateNumber>1327</StateNumber>
+      <ObjectId>17429</ObjectId>
+      <StateNumber>1456</StateNumber>
       <Owner>s264429</Owner>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
@@ -191,14 +191,14 @@ sequence|table|17406|17408|1
       <DataType>integer</DataType>
     </sequence>
     <table id="29" parent="18" name="rooms">
-      <ObjectId>17408</ObjectId>
+      <ObjectId>17420</ObjectId>
       <Owner>s264429</Owner>
-      <StateNumber>1362</StateNumber>
+      <StateNumber>1455</StateNumber>
     </table>
     <table id="30" parent="18" name="things">
-      <ObjectId>17386</ObjectId>
+      <ObjectId>17431</ObjectId>
       <Owner>s264429</Owner>
-      <StateNumber>1327</StateNumber>
+      <StateNumber>1456</StateNumber>
     </table>
     <table id="31" parent="18" name="users">
       <ObjectId>17373</ObjectId>
@@ -209,62 +209,62 @@ sequence|table|17406|17408|1
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1362</StateNumber>
+      <StateNumber>1455</StateNumber>
       <DefaultExpression>nextval(&apos;rooms_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="33" parent="29" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>1362</StateNumber>
+      <StateNumber>1455</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="34" parent="29" name="height">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>1362</StateNumber>
+      <StateNumber>1455</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="35" parent="29" name="width">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>1362</StateNumber>
+      <StateNumber>1455</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="36" parent="29" name="x">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>1362</StateNumber>
+      <StateNumber>1455</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="37" parent="29" name="y">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>1362</StateNumber>
+      <StateNumber>1455</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="38" parent="29" name="creationdate">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>1362</StateNumber>
+      <StateNumber>1455</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="39" parent="29" name="user_id">
       <Position>8</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>1362</StateNumber>
+      <StateNumber>1455</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="40" parent="29" name="rooms_pkey">
-      <ObjectId>17415</ObjectId>
-      <StateNumber>1362</StateNumber>
+      <ObjectId>17427</ObjectId>
+      <StateNumber>1455</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
     <key id="41" parent="29" name="rooms_pkey">
-      <ObjectId>17416</ObjectId>
-      <StateNumber>1362</StateNumber>
+      <ObjectId>17428</ObjectId>
+      <StateNumber>1455</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>rooms_pkey</UnderlyingIndexName>
@@ -273,29 +273,43 @@ sequence|table|17406|17408|1
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1327</StateNumber>
+      <StateNumber>1456</StateNumber>
       <DefaultExpression>nextval(&apos;things_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="43" parent="30" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>1327</StateNumber>
+      <StateNumber>1456</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="44" parent="30" name="size">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>1327</StateNumber>
+      <StateNumber>1456</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="45" parent="30" name="room_id">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>1327</StateNumber>
+      <StateNumber>1456</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="46" parent="31" name="id">
+    <index id="46" parent="30" name="things_pkey">
+      <ObjectId>17438</ObjectId>
+      <StateNumber>1456</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="47" parent="30" name="things_pkey">
+      <ObjectId>17439</ObjectId>
+      <StateNumber>1456</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>things_pkey</UnderlyingIndexName>
+    </key>
+    <column id="48" parent="31" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -303,45 +317,45 @@ sequence|table|17406|17408|1
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="47" parent="31" name="name">
+    <column id="49" parent="31" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
       <StateNumber>1324</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="48" parent="31" name="email">
+    <column id="50" parent="31" name="email">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <StateNumber>1324</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="49" parent="31" name="password_hash">
+    <column id="51" parent="31" name="password_hash">
       <Position>4</Position>
       <DataType>bytea|0s</DataType>
       <StateNumber>1324</StateNumber>
       <TypeId>17</TypeId>
     </column>
-    <index id="50" parent="31" name="users_pkey">
+    <index id="52" parent="31" name="users_pkey">
       <ObjectId>17380</ObjectId>
       <StateNumber>1324</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="51" parent="31" name="users_email_key">
+    <index id="53" parent="31" name="users_email_key">
       <ObjectId>17382</ObjectId>
       <StateNumber>1324</StateNumber>
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="52" parent="31" name="users_pkey">
+    <key id="54" parent="31" name="users_pkey">
       <ObjectId>17381</ObjectId>
       <StateNumber>1324</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
     </key>
-    <key id="53" parent="31" name="users_email_key">
+    <key id="55" parent="31" name="users_email_key">
       <ObjectId>17383</ObjectId>
       <StateNumber>1324</StateNumber>
       <ColNames>email</ColNames>

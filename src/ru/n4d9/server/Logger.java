@@ -2,6 +2,7 @@ package ru.n4d9.server;
 
 import ru.n4d9.Utils.Utilities;
 
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.Calendar;
 import java.util.Date;
@@ -10,42 +11,109 @@ import java.util.GregorianCalendar;
 /**
  * Пишет логи
  */
-class Logger {
-    private PrintStream out1, out2;
-    private PrintStream err1, err2;
+public class Logger {
+    private PrintStream out, err;
 
-    Logger(PrintStream logsOutput1, PrintStream logsOutput2, PrintStream errorsOutput1, PrintStream errorsOutput2) {
-        this.out1 = logsOutput1;
-        this.out2 = logsOutput2;
-        this.err1 = errorsOutput1;
-        this.err2 = errorsOutput2;
+    private boolean showVerbose = true;
+    private boolean showLog = true;
+    private boolean showWarn = true;
+    private boolean showErr = true;
+
+    Logger(PrintStream logsOut, PrintStream errOut) {
+        out = logsOut == null ? getNullStream() : logsOut;
+        err = errOut == null ? getNullStream() : errOut;
     }
 
+    /**
+     * Если в функцию передать <code>true</code>, будет выводиться подробный отчет
+     *
+     * @param v режим вывода подробного отчета
+     */
+    public void setShowVerbose(boolean v) {
+        showVerbose = v;
+    }
+
+    /**
+     * Если в функцию передать <code>true</code>, будет выводиться стандартный отчет
+     *
+     * @param v режим вывода стандартного отчета
+     */
+    public void setShowLog(boolean v) {
+        showLog = v;
+    }
+
+    /**
+     * Если в функцию передать <code>true</code>, будут выводиться предупреждения
+     *
+     * @param v режим вывода предупреждений
+     */
+    public void setShowWarn(boolean v) {
+        showWarn = v;
+    }
+
+    /**
+     * Если в функцию передать <code>true</code>, будут выводиться ошибки
+     * @param v режим вывода ошибок
+     */
+    public void setShowErr(boolean v) {
+        showErr = v;
+    }
+
+    /**
+     * Для подробного отчета о работе сервера
+     *
+     * @param message сообщение
+     */
+    void verbose(String message) {
+        if (showVerbose)
+            out.println(generateLogTime() + "[ VERBOSE ] " + message);
+    }
+
+    /**
+     * Для стандартного отчета о работе сервера
+     *
+     * @param message сообщение
+     */
     void log(String message) {
-        out1.println(generateLogTime() + message);
-        out1.flush();
-        out2.println(generateLogTime() + message);
-        out2.flush();
+        if (showLog)
+            out.println(generateLogTime() + "[ LOG ] " + message);
     }
 
-    void err(String message) {
-        err1.println(Utilities.colorize("[[red]]" + generateLogTime() + "[ ERROR ] " + message + "[[reset]]"));
-        err1.flush();
-        err2.println(Utilities.colorize("[[red]]" + generateLogTime() + "[ ERROR ] " + message + "[[reset]]"));
-        err2.flush();
-    }
-
+    /**
+     * Для некритичных проблем сервера
+     * Предупреждение - сообщение о проблеме, не приводящее к остановке сервера.
+     *
+     * @param message предупреждение
+     */
     void warn(String message) {
-        err1.println(Utilities.colorize("[[yellow]]" + generateLogTime() + "[ WARNING ] " + message + "[[reset]]"));
-        err1.flush();
-        err2.println(Utilities.colorize("[[yellow]]" + generateLogTime() + "[ WARNING ] " + message + "[[reset]]"));
-        err2.flush();
+        if (showWarn)
+            out.println(Utilities.colorize("[[yellow]]" + generateLogTime() + "[ WARNING ] " + message + "[[reset]]"));
     }
 
-    void longErr(String message) {
-
+    /**
+     * Для серьезных проблем сервера, которые могут привести к остановке
+     *
+     * @param message сообщение проблемы
+     */
+    void err(String message) {
+        if (showErr)
+            err.println(Utilities.colorize("[[red]]" + generateLogTime() + "[ ERROR ] " + message + "[[reset]]"));
     }
 
+    /**
+     * Возвращает поток, который ничего не делает
+     *
+     * @return поток-пустышка
+     */
+    private PrintStream getNullStream() {
+        return new PrintStream(new OutputStream() {public void write(int b) {}});
+    }
+
+    /**
+     * Генерирует строку с временем для сообщений отчета
+     *
+     * @return строка с временем в читабельном виде
+     */
     private String generateLogTime() {
         Calendar calendar = GregorianCalendar.getInstance();
         calendar.setTime(new Date());

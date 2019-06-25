@@ -2,14 +2,20 @@ package ru.n4d9.server;
 
 import ru.n4d9.Message;
 import ru.n4d9.Utils.Utilities;
+import ru.n4d9.client.Room;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.sql.*;
+import java.util.Properties;
 
 public class Controller implements ContextFriendly {
 
     private Connection connection;
     private Logger logger;
-
+    private Mirror mirror;
+    private Session mailSession;
 
     public Connection getConnection() {
         return connection;
@@ -18,11 +24,42 @@ public class Controller implements ContextFriendly {
     @Override
     public void onContextReady() {
         logger = (Logger)Context.get("logger");
+        mirror = (Mirror)Context.get("mirror");
         initDatabaseConnection();
         initTables();
+        initEmail();
 
     }
 
+    /**
+     * Удаляет комнату по id
+     *
+     * @param id id комнаты, которую нужно удалить
+     * @return true, если комната удалилась, во всех остальных случаях false
+     */
+    public static boolean removeRoomById(int id, Connection connection) throws SQLException {
+        if (connection == null)
+            return false;
+
+        PreparedStatement statement = connection.prepareStatement(
+                "delete from rooms where id = ?"
+        );
+        statement.setInt(1, id);
+        int removed = statement.executeUpdate();
+        statement = connection.prepareStatement(
+                "delete from things where room_id = ?"
+        );
+        statement.setInt(1, id);
+        statement.execute();
+        return removed != 0;
+    }
+
+    /**
+     * проверяет, авторизован ли пользователь, отправивший запрос
+     * @param message запрос и информация он нем
+     * @return <i>true</i>, если установлено, что пользователь авторизован, иначе <i>false</i>
+     * @throws SQLException если произошла ошибка при обращении к БД
+     */
     public boolean isUserAuthorized(Message message) throws SQLException {
         Controller controller = (Controller)Context.get("controller");
         Connection connection = controller.getConnection();
@@ -43,6 +80,13 @@ public class Controller implements ContextFriendly {
     }
 
 
+    public void addRoom(Room room){
+        mirror.roomAdded(room);
+    }
+
+    public void removeRoom(Room room) {
+        mirror.roomRemoved(room);
+    }
 
 
 
@@ -95,6 +139,39 @@ public class Controller implements ContextFriendly {
         } catch (SQLException e) {
             sendDown("Не получилось создать таблицы: " + e.toString());
         }
+    }
+
+    /**
+     * Инициализирует соединение с JavaMail API
+     */
+    private void initEmail() {
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", "in-v3.mailjet.com");
+        properties.put("mail.smtp.port", 587);
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.ssl.enable", "false");
+        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+
+        Authenticator mailAuth = new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("e06513d48ba28a105caff1c08c4f0031", "bd95b9f237746446436ce4cb8420ef32");
+            }
+        };
+        mailSession = Session.getDefaultInstance(properties, mailAuth);
+
+
+    }
+
+    public void sendEMail(String to, String subject, String content) throws MessagingException {
+
+        MimeMessage message = new MimeMessage(mailSession);
+        message.setFrom("mmmlpmsw@protonmail.com");
+        message.setRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(to));
+        message.setSubject(subject);
+        message.setContent(content, "text/html; charset=utf-8");
+
+        Transport.send(message);
     }
 
     /**

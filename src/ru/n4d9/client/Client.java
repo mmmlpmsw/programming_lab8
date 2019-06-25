@@ -63,10 +63,6 @@ public class Client {
         receiver.setListener(new ReceiverListener() {
             @Override
             public void received(int requestID, byte[] data, InetAddress address, int port) {
-            }
-
-            @Override
-            public void received(int requestID, byte[] data, InetAddress address) {
                 try {
                     Message message = Message.deserialize(data);
                     System.out.println("Вот что ответил сервер: " + message.getText());

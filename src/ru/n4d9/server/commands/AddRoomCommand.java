@@ -15,6 +15,8 @@ public class AddRoomCommand implements RequiresAuthorization, Command {
         Connection connection = controller.getConnection();
         Room room = (Room) message.getAttachment();
 
+        controller.addRoom(room);
+
         PreparedStatement statement = connection.prepareStatement("insert into rooms values (?, ?, ?, ?, ?, ?, ?)");
         statement.setString(1, room.getName());
         statement.setInt(2, room.getHeight());

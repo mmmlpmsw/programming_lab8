@@ -113,4 +113,11 @@ public class Message implements Serializable {
         return (Message) ois.readObject();
     }
 
+    @Override
+    public String toString() {
+        return String.format(
+                "Message [sourcePort = %s, userid = %s, login = %s, text = %s]",
+                sourcePort, userid, login, text
+        );
+    }
 }

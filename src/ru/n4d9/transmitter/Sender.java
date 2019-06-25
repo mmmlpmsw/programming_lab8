@@ -103,7 +103,7 @@ public class Sender {
                 return;
             }
         } catch (Exception e) {
-//            listener.onError("Ошибка отправки запроса: " + e.getMessage());
+            listener.onError("Ошибка отправки запроса: " + e.getMessage());
             e.printStackTrace();
         }
         listener.onSuccess();

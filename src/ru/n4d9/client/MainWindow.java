@@ -1,44 +1,107 @@
 package ru.n4d9.client;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TabPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import ru.n4d9.client.login.LoginListener;
 import ru.n4d9.client.login.LoginWindow;
+import ru.n4d9.client.settings.SettingsDialog;
+import ru.n4d9.transmitter.Receiver;
 
 import java.io.IOException;
 
-
 public class MainWindow extends Application {
     private Stage stage;
+    private static final int SENDING_PORT = 6666;
+    private static Receiver receiver;
+    private int id;
+    private String login, password;
 
-    public MainWindow() {
+    private Label userNameLabel;
+    @FXML private TabPane tabPane;
+    @FXML private GridPane gridPane;
+    @FXML private Button addButton;
+    @FXML private Button removeButton;
 
+    private static Thread.UncaughtExceptionHandler exceptionHandler = (t, e) -> {
+        System.out.println(e.toString());
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("The program has crashed in thread " + t.getName());
+        alert.setContentText(e.toString());
+        alert.show();
+    };
+
+    public static Thread.UncaughtExceptionHandler getExceptionHandler() {
+        return exceptionHandler;
     }
+
+    public MainWindow() {}
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Button button = new Button("test");
-        button.setVisible(true);
-////        primaryStage.show();
-//        Button login = new Button("Login");
-//        Button browse = new Button("Browse");
-//        browse.setVisible(false);
-//
-//        login.setOnAction(e -> browse.setVisible(true));
-//
-//        VBox root = new VBox(14, login, browse);
-//        root.setAlignment(Pos.BOTTOM_LEFT);
-//        Scene scene = new Scene(root, 300, 275);
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
-
-
+    public void start(Stage primaryStage) {
+        Thread.setDefaultUncaughtExceptionHandler(exceptionHandler);
         stage = primaryStage;
+        loadView();
+
+        try {
+            receiver = new Receiver(true);
+            receiver.startListening();
+        } catch (IOException e) {
+            System.exit(0);
+        }
+
+//        stage.show();
         stage.hide();
-        promptLogin(stage);
+        promptLogin();
     }
 
-    private static void promptLogin(Stage stage)throws IOException {
-       new LoginWindow(stage::show);
+    public void loadView(){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setController(this);
+
+        try {
+            Parent root = loader.load(getClass().getResourceAsStream("/layout/main.fxml"));
+            stage = new Stage();
+            stage.setScene(new Scene(root));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setParameters(int id, String login, String password) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+    }
+
+    private void promptLogin() {
+       new LoginWindow(new LoginListener() {
+           @Override
+           public void onLogin(int id, String login, String password) {
+              stage.show();
+              setParameters(id, login, password);
+              userNameLabel.setText(login);
+           }
+       }, receiver);
+    }
+
+    @FXML
+    public void onSettingsClicked() {
+        new SettingsDialog((changed) -> {
+            if (changed)
+                loadView();
+            stage.show();
+        });
+        stage.hide();
     }
 }

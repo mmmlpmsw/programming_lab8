@@ -32,30 +32,30 @@ public class Server {
 
         try {
             if (args.length != 0) {
-
                 config = ServerConfig.fromFile(args[0]);
                 Context.set("config", config);
 
-                Logger logger = initLogger(config);
-                logger.log("Сервер слушает порт " + config.getPort() + "...");
+                logger = initLogger(config);
                 Context.set("logger", logger);
+
+                logger.setShowVerbose(args.length == 2 && args[1].equals("dev"));
 
                 receiver = new Receiver(config.getPort(), false);
                 receiver.setListener(generateListener());
                 receiver.startListening();
 
+                logger.log("Сервер слушает порт " + config.getPort() + "...");
+
                 clientPool.onContextReady();
                 controller.onContextReady();
-
-
             } else {
                 Controller.sendDown("Не указан файл настроек.");
             }
         } catch (IOException e) {
+//            e.printStackTrace();
             logger.err("Не получилось запустить сервер: " + e.toString());
         } catch (JSONParseException e) {
-            logger.err("Проблема с JSON:");
-            logger.err(e.getMessage());
+            logger.err("Проблема с JSON:" + e.getMessage());
         }
     }
 
@@ -89,30 +89,33 @@ public class Server {
         });
     }
 
+    /**
+     * Создает слушатель приёмника, выполняющий запросы клиентов
+     *
+     * @return объект-слушатель
+     */
     private static ReceiverListener generateListener() {
+        logger.verbose("Создаётся слушатель запросов");
         return new ReceiverListener() {
             @Override
             public void received(int requestID, byte[] data, InetAddress address, int port) {
                 clientPool = (ClientPool) Context.get("clientpool");
 
-                Message message = null;
+                logger.verbose("Пришли данные от " + address + ":" + port);
                 try {
-                    message = Message.deserialize(data);
+                    Message message = Message.deserialize(data);
+                    logger.verbose("Пришло сообщение: " + message);
+                    clientPool.process(requestID, message, address, port);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    e.printStackTrace(); // todo
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-                clientPool.process(requestID, message, address, port);
-            }
-
-            @Override
-            public void received(int requestID, byte[] data, InetAddress address) {
             }
 
             @Override
             public void exceptionThrown(Exception e) {
-                logger.log("Не получилось принять запрос: " + e.toString());
+                logger.warn("Не получилось принять запрос: " + e.toString());
             }
         };
     }
@@ -130,11 +133,17 @@ public class Server {
                 logger.log("Автоматически созданы директории для создания файла вывода ошибок: " + config.getErrLogFile());
 
             return new Logger(
-                    new PrintStream(System.out, true, "UTF-8"),
-                    new PrintStream(new FileOutputStream(config.getOutLogFile()), true, "UTF-8"),
-                    new PrintStream(System.err, true, "UTF-8"),
-                    new PrintStream(new FileOutputStream(config.getErrLogFile()), true, "UTF-8")
-            );
+                    new PrintStream(
+                            new TeeOutputStream(
+                                System.out,
+                                new FileOutputStream(config.getOutLogFile(), true)),
+                            true, "UTF-8"),
+                    new PrintStream(
+                            new TeeOutputStream(
+                                System.err,
+                                new FileOutputStream(config.getErrLogFile(), true)),
+                            true, "UTF-8"
+            ));
         } catch (SecurityException e) {
             Controller.sendDown("Ошибка безопасности: " + e);
         } catch (IOException e) {

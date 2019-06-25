@@ -15,8 +15,6 @@ public interface ReceiverListener {
      */
     void received(int requestID, byte[] data, InetAddress address, int port);
 
-    void received(int requestID, byte[] data, InetAddress address);
-
     /**
      * Вызывается, когда происходит исключение. Вызов при любом исключении не гарантирован.
      * @param e объект исключения

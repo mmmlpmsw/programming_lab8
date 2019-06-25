@@ -7,6 +7,9 @@ import javax.mail.MessagingException;
 import java.security.GeneralSecurityException;
 import java.sql.SQLException;
 
+/**
+ *
+ */
 public interface Command {
     Message resolve(Message message) throws SQLException, GeneralSecurityException, MessagingException;
 }

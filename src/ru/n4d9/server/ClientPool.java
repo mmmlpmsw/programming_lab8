@@ -50,23 +50,30 @@ public class ClientPool implements ContextFriendly {
      * @param port      порт отправителя
      */
     public void process(int requestID, Message message, InetAddress address, int port) {
-        ClientConnector connector = new ClientConnector(address, port);
+        logger.verbose("Обработка запроса: " + message + " от " + address + ":" + port);
+
+        ClientConnector connector = new ClientConnector(address, message.getSourcePort());
         connectors.add(connector);
+        if (message.getUserid() == null)
+            logger.log("Пришел запрос от неавторизованного клиента " + message.getText());
+        logger.log("Пришел запрос от клиента " + address.getHostAddress() + ":" + port + " "  + message.getText());
 
         switch (message.getText()) {
             case "disconnect":
+                logger.verbose("Отсоединение коннектора: " + connector);
                 connectors.remove(connector);
                 logger.log("Клиент " + address.getHostAddress() + ":" + port + " отсоединился.");
                 break;
 
             default:
+                logger.verbose("Вызов ресолвера для сообщения " + message + ", ответ коннектору " + connector);
                 resolver.resolve(connector, message);
+                break;
         }
     }
 
 
     public class ClientConnector extends Thread {
-
         private InetAddress address;
         private int port;
 
@@ -81,11 +88,13 @@ public class ClientPool implements ContextFriendly {
          * @param m сообщение
          */
         public void send(Message m) {
+            logger.verbose("Отправка сообщения " + m + " через коннектор " + this);
             try {
                 Sender.send(m.serialize(), address, port, false, new SenderAdapter() {
                     @Override
                     public void onError(String message) {
-                        logger.err("Не получилось ответить на запрос: " + message);
+                        logger.err("Не получилось отправить сообщение клиенту: " + message);
+                        logger.verbose("Не получилось отправить сообщение " + m + " по коннектору " + this + ", ошибка: " + message);
                     }
                 });
             } catch (IOException e) {
@@ -108,7 +117,12 @@ public class ClientPool implements ContextFriendly {
             return Objects.hash(address.getAddress(), port);
         }
 
+        @Override
+        public String toString() {
+            return String.format(
+                    "ClientConnector [address = %s, port = %s]",
+                    address, port
+            );
+        }
     }
-
-
 }

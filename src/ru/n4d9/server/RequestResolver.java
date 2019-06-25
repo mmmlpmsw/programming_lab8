@@ -9,10 +9,15 @@ import javax.mail.MessagingException;
 import java.security.GeneralSecurityException;
 import java.sql.SQLException;
 
-public class RequestResolver extends Thread{
+//todo answers INTERNAL_ERROR, COMMAND_NOT_FOUND, AUTH_FAILED
 
-    Controller controller = (Controller)Context.get("conroller");
-    Logger logger = (Logger) Context.get("logger");
+/**
+ * класс, выполняющий дальнейшую обработку команды
+ */
+public class RequestResolver extends Thread {
+
+    private Controller controller = (Controller)Context.get("controller");
+    private Logger logger = (Logger) Context.get("logger");
 
     /**
      * Делает вторичную обработку
@@ -49,8 +54,10 @@ public class RequestResolver extends Thread{
             logger.warn("В пакете нашелся класс неверного формата " + e.toString());
         } catch (SQLException | MessagingException| GeneralSecurityException e) {
             logger.log(e.getMessage());
+            e.printStackTrace();
+            connector.send(new Message("INTERNAL_ERROR"));
         }
 
+        //connector.send(message);
     }
-
 }
