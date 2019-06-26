@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ru.n4d9.Message;
-import ru.n4d9.client.Client;
 import ru.n4d9.client.Window;
 import ru.n4d9.client.register.RegisterListener;
 import ru.n4d9.client.register.RegisterWindow;
@@ -32,24 +31,28 @@ public class LoginWindow implements Window {
     private TextField emailField;
     private PasswordField passwordField;
     private Button loginButton, registerButton;
-    private Label label;
 
     private Receiver receiver;
 
     private ReceiverListener receiverListener = new ReceiverListener() {
         @Override
         public void received(int requestID, byte[] data, InetAddress address, int port) {
+            Thread outer = Thread.currentThread();
             try {
                 Message message = Message.deserialize(data);
                 onMessageReceived(message);
+                Thread.sleep(30);
+                outer.interrupt();
             } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace(); // todo
+                e.printStackTrace(); // todo handling
+            } catch (InterruptedException ignored) {
             }
         }
 
         @Override
         public void exceptionThrown(Exception e) {
-            e.printStackTrace(); // todo
+            e.printStackTrace();
+            // todo handling
         }
     };
 
@@ -232,7 +235,7 @@ public class LoginWindow implements Window {
                 }
             });
         } catch (IOException e) {
-            e.printStackTrace(); // todo
+            e.printStackTrace(); // todo handling
         }
     }
 

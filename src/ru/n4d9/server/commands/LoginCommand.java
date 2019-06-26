@@ -17,6 +17,7 @@ import java.util.Properties;
 import static ru.n4d9.Utils.Utilities.colorize;
 
 public class LoginCommand implements Command {
+    //todo вернуть клиенту id
     static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     static SecureRandom rnd = new SecureRandom();
 

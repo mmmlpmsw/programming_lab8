@@ -15295,3 +15295,15 @@
 [25.06.2019 14:45:22] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 0, userid = null, login = null, text = register], ответ коннектору ClientConnector [address = /127.0.0.1, port = 0]
 [25.06.2019 14:45:23] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 0]
 [25.06.2019 14:45:29] [ VERBOSE ] Не получилось отправить сообщение Message [sourcePort = 0, userid = null, login = null, text = OK] по коннектору ru.n4d9.server.ClientPool$ClientConnector$1@2f0b7edf, ошибка: Сторона не отвечает
+[25.06.2019 20:32:06] [ VERBOSE ] Создаётся слушатель запросов
+[25.06.2019 20:32:06] [ LOG ] Сервер слушает порт 6666...
+[25.06.2019 20:32:06] [ LOG ] Соединяемся с базой данных...
+[25.06.2019 20:32:06] [ LOG ] Соединились с базой данных!
+[25.06.2019 20:32:18] [ VERBOSE ] Пришли данные от /127.0.0.1:58663
+[25.06.2019 20:32:18] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 0, userid = null, login = null, text = login]
+[25.06.2019 20:32:18] [ VERBOSE ] Обработка запроса: Message [sourcePort = 0, userid = null, login = null, text = login] от /127.0.0.1:58663
+[25.06.2019 20:32:18] [ LOG ] Пришел запрос от неавторизованного клиента login
+[25.06.2019 20:32:18] [ LOG ] Пришел запрос от клиента 127.0.0.1:58663 login
+[25.06.2019 20:32:18] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 0, userid = null, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 0]
+[25.06.2019 20:32:18] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = mmmlpmsw , вход успешно выполнен.] через коннектор ClientConnector [address = /127.0.0.1, port = 0]
+[25.06.2019 20:32:24] [ VERBOSE ] Не получилось отправить сообщение Message [sourcePort = 0, userid = null, login = null, text = mmmlpmsw , вход успешно выполнен.] по коннектору ru.n4d9.server.ClientPool$ClientConnector$1@45773877, ошибка: Сторона не отвечает

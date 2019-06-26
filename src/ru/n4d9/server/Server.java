@@ -30,6 +30,9 @@ public class Server {
         RequestResolver requestResolver = new RequestResolver();
         Context.set("request_resolver", requestResolver);
 
+        Mirror mirror = new Mirror();
+        Context.set("mirror", mirror);
+
         try {
             if (args.length != 0) {
                 config = ServerConfig.fromFile(args[0]);
@@ -48,6 +51,7 @@ public class Server {
 
                 clientPool.onContextReady();
                 controller.onContextReady();
+                mirror.onContextReady();
             } else {
                 Controller.sendDown("Не указан файл настроек.");
             }
@@ -58,22 +62,6 @@ public class Server {
             logger.err("Проблема с JSON:" + e.getMessage());
         }
     }
-
-/*
-    private static void processRequest(int requestID, byte[] data, InetAddress address) {
-        Message message;
-        try {
-            message = Message.deserialize(data);
-            String text = message.getText();
-            System.out.println("Пришёл запрос: " + text);
-            System.out.println("Порт клиента: " + message.getSourcePort());
-            Message response = new Message("Я получил сообщение: " + text + "\nВаш request id = " + requestID);
-            respond(response.serialize(), message.getSourcePort(), address);
-        } catch (ClassNotFoundException | IOException e) {
-            logger.err("Не получилось обработать запрос: " + e.toString());
-        }
-    }
-*/
 
     private static void respond(byte[] data, int port, InetAddress address) {
         Sender.send(data, address, port, false, new SenderAdapter() {
@@ -107,7 +95,7 @@ public class Server {
                     logger.verbose("Пришло сообщение: " + message);
                     clientPool.process(requestID, message, address, port);
                 } catch (IOException e) {
-                    e.printStackTrace(); // todo
+                    e.printStackTrace(); // todo handling
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }

@@ -3,14 +3,11 @@ package ru.n4d9.client;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import ru.n4d9.client.login.LoginListener;
 import ru.n4d9.client.login.LoginWindow;
@@ -26,14 +23,18 @@ public class MainWindow extends Application {
     private int id;
     private String login, password;
 
-    private Label userNameLabel;
+    @FXML private Label userNameLabel;
     @FXML private TabPane tabPane;
     @FXML private GridPane gridPane;
-    @FXML private Button addButton;
-    @FXML private Button removeButton;
+    @FXML private Button  importButton;
+    @FXML private Button addButton, removeButton;
+    @FXML private TableView roomsTable;
+    @FXML private VBox addBox, importBox, removeBox;
+    @FXML private VBox[] boxes = {addBox, importBox, removeBox};
 
     private static Thread.UncaughtExceptionHandler exceptionHandler = (t, e) -> {
         System.out.println(e.toString());
+        e.printStackTrace();
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText("The program has crashed in thread " + t.getName());
         alert.setContentText(e.toString());
@@ -58,10 +59,9 @@ public class MainWindow extends Application {
         } catch (IOException e) {
             System.exit(0);
         }
-
-//        stage.show();
-        stage.hide();
-        promptLogin();
+        stage.show();
+//        stage.hide();
+//        promptLogin();
     }
 
     public void loadView(){
@@ -72,6 +72,7 @@ public class MainWindow extends Application {
             Parent root = loader.load(getClass().getResourceAsStream("/layout/main.fxml"));
             stage = new Stage();
             stage.setScene(new Scene(root));
+            roomsTable.setVisible(true);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -96,12 +97,74 @@ public class MainWindow extends Application {
     }
 
     @FXML
+    public void onAddClicked(){
+        try {
+            for (int i = 0; i < boxes.length; i++) {
+                if (boxes[i] != null)
+                    if (boxes[i].isVisible()) {
+                        boxes[i].setVisible(false);
+                    }
+            }
+            tabPane.setVisible(false);
+            addBox.setVisible(true);
+        } catch (NullPointerException ignored) {}
+    }
+
+    @FXML
+    public void onImportClicked(){
+        try {
+            for (int i = 0; i < boxes.length; i++) {
+                if (boxes[i] != null)
+                    if (boxes[i].isVisible()) {
+                        boxes[i].setVisible(false);
+                    }
+            }
+            tabPane.setVisible(false);
+            importBox.setVisible(true);
+        } catch (NullPointerException ignored) {}
+    }
+
+    @FXML
+    public void onRemoveClicked(){
+        try {
+            for (int i = 0; i < boxes.length; i++) {
+                if (boxes[i] != null)
+                    if (boxes[i].isVisible()) {
+                        boxes[i].setVisible(false);
+                    }
+            }
+            tabPane.setVisible(false);
+            removeBox.setVisible(true);
+        } catch (NullPointerException ignored) {}
+    }
+
+    @FXML
+    public void onCancelClicked() {
+        try {
+            for (int i = 0; i < boxes.length; i++) {
+                if (boxes[i] != null)
+                    if (boxes[i].isVisible()) {
+                         boxes[i].setVisible(false);
+                    }
+            }
+            tabPane.setVisible(true);
+        } catch (NullPointerException ignored) {}
+    }
+
+    @FXML
     public void onSettingsClicked() {
         new SettingsDialog((changed) -> {
-            if (changed)
+            if (changed) {
                 loadView();
+            }
             stage.show();
         });
         stage.hide();
+    }
+
+    @FXML
+    public void onExitClicked() {
+        stage.close();
+        promptLogin();
     }
 }

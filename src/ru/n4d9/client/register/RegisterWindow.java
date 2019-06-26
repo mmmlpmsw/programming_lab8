@@ -153,7 +153,7 @@ public class RegisterWindow implements Window {
                 }
             });
         } catch (IOException e) {
-            e.printStackTrace(); // todo
+            e.printStackTrace(); // todo handling
         }
     }
 

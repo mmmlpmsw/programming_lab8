@@ -8,7 +8,8 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.sql.*;
-import java.util.Properties;
+import java.time.ZoneOffset;
+import java.util.*;
 
 public class Controller implements ContextFriendly {
 
@@ -31,8 +32,88 @@ public class Controller implements ContextFriendly {
 
     }
 
+    public void addRoomToMirror(Room room, int user_id){
+        mirror.roomAdded(room, user_id);
+    }
+
+    public void removeRoomFromMirror(Room room, int user_id) {
+        mirror.roomRemoved(room, user_id);
+    }
+
+    public ArrayList<Room> getAllRoomsToMirror() {
+        PreparedStatement statement;
+        ArrayList<Room> result = new ArrayList<>();
+
+        try {
+            statement = connection.prepareStatement("select * from things");
+            ResultSet thingsResultSet = statement.executeQuery();
+
+            statement = connection.prepareStatement("select * from rooms");
+            ResultSet roomsResultSet = statement.executeQuery();
+            if (!roomsResultSet.next()) return null;
+            do {
+                ArrayList<Room.Thing> things = new ArrayList<>();
+                int room_id = roomsResultSet.getInt("id");
+
+                do {
+                    int id = thingsResultSet.getInt("room_id");
+                    String name = thingsResultSet.getString("name");
+                    int size = thingsResultSet.getInt("size");
+
+                    if (id == room_id) things.add(new Room.Thing(size, name));
+                } while (thingsResultSet.next());
+
+                Room room = new Room(roomsResultSet.getInt("width"),
+                        roomsResultSet.getInt("height"),
+                        roomsResultSet.getInt("x"),
+                        roomsResultSet.getInt("y"),
+                        roomsResultSet.getString("name"),
+                        things);
+                result.add(room);
+            } while (roomsResultSet.next());
+
+        } catch (SQLException e) {
+            logger.err("Ошибка при работе с SQL: " + e.getMessage());
+        }
+        return result;
+    }
+
     /**
-     * Удаляет комнату по id
+     * добавляет объект в базу данных
+     * @param room объект, который нужно добавить
+     * @param id уникальный номер пользователя, добавляющего объект
+     * @return название объекта
+     * @throws SQLException при ошибке при работе с базой данных
+     */
+    public String addRoom(Room room, int id) throws SQLException {
+
+        PreparedStatement statement = connection.prepareStatement("insert into rooms values (?, ?, ?, ?, ?, ?, ?)");
+        statement.setString(1, room.getName());
+        statement.setInt(2, room.getHeight());
+        statement.setInt(3, room.getWidth());
+        statement.setInt(4, room.getX());
+        statement.setInt(5, room.getY());
+        statement.setTimestamp(6, new Timestamp(room.getCreationDate().toEpochSecond(ZoneOffset.UTC) * 1000L));
+        statement.setInt(7, id);
+
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
+        int room_id = resultSet.getInt("id");
+
+        for (Room.Thing thing : room.getShelf()) {
+            statement = connection.prepareStatement("insert into things values (?, ?, ?)");
+            statement.setInt(1, room_id);
+            statement.setString(2, thing.getName());
+            statement.setInt(3, thing.getThingcount());
+
+            statement.execute();
+        }
+        return room.getName();
+    }
+
+
+    /**
+     * удаляет комнату по id
      *
      * @param id id комнаты, которую нужно удалить
      * @return true, если комната удалилась, во всех остальных случаях false
@@ -78,18 +159,6 @@ public class Controller implements ContextFriendly {
         }
         return false;
     }
-
-
-    public void addRoom(Room room){
-        mirror.roomAdded(room);
-    }
-
-    public void removeRoom(Room room) {
-        mirror.roomRemoved(room);
-    }
-
-
-
 
     /**
      * Подключается к базе данных

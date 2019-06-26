@@ -6,10 +6,6 @@ import ru.n4d9.client.Room;
 import ru.n4d9.server.Context;
 import ru.n4d9.server.Controller;
 
-import javax.mail.MessagingException;
-import java.io.UnsupportedEncodingException;
-import java.security.GeneralSecurityException;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +18,7 @@ public class RemoveRoomCommand implements RequiresAuthorization, Command {
         Connection connection = controller.getConnection();
         Room room = (Room) message.getAttachment();
 
-        controller.removeRoom(room);
+        controller.removeRoomFromMirror(room, message.getUserid());
 
         PreparedStatement statement = connection.prepareStatement(
                 "select * from " + "users where id = ? and email = ? and password_hash = ?"

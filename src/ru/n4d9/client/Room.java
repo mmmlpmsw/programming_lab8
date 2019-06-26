@@ -31,6 +31,13 @@ public class Room implements Comparable<Room>, Serializable {
         shelf = new ArrayList<Thing>(Arrays.asList(things));
     }
 
+    public Room(int width, int height, int x, int y, String name, ArrayList<Thing> things) {
+        setBounds(x, y, width, height);
+        size = width*height;
+        setName(name);
+        this.shelf = things;
+    }
+
     public ArrayList<Thing> getShelf() { return shelf; }
 
 
