@@ -1,37 +1,80 @@
 package ru.n4d9.client;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Objects;
 
 public class Room implements Comparable<Room>, Serializable {
 
     private String name /*= "Безымянная";*/;
-    private int height, width; //width - ширина, height - высота
-    private int x, y; //только по длине и высоте
+    private double height, width; //width - ширина, height - высота
+    private double x, y; //только по длине и высоте
     private LocalDateTime creationDate = LocalDateTime.now();
-    private ArrayList<Thing> shelf;
-    private int size;
+    private Date d;
+    private ArrayList<Thing> shelf = new ArrayList<>();
+    private double size;
+    private double rotation;
 
-    Room(int width, int height, int x, int y) {
+    public double getRotation() {
+        return rotation;
+    }
+
+    public void setRotation(double rotation) {
+        this.rotation = rotation;
+    }
+
+    private int ownerId = 0;
+    private int id = 0;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    Room () {}
+
+    Room(double width, double height, double x, double y) {
         setBounds(x, y, width, height);
     }
 
-    Room(int width, int height, int x, int y, String name) {
+    Room(double width, double height, double x, double y, String name) {
         setBounds(x, y, width, height);
         setName(name);
     }
 
-    public Room(int width, int height, int x, int y, String name, Thing... things) {
+    public Date getD() {
+        return d;
+    }
+
+    public void setD(Date d) {
+        this.d = d;
+    }
+
+    public Room(double width, double height, double x, double y, String name, Thing... things) {
         setBounds(x, y, width, height);
         size = width*height;
         setName(name);
         shelf = new ArrayList<Thing>(Arrays.asList(things));
     }
 
-    public Room(int width, int height, int x, int y, String name, ArrayList<Thing> things) {
+    public Room(double width, double height, double x, double y, String name, ArrayList<Thing> things) {
         setBounds(x, y, width, height);
         size = width*height;
         setName(name);
@@ -41,36 +84,36 @@ public class Room implements Comparable<Room>, Serializable {
     public ArrayList<Thing> getShelf() { return shelf; }
 
 
-    public void setBounds(int x, int y, int width, int height) {
+    public void setBounds(double x, double y, double width, double height) {
         setPosition(x, y);
         setSize(width, height);
     }
 
-    public void setPosition(int x, int y) {
+    public void setPosition(double x, double y) {
         setX(x);
         setY(y);
     }
 
-    public void setSize(int width, int height) {
+    public void setSize(double width, double height) {
         setWidth(width);
         setHeight(height);
     }
 
-    public int getX() { return x; }
-    public int getY() { return y; }
-    public void setX(int x) { this.x = x; }
-    public void setY(int y) { this.y = y; }
+    public double getX() { return x; }
+    public double getY() { return y; }
+    public void setX(double x) { this.x = x; }
+    public void setY(double y) { this.y = y; }
 
-    public int getWidth() { return width; }
-    public int getHeight() { return height; }
+    public double getWidth() { return width; }
+    public double getHeight() { return height; }
 
-    public void setWidth(int width) {
+    public void setWidth(double width) {
         if (width < 0)
             throw new IllegalArgumentException("Ширина не может быть отрицательной");
         this.width = width;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(double height) {
         if (height < 0)
             throw new IllegalArgumentException("Высота не может быть отрицательной");
         this.height = height;
@@ -110,6 +153,20 @@ public class Room implements Comparable<Room>, Serializable {
         }
         return roominfo.toString();
 
+    }
+
+    public static Room fromResultSet(ResultSet set) throws SQLException {
+        Room result = new Room();
+        result.id = set.getInt("id");
+        result.x = set.getDouble("x");
+        result.y = set.getDouble("y");
+        result.height = set.getFloat("height");
+        result.width = set.getFloat("width");
+        result.name = set.getString("name");
+        result.ownerId = set.getInt("user_id");
+        result.creationDate = LocalDateTime.ofInstant(set.getTimestamp("creationdate").toInstant(), ZoneId.systemDefault());
+        result.rotation = set.getDouble("rotation");
+        return result;
     }
 
 

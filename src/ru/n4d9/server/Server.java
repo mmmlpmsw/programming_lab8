@@ -1,6 +1,6 @@
 package ru.n4d9.server;
 
-import ru.n4d9.Message;
+import ru.n4d9.Utils.Message;
 import ru.n4d9.json.JSONParseException;
 import ru.n4d9.transmitter.Receiver;
 import ru.n4d9.transmitter.ReceiverListener;
@@ -51,6 +51,7 @@ public class Server {
 
                 clientPool.onContextReady();
                 controller.onContextReady();
+                requestResolver.onContextReady();
                 mirror.onContextReady();
             } else {
                 Controller.sendDown("Не указан файл настроек.");

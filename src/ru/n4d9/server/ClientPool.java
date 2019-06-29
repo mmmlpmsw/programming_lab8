@@ -1,6 +1,6 @@
 package ru.n4d9.server;
 
-import ru.n4d9.Message;
+import ru.n4d9.Utils.Message;
 import ru.n4d9.transmitter.Sender;
 import ru.n4d9.transmitter.SenderAdapter;
 
@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 public class ClientPool implements ContextFriendly {
@@ -31,6 +30,7 @@ public class ClientPool implements ContextFriendly {
      * Отправляет сообщение всем подключенным клиентам
      */
     public void sendAll(Message message) {
+        logger.verbose("Рассылка сообщения " + message + " подписанным коннекторам (" + connectors.size() + ")");
         for (ClientConnector connector: connectors) {
             connector.send(message);
         }
@@ -114,7 +114,7 @@ public class ClientPool implements ContextFriendly {
 
         @Override
         public int hashCode() {
-            return Objects.hash(address.getAddress(), port);
+            return Arrays.hashCode(address.getAddress()) + port;
         }
 
         @Override

@@ -1,6 +1,6 @@
 package ru.n4d9.server;
 
-import ru.n4d9.Message;
+import ru.n4d9.Utils.Message;
 import ru.n4d9.Utils.Utilities;
 import ru.n4d9.client.Room;
 
@@ -30,10 +30,6 @@ public class Controller implements ContextFriendly {
         initTables();
         initEmail();
 
-    }
-
-    public void addRoomToMirror(Room room, int user_id){
-        mirror.roomAdded(room, user_id);
     }
 
     public void removeRoomFromMirror(Room room, int user_id) {
@@ -81,22 +77,23 @@ public class Controller implements ContextFriendly {
     /**
      * добавляет объект в базу данных
      * @param room объект, который нужно добавить
-     * @param id уникальный номер пользователя, добавляющего объект
+     * @param ownerid уникальный номер пользователя, добавляющего объект
      * @return название объекта
      * @throws SQLException при ошибке при работе с базой данных
      */
-    public String addRoom(Room room, int id) throws SQLException {
+    public Room addRoom(Room room, int ownerid) throws SQLException {
 
-        PreparedStatement statement = connection.prepareStatement("insert into rooms values (?, ?, ?, ?, ?, ?, ?)");
+        PreparedStatement statement = connection.prepareStatement("insert into rooms (name, height, width, x, y, creationdate, user_id) values (?, ?, ?, ?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
         statement.setString(1, room.getName());
-        statement.setInt(2, room.getHeight());
-        statement.setInt(3, room.getWidth());
-        statement.setInt(4, room.getX());
-        statement.setInt(5, room.getY());
+        statement.setDouble(2, room.getHeight());
+        statement.setDouble(3, room.getWidth());
+        statement.setDouble(4, room.getX());
+        statement.setDouble(5, room.getY());
         statement.setTimestamp(6, new Timestamp(room.getCreationDate().toEpochSecond(ZoneOffset.UTC) * 1000L));
-        statement.setInt(7, id);
+        statement.setInt(7, ownerid);
 
-        ResultSet resultSet = statement.executeQuery();
+        statement.execute();
+        ResultSet resultSet = statement.getGeneratedKeys();
         resultSet.next();
         int room_id = resultSet.getInt("id");
 
@@ -108,7 +105,10 @@ public class Controller implements ContextFriendly {
 
             statement.execute();
         }
-        return room.getName();
+        room.setId(room_id);
+        room.setOwnerId(ownerid);
+        mirror.roomAdded(room, ownerid);
+        return room;
     }
 
 
@@ -196,8 +196,8 @@ public class Controller implements ContextFriendly {
         try {
             Statement statement = connection.createStatement();
             statement.execute("create table if not exists rooms " +
-                    "(id serial primary key not null, name text, height integer, width integer, x integer, y integer," +
-                    "creationdate timestamp, user_id integer)"
+                    "(id serial primary key not null, name text, height double precision, width double precision, x double precision, y double precision," +
+                    "creationdate timestamp, rotation double precision, user_id integer)"
             );
             statement.execute("create table if not exists users (" +
                     "id serial primary key not null, name text, email text unique, password_hash bytea)"

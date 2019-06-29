@@ -39,10 +39,6 @@ public class Mirror implements ContextFriendly {
 
     }
 
-    public void collectionReloaded() {
-
-    }
-
 
     @Override
     public void onContextReady() {

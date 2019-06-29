@@ -1,16 +1,12 @@
 package ru.n4d9.server.commands;
 
-import ru.n4d9.Message;
+import ru.n4d9.Utils.Message;
 import ru.n4d9.Utils.Utilities;
 import ru.n4d9.server.Context;
 import ru.n4d9.server.Controller;
 
 import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
 import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

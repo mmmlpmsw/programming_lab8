@@ -9,11 +9,11 @@
       prefHeight="300.0" prefWidth="350.0">
 
     <HBox alignment="TOP_RIGHT">
-        <Hyperlink text="Настройки" id="settings-link" onMouseClicked= "#onSettingsClicked" />
+        <Hyperlink text="%main.settings" id="settings-link" onMouseClicked= "#onSettingsClicked" />
     </HBox>
 
     <VBox alignment="CENTER">
-        <Label alignment="TOP_CENTER" text="registration" >
+        <Label alignment="TOP_CENTER" text="%register.registration" >
             <font>
                 <Font name="Verdana" size="24"/>
             </font>
@@ -29,13 +29,13 @@
             </VBox.margin>
         </TextField>
 
-        <TextField promptText="name" alignment="CENTER" fx:id = "nameField">
+        <TextField promptText="username" alignment="CENTER" fx:id = "nameField">
             <VBox.margin>
                 <Insets topRightBottomLeft="10"></Insets>
             </VBox.margin>
         </TextField>
 
-        <Button text="send password" alignment="CENTER" textAlignment="CENTER"
+        <Button text="%register.send-password" alignment="CENTER" textAlignment="CENTER"
                 fx:id = "registerButton" onAction="#onSendClick" >
             <VBox.margin>
                 <Insets topRightBottomLeft="10"></Insets>

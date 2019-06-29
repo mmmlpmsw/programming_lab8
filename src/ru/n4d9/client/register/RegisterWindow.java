@@ -1,15 +1,16 @@
 package ru.n4d9.client.register;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import ru.n4d9.Message;
+import ru.n4d9.Utils.Message;
+import ru.n4d9.client.MainWindow;
 import ru.n4d9.client.Window;
 import ru.n4d9.client.settings.SettingsDialog;
 import ru.n4d9.transmitter.Receiver;
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.net.InetAddress;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 public class RegisterWindow implements Window {
     private Stage stage;
@@ -51,29 +53,37 @@ public class RegisterWindow implements Window {
                 break;
 
             case "ALREADY_REGISTERED": {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setContentText("Аккаунт с таким e-mail уже зарегистрирован.");
-                alert.show();
+                Platform.runLater(() -> {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setContentText(MainWindow.currentResourceBundle().getString("register.alert.already-registered"));
+                    alert.show();
+                });
                 break;
             }
             case "WRONG_EMAIL": {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Вы указали некорректный e-mail.");
-                alert.show();
+                Platform.runLater(() -> {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText(MainWindow.currentResourceBundle().getString("register.alert.incorrect-email"));
+                    alert.show();
+                });
                 break;
             }
             case "INTERNAL_ERROR": {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Произошла внутренняя ошибка сервера.");
-                alert.show();
-                break;
+                Platform.runLater(() -> {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText(MainWindow.currentResourceBundle().getString("alert.internal-error"));
+                    alert.show();
+                });
+               break;
             }
         }
     }
 
     @Override
     public void loadView() {
+        ResourceBundle bundle = MainWindow.currentResourceBundle();
         FXMLLoader loader = new FXMLLoader();
+        loader.setResources(bundle);
         loader.setController(this);
 
         String emailTextBackup = "";
@@ -104,29 +114,25 @@ public class RegisterWindow implements Window {
         emailField.setDisable(true);
         registerButton.setDisable(true);
 
-//        try {
         String email = emailField.getText();
         String name = nameField.getText();
 
         if (email.isEmpty()) {
-            showErrorMessage("Не указан e-mail.");
+            showErrorMessage(MainWindow.currentResourceBundle().getString("error-message.no-email"));
             nameField.clear();
             return;
         }
 
         if (name.isEmpty()) {
-            showErrorMessage("Не указано имя.");
+            showErrorMessage(MainWindow.currentResourceBundle().getString("register.alert.no-name"));
             emailField.clear();
             return;
         }
-
         Properties registerInfo = new Properties();
         registerInfo.setProperty("email", email);
         registerInfo.setProperty("name", name);
 
         send("register", registerInfo);
-
-
     }
 
     @FXML

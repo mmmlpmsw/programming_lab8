@@ -13,11 +13,11 @@
       xmlns:fx="http://javafx.com/fxml" prefHeight="300.0" prefWidth="350.0">
 
     <HBox alignment="TOP_RIGHT">
-        <Hyperlink text="Настройки" id="settings-link" onMouseClicked="#onSettingsClicked" />
+        <Hyperlink text="%main.settings" id="settings-link" onMouseClicked="#onSettingsClicked" />
     </HBox>
     <VBox>
 
-        <Label alignment="CENTER" text="Войти">
+        <Label alignment="CENTER" text="%login.enter">
             <VBox.margin>
                 <Insets bottom="20" top="20" left="130"/>
             </VBox.margin>
@@ -27,12 +27,12 @@
         </Label>
 
 
-        <TextField alignment="CENTER" promptText="login" id="email-input">
+        <TextField alignment="CENTER" promptText="%login.login" id="email-input">
             <VBox.margin>
                 <Insets bottom="20" left="40" right="40"/>
             </VBox.margin>
         </TextField>
-        <PasswordField alignment="CENTER" promptText="password" id="password-input">
+        <PasswordField alignment="CENTER" promptText="%login.password" id="password-input">
             <VBox.margin>
                 <Insets bottom="20" left="40" right="40"/>
             </VBox.margin>
@@ -41,8 +41,8 @@
             <VBox.margin>
                 <Insets bottom="20"/>
             </VBox.margin>
-            <Button defaultButton="true" id="login-button" text="login" onAction="#onLoginClick"/>
-            <Button text="register" onAction="#onRegisterClick"/>
+            <Button defaultButton="true" id="login-button" text="%login.login.button" onAction="#onLoginClick"/>
+            <Button text="%login.register.button" onAction="#onRegisterClick"/>
 
         </HBox>
     </VBox>

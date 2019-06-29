@@ -1,8 +1,8 @@
 package ru.n4d9.server.commands;
 
-import ru.n4d9.Message;
-import ru.n4d9.Utils.StringEntity;
+import ru.n4d9.Utils.Message;
 import ru.n4d9.Utils.Utilities;
+import ru.n4d9.client.Room;
 import ru.n4d9.server.Context;
 import ru.n4d9.server.Controller;
 
@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Properties;
 
 import static ru.n4d9.Utils.Utilities.colorize;
@@ -41,11 +43,34 @@ public class LoginCommand implements Command {
         ResultSet resultSet = statement.executeQuery();
         if (resultSet.next()) {
             int userid = resultSet.getInt("id");
-            String name = resultSet.getString("name");
-            Message result = new Message(name + " , вход успешно выполнен.", new String[]{Integer.toString(userid), email, password});
+            String username = resultSet.getString("name");
+
+            statement = connection.prepareStatement("select * from rooms");
+            ResultSet set = statement.executeQuery();
+            //set.next();
+            ArrayList<Room> rooms = new ArrayList<>();
+            while (set.next()) {
+                int roomid = set.getInt("id");
+                String name = set.getString("name");
+                double height = set.getDouble("height");
+                double width = set.getDouble("width");
+                double x = set.getDouble("x");
+                double y = set.getDouble("y");
+                Date creationdate = set.getDate("creationdate");
+                Room room = new Room(width, height, x, y, name);
+                room.setId(roomid);
+                room.setD(creationdate);  //todo
+                room.setOwnerId(set.getInt("user_id"));
+                rooms.add(room);
+
+            }
+            Message result = new Message("OK", rooms);
+            result.setUserid(userid);
+            result.setLogin(email);
+            result.setPassword(password);
             return result;
         } else {
-            return new Message(colorize("[[RED]]Вход не выполнен: неверная пара email/пароль.[[RESET]]"));
+            return new Message(colorize("WRONG"));
         }
 
     }

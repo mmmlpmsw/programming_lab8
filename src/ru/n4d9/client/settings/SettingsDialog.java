@@ -12,6 +12,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import ru.n4d9.client.MainWindow;
 
 import java.util.Locale;
 import java.util.Map;
@@ -34,8 +35,7 @@ public class SettingsDialog {
         stage.setScene(new Scene(vBox));
 
         Label titleLabel = new Label();
-//        titleLabel.setText(Client.currentResourceBundle().getString("main.settings"));
-        titleLabel.setText("settings");
+        titleLabel.setText(MainWindow.currentResourceBundle().getString("main.settings"));
         VBox.setMargin(titleLabel, new Insets(20));
         titleLabel.setFont(new Font(35));
 
@@ -50,30 +50,27 @@ public class SettingsDialog {
                 return null;
             }
         });
-//        Map<Locale, ResourceBundle> bundles = Client.getResourceBundles();
-//        localeChoiceBox.setValue(Client.getCurrentLocale());
-//        for (Locale currentLocale : bundles.keySet())
-//            localeChoiceBox.getItems().add(currentLocale);
+        Map<Locale, ResourceBundle> bundles = MainWindow.getResourceBundles();
+        localeChoiceBox.setValue(MainWindow.getCurrentLocale());
+        for (Locale currentLocale : bundles.keySet())
+            localeChoiceBox.getItems().add(currentLocale);
 
 
         Label languageLabel = new Label();
-//        languageLabel.setText(Client.currentResourceBundle().getString("main.language"));
-        languageLabel.setText("language");
+        languageLabel.setText(MainWindow.currentResourceBundle().getString("main.language"));
         languageLabel.setLabelFor(localeChoiceBox);
 
         Button saveButton = new Button();
         saveButton.setDefaultButton(true);
         saveButton.setDisable(true);
         HBox.setMargin(saveButton, new Insets(0, 15, 0, 0));
-        saveButton.setOnAction((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((event -> onSave()))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))));
-//        saveButton.setText(Client.currentResourceBundle().getString("main.save"));
-        saveButton.setText("save");
+        saveButton.setOnAction(event -> onSave());
+        saveButton.setText(MainWindow.currentResourceBundle().getString("main.save"));
 
         Button cancelButton = new Button();
         cancelButton.setCancelButton(true);
         cancelButton.setOnAction(event -> onCancel());
-//        cancelButton.setText(Client.currentResourceBundle().getString("main.cancel"));
-        cancelButton.setText("cancel");
+        cancelButton.setText(MainWindow.currentResourceBundle().getString("main.cancel"));
 
         HBox buttonsPane = new HBox();
         buttonsPane.setAlignment(Pos.CENTER);
@@ -92,7 +89,7 @@ public class SettingsDialog {
     }
 
     private void onSave() {
- //       Client.setCurrentLocale(localeChoiceBox.getValue());
+        MainWindow.setCurrentLocale(localeChoiceBox.getValue());
         stage.close();
         listener.closed(true);
     }

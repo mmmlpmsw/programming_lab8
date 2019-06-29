@@ -1,6 +1,6 @@
 package ru.n4d9.client;
 
-import ru.n4d9.Message;
+import ru.n4d9.Utils.Message;
 import ru.n4d9.transmitter.Receiver;
 import ru.n4d9.transmitter.ReceiverListener;
 import ru.n4d9.transmitter.Sender;

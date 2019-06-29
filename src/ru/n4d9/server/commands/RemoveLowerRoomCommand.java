@@ -1,6 +1,6 @@
 package ru.n4d9.server.commands;
 
-import ru.n4d9.Message;
+import ru.n4d9.Utils.Message;
 import ru.n4d9.Utils.Utilities;
 import ru.n4d9.client.Room;
 import ru.n4d9.server.Context;

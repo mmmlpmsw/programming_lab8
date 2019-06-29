@@ -1,25 +1,26 @@
 package ru.n4d9.client.login;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import ru.n4d9.Message;
+import ru.n4d9.Utils.Message;
+import ru.n4d9.client.MainWindow;
+import ru.n4d9.client.Room;
 import ru.n4d9.client.Window;
 import ru.n4d9.client.register.RegisterListener;
 import ru.n4d9.client.register.RegisterWindow;
 import ru.n4d9.client.settings.SettingsDialog;
-import ru.n4d9.transmitter.Receiver;
 import ru.n4d9.transmitter.ReceiverListener;
-import ru.n4d9.transmitter.Sender;
-import ru.n4d9.transmitter.SenderAdapter;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.net.InetAddress;
+import java.util.ArrayList;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 public class LoginWindow implements Window {
 
@@ -27,12 +28,11 @@ public class LoginWindow implements Window {
 
     private Stage stage;
     private LoginListener loginListener;
+    ResourceBundle bundle;
 
     private TextField emailField;
     private PasswordField passwordField;
     private Button loginButton, registerButton;
-
-    private Receiver receiver;
 
     private ReceiverListener receiverListener = new ReceiverListener() {
         @Override
@@ -56,41 +56,45 @@ public class LoginWindow implements Window {
         }
     };
 
-    public LoginWindow(LoginListener listener, Receiver r) {
-        receiver = r;
-        receiver.setListener(receiverListener);
+    public LoginWindow(LoginListener listener, String autofillLogin, String autofillPassword) {
+        MainWindow.getReceiver().setListener(receiverListener);
       //  send("unsubscribe", null);
         this.loginListener = listener;
         stage = new Stage();
         stage.setResizable(false);
         loadView();
+        emailField.setText(autofillLogin);
+        passwordField.setText(autofillPassword);
         stage.show();
     }
 
     private void onMessageReceived(Message m) {
         switch (m.getText()) {
             case "OK":
-                loginListener.onLogin(m.getUserid(), m.getLogin(), m.getPassword());
-                stage.close();
+                loginListener.onLogin(m.getUserid(), m.getLogin(), m.getPassword(), (ArrayList<Room>)m.getAttachment());
+                Platform.runLater(() -> stage.close());
                 break;
             case "WRONG": {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Неправильная пара логин-пароль.");
-                alert.show();
+                Platform.runLater(() -> {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText(bundle.getString("login.alert.incorrect-login-pswd"));
+                    alert.show();
+                });
                 break;
             }
             case "INTERNAL_ERROR":
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Произошла внутренняя ошибка сервера.");
-                alert.show();
+                Platform.runLater(() -> {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText(bundle.getString("alert.internal-error"));
+                    alert.show();
+                });
                 break;
         }
     }
 
     @Override
     public void loadView() {
-
-//        ResourceBundle bundle = Client.currentResourceBundle();
+        bundle = MainWindow.currentResourceBundle();
         String emailTextBackup = "";
         String passwordTextBackup = "";
 
@@ -101,7 +105,7 @@ public class LoginWindow implements Window {
 
         try {
             FXMLLoader loader = new FXMLLoader();
-//            loader.setResources(bundle);
+            loader.setResources(bundle);
             loader.setController(this);
             Pane root = loader.load(getClass().getResourceAsStream("/layout/login.fxml"));
 //            stage.setTitle(bundle.getString("login-dialog.window-title"));
@@ -126,6 +130,7 @@ public class LoginWindow implements Window {
 //        alert.setHeaderText(bundle.getString("login-dialog.error-alert-header"));
             alert.setContentText(e.toString());
             alert.show();
+
         }
     }
 
@@ -133,7 +138,7 @@ public class LoginWindow implements Window {
     @FXML
     public void onRegisterClick() {
         stage.hide();
-        new RegisterWindow(receiver, receiverListener, new RegisterListener() {
+        new RegisterWindow(MainWindow.getReceiver(), receiverListener, new RegisterListener() {
             @Override
             public void onRegister() {
                  stage.show();
@@ -152,7 +157,7 @@ public class LoginWindow implements Window {
             String password = passwordField.getText();
 
             if (email.isEmpty()) {
-                showErrorMessage("Не указан e-mail.");
+                showErrorMessage(bundle.getString("error-message.no-email"));
                 passwordField.clear();
                 loginButton.setDisable(false);
                 emailField.setDisable(false);
@@ -161,7 +166,7 @@ public class LoginWindow implements Window {
             }
 
             if (password.isEmpty()) {
-                showErrorMessage("Не указан пароль.");
+                showErrorMessage(bundle.getString("register.alert.no-password"));
                 emailField.clear();
                 loginButton.setDisable(false);
                 emailField.setDisable(false);
@@ -173,70 +178,10 @@ public class LoginWindow implements Window {
             loginInfo.setProperty("email", email);
             loginInfo.setProperty("password", password);
 
-            send("login", loginInfo);
-
-//            Message response = (Message)(ois.readObject());
-//
-//            Properties properties = (Properties)response.getAttachment();
-//            String status = response.getText();
-//
-//            switch (status) {
-//                case "OK":
-//                    listener.onLogin(
-//                            Integer.parseInt(properties.getProperty("userid")),
-//                            Integer.parseInt(properties.getProperty("user_token")),
-//                            properties.getProperty("user_name"),
-//                            Color.valueOf(properties.getProperty("user_color")),
-//                            socket,
-//                            ois, oos
-//                    );
-//                    stage.close();
-//                    break;
-//
-//                case "WRONG":
-//                    passwordField.clear();
-//                    showErrorMessage(Client.currentResourceBundle().getString("login-dialog.wrong-email-or-password"));
-//                    break;
-//
-//                case "INTERNAL_ERROR":
-//                    passwordField.clear();
-//                    showErrorMessage(Client.currentResourceBundle().getString("login-dialog.internal-server-error"));
-//                    break;
-//            }
-//
-//        } catch (UnknownHostException e) {
-////            showErrorMessage(Client.currentResourceBundle().getString("login-dialog.unknown-host"));
-//        } catch (IOException e) {
-//            if (e.getMessage().equals("Connection refused: connect"))
-////                showErrorMessage(Client.currentResourceBundle().getString("login-dialog.no-connection"));
-//            else
-//                showErrorMessage(Client.currentResourceBundle().getString("login-dialog.cant-connect-to-server") + '\n' + e.toString());
-//        } catch (ClassNotFoundException e) {
-//            showErrorMessage(Client.currentResourceBundle().getString("login-dialog.class-not-found") + '\n' + e.toString());
-//        } finally {
-//            loginButton.setDisable(false);
-//            emailField.setDisable(false);
-//            passwordField.setDisable(false);
-//        }
-    }
-
-    private void send(String s, Serializable serializable) {
-        try {
-            Sender.send(new Message(s, serializable).serialize(), InetAddress.getByName("localhost"), SENDING_PORT, true, new SenderAdapter(){
-                @Override
-                public void onSuccess() {
-                }
-
-                @Override
-                public void onError(String message) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText(message);
-                    alert.show();
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace(); // todo handling
-        }
+            MainWindow.send("login", loginInfo);
+            emailField.setDisable(false);
+            passwordField.setDisable(false);
+            loginButton.setDisable(false);
     }
 
     @FXML
