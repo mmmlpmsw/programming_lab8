@@ -1,0 +1,23 @@
+{
+  "created": 1550477201162,
+  "collection":
+  [
+    {
+      "x": 10,
+      "y": 12,
+      "width": 5,
+      "name": "хрущевка",
+      "height": 10,
+      "shelf": [
+        {
+          "size": 1,
+          "name": "flower"
+        },
+        {
+          "size": 1,
+          "name": "hat"
+        }
+      ]
+    }
+  ]
+}

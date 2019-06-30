@@ -20,6 +20,10 @@ public class ClientPool implements ContextFriendly {
         connectors = new HashSet<>();
     }
 
+    public Set<ClientConnector> getConnectors() {
+        return connectors;
+    }
+
     @Override
     public void onContextReady() {
         logger = (Logger) Context.get("logger");
@@ -67,7 +71,7 @@ public class ClientPool implements ContextFriendly {
 
             default:
                 logger.verbose("Вызов ресолвера для сообщения " + message + ", ответ коннектору " + connector);
-                resolver.resolve(connector, message);
+                new Thread(() -> resolver.resolve(connector, message)).start();
                 break;
         }
     }

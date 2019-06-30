@@ -98,7 +98,7 @@ public class Controller implements ContextFriendly {
         int room_id = resultSet.getInt("id");
 
         for (Room.Thing thing : room.getShelf()) {
-            statement = connection.prepareStatement("insert into things values (?, ?, ?)");
+            statement = connection.prepareStatement("insert into things (room_id, name, size) values (?, ?, ?)");
             statement.setInt(1, room_id);
             statement.setString(2, thing.getName());
             statement.setInt(3, thing.getThingcount());
@@ -111,6 +111,36 @@ public class Controller implements ContextFriendly {
         return room;
     }
 
+    public static Room removeRoomById(int id, Connection connection) throws SQLException {
+        if (connection == null)
+            return null;
+
+        ArrayList<Room> rooms = new ArrayList<>();
+
+        PreparedStatement statement = connection.prepareStatement(
+                "select * from rooms where id = ?"
+        );
+        statement.setInt(1, id);
+        ResultSet set = statement.executeQuery();
+
+        set.next();
+        Room room = Room.fromResultSet(set);
+
+        statement = connection.prepareStatement(
+                "delete from rooms where id = ?"
+        );
+        statement.setInt(1, id);
+        statement.execute();
+
+        statement = connection.prepareStatement(
+                "delete from things where room_id = ?"
+        );
+        statement.setInt(1, id);
+        statement.execute();
+        return room;
+    }
+
+
 
     /**
      * удаляет комнату по id
@@ -118,22 +148,22 @@ public class Controller implements ContextFriendly {
      * @param id id комнаты, которую нужно удалить
      * @return true, если комната удалилась, во всех остальных случаях false
      */
-    public static boolean removeRoomById(int id, Connection connection) throws SQLException {
-        if (connection == null)
-            return false;
-
-        PreparedStatement statement = connection.prepareStatement(
-                "delete from rooms where id = ?"
-        );
-        statement.setInt(1, id);
-        int removed = statement.executeUpdate();
-        statement = connection.prepareStatement(
-                "delete from things where room_id = ?"
-        );
-        statement.setInt(1, id);
-        statement.execute();
-        return removed != 0;
-    }
+//    public static boolean removeRoomById(int id, Connection connection) throws SQLException {
+//        if (connection == null)
+//            return false;
+//
+//        PreparedStatement statement = connection.prepareStatement(
+//                "delete from rooms where id = ?"
+//        );
+//        statement.setInt(1, id);
+//        int removed = statement.executeUpdate();
+//        statement = connection.prepareStatement(
+//                "delete from things where room_id = ?"
+//        );
+//        statement.setInt(1, id);
+//        statement.execute();
+//        return removed != 0;
+//    }
 
     /**
      * проверяет, авторизован ли пользователь, отправивший запрос

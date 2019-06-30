@@ -9,24 +9,26 @@ import javafx.scene.layout.VBox;
 
 import java.util.ResourceBundle;
 
-public class CreaturePropertiesPane extends VBox {
+public class RoomPropertiesPane extends VBox {
     private Room selected;
 
-    private RoomDeletingListener deletingListener = creatureId -> {};
+    private RoomDeletingListener deletingListener = roomId -> {};
     private RoomApplyingListener applyingListener = model -> {};
+    private RoomRemovingGreaterListener roomRemovingGreaterListener = model -> {};
+    private RoomRemovingLowerListener roomRemovingLowerListener = model -> {};
 
     private Label idLabel, ownerIdLabel, createdLabel;
 
     private TextField nameInput;
     private Slider xInput, yInput, widthInput, heightInput;
-    private Button applyButton, resetButton, deleteButton;
+    private Button applyButton, resetButton, deleteButton, removeGreaterButton, removeLowerButton;
     private CheckBox autoApplyCheckbox;
 
     private boolean autoApplyingEnabled = true;
 
     private Thread debounceThread = new Thread();
 
-    public CreaturePropertiesPane() {
+    public RoomPropertiesPane() {
         ResourceBundle bundle = MainWindow.currentResourceBundle();
         setPadding(new Insets(20));
         setFillWidth(true);
@@ -44,6 +46,8 @@ public class CreaturePropertiesPane extends VBox {
         applyButton = new Button(bundle.getString("main.apply"));
         resetButton = new Button(bundle.getString("main.reset"));
         deleteButton = new Button(bundle.getString("main.delete"));
+        removeGreaterButton = new Button(bundle.getString("main.remove-greater"));
+        removeLowerButton = new Button(bundle.getString("main.remove-lower"));
 
         autoApplyCheckbox = new CheckBox(bundle.getString("main.auto-apply"));
 
@@ -78,12 +82,17 @@ public class CreaturePropertiesPane extends VBox {
         HBox buttonsPane = new HBox(applyButton, resetButton, deleteButton);
         buttonsPane.setAlignment(Pos.CENTER);
 
+        HBox buttons2Pane = new HBox(removeGreaterButton, removeLowerButton);
+        buttons2Pane.setAlignment(Pos.CENTER);
+
         HBox autoApplyPane = new HBox(autoApplyCheckbox);
 
         HBox.setMargin(nameInput, new Insets(5));
         HBox.setMargin(applyButton, new Insets(5));
         HBox.setMargin(resetButton, new Insets(5));
         HBox.setMargin(deleteButton, new Insets(5));
+        HBox.setMargin(removeGreaterButton, new Insets(5));
+        HBox.setMargin(removeLowerButton, new Insets(5));
         HBox.setMargin(xInput, new Insets(5));
         HBox.setMargin(yInput, new Insets(5));
         HBox.setMargin(heightInput, new Insets(5));
@@ -95,8 +104,9 @@ public class CreaturePropertiesPane extends VBox {
                 new HBox(new Label("X"), xInput),
                 new HBox(new Label("Y"), yInput),
                 new HBox(new Label(bundle.getString("main.rooms-table.height-column-text")), heightInput),
-                new HBox(new Label("main.rooms-table.width-column-text"), widthInput),
+                new HBox(new Label(bundle.getString("main.rooms-table.width-column-text")), widthInput),
                 buttonsPane,
+                buttons2Pane,
                 autoApplyPane
         );
 
@@ -109,6 +119,8 @@ public class CreaturePropertiesPane extends VBox {
         applyButton.setOnAction((e) -> onApply());
         resetButton.setOnAction((e) -> onReset());
         deleteButton.setOnAction((e) -> onDelete());
+        removeGreaterButton.setOnAction(e -> onRemoveGreater());
+        removeLowerButton.setOnAction(e -> onRemoveLower());
     }
 
     void selectCreature(Room model, boolean editable) {
@@ -127,6 +139,8 @@ public class CreaturePropertiesPane extends VBox {
         applyButton.setDisable(true);
         resetButton.setDisable(true);
         deleteButton.setDisable(!editable);
+        removeGreaterButton.setDisable(!editable);
+        removeLowerButton.setDisable(!editable);
         autoApplyCheckbox.setDisable(!editable);
         nameInput.setDisable(!editable);
         xInput.setDisable(!editable);
@@ -149,6 +163,14 @@ public class CreaturePropertiesPane extends VBox {
 
     void setDeletingListener(RoomDeletingListener deletingListener) {
         this.deletingListener = deletingListener;
+    }
+
+    void setRemovingGreaterListener(RoomRemovingGreaterListener removingListener) {
+        this.roomRemovingGreaterListener = removingListener;
+    }
+
+    void setRemovingLowerListener(RoomRemovingLowerListener removingListener) {
+        this.roomRemovingLowerListener = removingListener;
     }
 
     private void onEdited() {
@@ -189,6 +211,14 @@ public class CreaturePropertiesPane extends VBox {
 
     private void onDelete() {
         deletingListener.deleteRequested(selected.getId());
+    }
+
+    private void onRemoveGreater() {
+        roomRemovingGreaterListener.removeGreaterRequested(selected);
+    }
+
+    private void onRemoveLower() {
+        roomRemovingLowerListener.removeLowerRequested(selected);
     }
 
     private void resetProperties() {

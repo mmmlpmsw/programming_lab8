@@ -57,7 +57,7 @@ public class MainWindow extends Application {
     @FXML private ImportRoomButton importButton;
     @FXML private LoadRoomButton loadButton;
     @FXML private RoomsCanvas roomsCanvas;
-    @FXML private CreaturePropertiesPane creaturePropertiesPane;
+    @FXML private RoomPropertiesPane roomPropertiesPane;
 
     private static Thread.UncaughtExceptionHandler exceptionHandler = (t, e) -> {
         System.out.println(e.toString());
@@ -123,7 +123,7 @@ public class MainWindow extends Application {
 
             roomsCanvas.setTarget(roomsTable.getItems());
             roomsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> roomsCanvas.selectRoom((Room)newValue));
-            roomsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> creaturePropertiesPane.selectCreature((Room)newValue, newValue != null && ((Room) newValue).getOwnerId() == id));
+            roomsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> roomPropertiesPane.selectCreature((Room)newValue, newValue != null && ((Room) newValue).getOwnerId() == id));
             roomsCanvas.widthProperty().bind(canvasTab.getTabPane().widthProperty());
             roomsCanvas.heightProperty().bind(canvasTab.getTabPane().heightProperty());
             roomsCanvas.setSelectingListener((m) -> {
@@ -132,9 +132,12 @@ public class MainWindow extends Application {
                 else
                     roomsTable.getSelectionModel().clearSelection();
             });
-            creaturePropertiesPane.selectCreature(null, false);
-            creaturePropertiesPane.setApplyingListener(model -> send("modify", model)); //todo
-            creaturePropertiesPane.setDeletingListener(roomId -> send("remove", roomId));
+            roomPropertiesPane.selectCreature(null, false);
+            roomPropertiesPane.setApplyingListener(model -> send("modify", model)); //todo
+            roomPropertiesPane.setDeletingListener(roomId -> send("remove", roomId));
+            roomPropertiesPane.setRemovingGreaterListener(model -> send("remove_greater", model));
+            roomPropertiesPane.setRemovingLowerListener(model -> send("remove_lower", model));
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -193,16 +196,11 @@ public class MainWindow extends Application {
     }
 
     private static void loadRoom(String filename) {
-        try {
-            ArrayList<Room> rooms = Utilities.getRoomsFromJSON(FileLoader.getFileContent(filename));
-            send("load", rooms);
-        } catch (IOException e) {
-            System.out.println("Ошибка чтения с файла " + e.getMessage());
-        }
+        send("load", new StringEntity().set(filename));
     }
 
     @SuppressWarnings("unchecked")
-    private void proccessMessage(Message message) {
+    private void proccessMessage(Message message) { //todo перерисовка
         System.out.println(message.getText());
         switch (message.getText()){
             case "room_added":
@@ -213,9 +211,17 @@ public class MainWindow extends Application {
                 roomsTable.getItems().remove(model);
         //        updateCreaturesCountText();
                 break;
-            case "room_import":
-                roomsTable.getItems().addAll(message.getAttachment());
+
+            case "rooms_removed": {
+                ArrayList<Room> rooms = (ArrayList<Room>) message.getAttachment();
+                roomsTable.getItems().removeAll(rooms);
                 break;
+            }
+            case "rooms_import": {
+                ArrayList<Room> rooms = (ArrayList<Room>) message.getAttachment();
+                roomsTable.getItems().addAll(rooms);
+                break;
+            }
             case "INTERNAL_ERROR":
                 Platform.runLater(() -> {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -224,6 +230,11 @@ public class MainWindow extends Application {
                 });
                 break;
             case "WRONG":
+                Platform.runLater(() -> {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText(bundle.getString("alert.incorrect-data-format"));
+                    alert.show();
+                });
                 break;
 
         }
@@ -272,6 +283,7 @@ public class MainWindow extends Application {
 
     @FXML
     public void onExitClicked() {
+        send("disconnect", null);
         stage.close();
         promptLogin();
     }

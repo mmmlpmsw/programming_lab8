@@ -22,7 +22,7 @@ public class RemoveCommand implements RequiresAuthorization, Command {
         //controller.removeRoomFromMirror(room, message.getUserid());
 
         if (room_id == 0)
-            return new Message("BAD_REQUEST"); //todo answer
+            return new Message("BAD_REQUEST");
 
         PreparedStatement statement = connection.prepareStatement(
                 "select * from rooms where id = ? and user_id = ?"

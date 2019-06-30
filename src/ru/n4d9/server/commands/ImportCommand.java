@@ -8,12 +8,13 @@ import ru.n4d9.server.ClientPool;
 import ru.n4d9.server.Context;
 import ru.n4d9.server.Controller;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ImportCommand implements RequiresAuthorization, Command {
 
     @Override
-    public Message resolve(Message message) {
+    public Message resolve(Message message) throws SQLException {
         Controller controller = (Controller) Context.get("controller");
         ClientPool clientPool = (ClientPool)Context.get("clientpool");
 
@@ -29,7 +30,7 @@ public class ImportCommand implements RequiresAuthorization, Command {
                 controller.addRoom(room, message.getUserid());
             }
 
-            Message response = new Message("room_import", rooms);
+            Message response = new Message("rooms_import", rooms);
             response.setSourcePort(message.getSourcePort());
             response.setLogin(message.getLogin());
             response.setPassword(message.getPassword());
@@ -38,8 +39,6 @@ public class ImportCommand implements RequiresAuthorization, Command {
             return null;
         } catch (NullPointerException e) {
             return new Message("file_empty");
-        } catch (Exception e) {
-            return new Message("INTERNAL_ERROR");
         }
 
     }

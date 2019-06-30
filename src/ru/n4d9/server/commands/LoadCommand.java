@@ -32,7 +32,7 @@ public class LoadCommand implements RequiresAuthorization, Command {
                 controller.addRoom(room, message.getUserid());
             }
 
-            Message response = new Message("room_load", rooms);
+            Message response = new Message("rooms_import", rooms);
             response.setSourcePort(message.getSourcePort());
             response.setLogin(message.getLogin());
             response.setPassword(message.getPassword());

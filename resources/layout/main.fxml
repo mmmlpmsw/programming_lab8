@@ -18,7 +18,7 @@
 <?import ru.n4d9.client.buttons.load.LoadRoomButton?>
 <?import ru.n4d9.client.buttons.add.AddRoomButton?>
 <?import ru.n4d9.client.canvas.RoomsCanvas?>
-<?import ru.n4d9.client.CreaturePropertiesPane?>
+<?import ru.n4d9.client.RoomPropertiesPane?>
 <VBox maxHeight="Infinity" maxWidth="Infinity" prefHeight="400" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <HBox>
         <padding>
@@ -53,7 +53,7 @@
                 <VBox.margin>
                     <Insets bottom="10"/>
                 </VBox.margin>
-                <CreaturePropertiesPane fx:id="creaturePropertiesPane"/>
+                <RoomPropertiesPane fx:id="roomPropertiesPane"/>
                 <AddRoomButton fx:id="addButton" text="%main.button.add" />
                 <ImportRoomButton fx:id="importButton" text="%main.button.import" />
                 <LoadRoomButton fx:id="loadButton" text="%main.button.load" />

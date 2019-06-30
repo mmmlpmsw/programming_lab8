@@ -20545,3 +20545,470 @@
 [30.06.2019 02:21:34] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 50140, userid = 1, login = mmmlpmsw@gmail.com, text = remove], ответ коннектору ClientConnector [address = /127.0.0.1, port = 50140]
 [30.06.2019 02:21:34] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 0, userid = null, login = null, text = room_removed] подписанным коннекторам (1)
 [30.06.2019 02:21:34] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = room_removed] через коннектор ClientConnector [address = /127.0.0.1, port = 50140]
+[30.06.2019 02:26:02] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 02:26:02] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 02:26:02] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 02:26:02] [ LOG ] Соединились с базой данных!
+[30.06.2019 02:26:07] [ VERBOSE ] Пришли данные от /127.0.0.1:56275
+[30.06.2019 02:26:07] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 56274, userid = 0, login = null, text = login]
+[30.06.2019 02:26:07] [ VERBOSE ] Обработка запроса: Message [sourcePort = 56274, userid = 0, login = null, text = login] от /127.0.0.1:56275
+[30.06.2019 02:26:07] [ LOG ] Пришел запрос от клиента 127.0.0.1:56275 login
+[30.06.2019 02:26:07] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 56274, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 56274]
+[30.06.2019 02:26:07] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 56274]
+[30.06.2019 02:32:11] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 02:32:11] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 02:32:11] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 02:32:12] [ LOG ] Соединились с базой данных!
+[30.06.2019 02:32:15] [ VERBOSE ] Пришли данные от /127.0.0.1:60941
+[30.06.2019 02:32:15] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 54736, userid = 0, login = null, text = login]
+[30.06.2019 02:32:15] [ VERBOSE ] Обработка запроса: Message [sourcePort = 54736, userid = 0, login = null, text = login] от /127.0.0.1:60941
+[30.06.2019 02:32:15] [ LOG ] Пришел запрос от клиента 127.0.0.1:60941 login
+[30.06.2019 02:32:15] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 54736, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 54736]
+[30.06.2019 02:32:15] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 54736]
+[30.06.2019 02:35:09] [ VERBOSE ] Пришли данные от /127.0.0.1:49595
+[30.06.2019 02:35:09] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 49594, userid = 0, login = null, text = login]
+[30.06.2019 02:35:09] [ VERBOSE ] Обработка запроса: Message [sourcePort = 49594, userid = 0, login = null, text = login] от /127.0.0.1:49595
+[30.06.2019 02:35:09] [ LOG ] Пришел запрос от клиента 127.0.0.1:49595 login
+[30.06.2019 02:35:09] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 49594, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 49594]
+[30.06.2019 02:35:09] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 49594]
+[30.06.2019 02:36:37] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 02:36:37] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 02:36:37] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 02:36:37] [ LOG ] Соединились с базой данных!
+[30.06.2019 02:36:41] [ VERBOSE ] Пришли данные от /127.0.0.1:65090
+[30.06.2019 02:36:41] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 65089, userid = 0, login = null, text = login]
+[30.06.2019 02:36:41] [ VERBOSE ] Обработка запроса: Message [sourcePort = 65089, userid = 0, login = null, text = login] от /127.0.0.1:65090
+[30.06.2019 02:36:41] [ LOG ] Пришел запрос от клиента 127.0.0.1:65090 login
+[30.06.2019 02:36:41] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 65089, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 65089]
+[30.06.2019 02:36:41] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 65089]
+[30.06.2019 02:37:08] [ VERBOSE ] Пришли данные от /127.0.0.1:59671
+[30.06.2019 02:37:08] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 59670, userid = 0, login = null, text = login]
+[30.06.2019 02:37:08] [ VERBOSE ] Обработка запроса: Message [sourcePort = 59670, userid = 0, login = null, text = login] от /127.0.0.1:59671
+[30.06.2019 02:37:08] [ LOG ] Пришел запрос от клиента 127.0.0.1:59671 login
+[30.06.2019 02:37:08] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 59670, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 59670]
+[30.06.2019 02:37:08] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 59670]
+[30.06.2019 02:38:11] [ VERBOSE ] Пришли данные от /127.0.0.1:51725
+[30.06.2019 02:38:11] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 51723, userid = 0, login = null, text = login]
+[30.06.2019 02:38:11] [ VERBOSE ] Обработка запроса: Message [sourcePort = 51723, userid = 0, login = null, text = login] от /127.0.0.1:51725
+[30.06.2019 02:38:11] [ LOG ] Пришел запрос от клиента 127.0.0.1:51725 login
+[30.06.2019 02:38:11] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 51723, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 51723]
+[30.06.2019 02:38:11] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 51723]
+[30.06.2019 02:54:42] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 02:54:42] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 02:54:42] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 02:54:43] [ LOG ] Соединились с базой данных!
+[30.06.2019 02:54:48] [ VERBOSE ] Пришли данные от /127.0.0.1:55629
+[30.06.2019 02:54:48] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 55628, userid = 0, login = null, text = login]
+[30.06.2019 02:54:48] [ VERBOSE ] Обработка запроса: Message [sourcePort = 55628, userid = 0, login = null, text = login] от /127.0.0.1:55629
+[30.06.2019 02:54:48] [ LOG ] Пришел запрос от клиента 127.0.0.1:55629 login
+[30.06.2019 02:54:48] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 55628, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 55628]
+[30.06.2019 02:54:49] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 55628]
+[30.06.2019 02:54:56] [ VERBOSE ] Пришли данные от /127.0.0.1:55631
+[30.06.2019 02:54:56] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 55628, userid = 1, login = mmmlpmsw@gmail.com, text = remove_greater]
+[30.06.2019 02:54:56] [ VERBOSE ] Обработка запроса: Message [sourcePort = 55628, userid = 1, login = mmmlpmsw@gmail.com, text = remove_greater] от /127.0.0.1:55631
+[30.06.2019 02:54:56] [ LOG ] Пришел запрос от клиента 127.0.0.1:55631 remove_greater
+[30.06.2019 02:54:56] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 55628, userid = 1, login = mmmlpmsw@gmail.com, text = remove_greater], ответ коннектору ClientConnector [address = /127.0.0.1, port = 55628]
+[30.06.2019 02:54:56] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = Удалено 0 комнат.] через коннектор ClientConnector [address = /127.0.0.1, port = 55628]
+[30.06.2019 02:54:56] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = Удалено 0 комнат.] через коннектор ClientConnector [address = /127.0.0.1, port = 55628]
+[30.06.2019 04:14:26] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 04:14:26] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 04:14:26] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 04:14:26] [ LOG ] Соединились с базой данных!
+[30.06.2019 04:14:34] [ VERBOSE ] Пришли данные от /127.0.0.1:50799
+[30.06.2019 04:14:34] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 50798, userid = 0, login = null, text = login]
+[30.06.2019 04:14:34] [ VERBOSE ] Обработка запроса: Message [sourcePort = 50798, userid = 0, login = null, text = login] от /127.0.0.1:50799
+[30.06.2019 04:14:34] [ LOG ] Пришел запрос от клиента 127.0.0.1:50799 login
+[30.06.2019 04:14:34] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 50798, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 50798]
+[30.06.2019 04:14:34] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 50798]
+[30.06.2019 04:14:50] [ VERBOSE ] Пришли данные от /127.0.0.1:50801
+[30.06.2019 04:14:50] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = add]
+[30.06.2019 04:14:50] [ VERBOSE ] Обработка запроса: Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = add] от /127.0.0.1:50801
+[30.06.2019 04:14:50] [ LOG ] Пришел запрос от клиента 127.0.0.1:50801 add
+[30.06.2019 04:14:50] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = add], ответ коннектору ClientConnector [address = /127.0.0.1, port = 50798]
+[30.06.2019 04:14:50] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = room_added] подписанным коннекторам (1)
+[30.06.2019 04:14:50] [ VERBOSE ] Отправка сообщения Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = room_added] через коннектор ClientConnector [address = /127.0.0.1, port = 50798]
+[30.06.2019 04:14:57] [ VERBOSE ] Пришли данные от /127.0.0.1:50803
+[30.06.2019 04:14:57] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = add]
+[30.06.2019 04:14:57] [ VERBOSE ] Обработка запроса: Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = add] от /127.0.0.1:50803
+[30.06.2019 04:14:57] [ LOG ] Пришел запрос от клиента 127.0.0.1:50803 add
+[30.06.2019 04:14:57] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = add], ответ коннектору ClientConnector [address = /127.0.0.1, port = 50798]
+[30.06.2019 04:14:57] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = room_added] подписанным коннекторам (1)
+[30.06.2019 04:14:57] [ VERBOSE ] Отправка сообщения Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = room_added] через коннектор ClientConnector [address = /127.0.0.1, port = 50798]
+[30.06.2019 04:15:05] [ VERBOSE ] Пришли данные от /127.0.0.1:50805
+[30.06.2019 04:15:05] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = add]
+[30.06.2019 04:15:05] [ VERBOSE ] Обработка запроса: Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = add] от /127.0.0.1:50805
+[30.06.2019 04:15:05] [ LOG ] Пришел запрос от клиента 127.0.0.1:50805 add
+[30.06.2019 04:15:05] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = add], ответ коннектору ClientConnector [address = /127.0.0.1, port = 50798]
+[30.06.2019 04:15:05] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = room_added] подписанным коннекторам (1)
+[30.06.2019 04:15:05] [ VERBOSE ] Отправка сообщения Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = room_added] через коннектор ClientConnector [address = /127.0.0.1, port = 50798]
+[30.06.2019 04:15:14] [ VERBOSE ] Пришли данные от /127.0.0.1:54309
+[30.06.2019 04:15:14] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = remove_greater]
+[30.06.2019 04:15:14] [ VERBOSE ] Обработка запроса: Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = remove_greater] от /127.0.0.1:54309
+[30.06.2019 04:15:14] [ LOG ] Пришел запрос от клиента 127.0.0.1:54309 remove_greater
+[30.06.2019 04:15:14] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 50798, userid = 1, login = mmmlpmsw@gmail.com, text = remove_greater], ответ коннектору ClientConnector [address = /127.0.0.1, port = 50798]
+[30.06.2019 04:15:14] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 0, userid = null, login = null, text = rooms_removed_greater] подписанным коннекторам (1)
+[30.06.2019 04:15:14] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = rooms_removed_greater] через коннектор ClientConnector [address = /127.0.0.1, port = 50798]
+[30.06.2019 04:19:21] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 04:19:21] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 04:19:21] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 04:19:21] [ LOG ] Соединились с базой данных!
+[30.06.2019 04:19:29] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 04:19:29] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 04:19:29] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 04:19:29] [ LOG ] Соединились с базой данных!
+[30.06.2019 04:19:35] [ VERBOSE ] Пришли данные от /127.0.0.1:52813
+[30.06.2019 04:19:35] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 52812, userid = 0, login = null, text = login]
+[30.06.2019 04:19:35] [ VERBOSE ] Обработка запроса: Message [sourcePort = 52812, userid = 0, login = null, text = login] от /127.0.0.1:52813
+[30.06.2019 04:19:35] [ LOG ] Пришел запрос от клиента 127.0.0.1:52813 login
+[30.06.2019 04:19:35] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 52812, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 52812]
+[30.06.2019 04:19:35] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 52812]
+[30.06.2019 04:20:06] [ VERBOSE ] Пришли данные от /127.0.0.1:52815
+[30.06.2019 04:20:06] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 52812, userid = 1, login = mmmlpmsw@gmail.com, text = import]
+[30.06.2019 04:20:06] [ VERBOSE ] Обработка запроса: Message [sourcePort = 52812, userid = 1, login = mmmlpmsw@gmail.com, text = import] от /127.0.0.1:52815
+[30.06.2019 04:20:06] [ LOG ] Пришел запрос от клиента 127.0.0.1:52815 import
+[30.06.2019 04:20:06] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 52812, userid = 1, login = mmmlpmsw@gmail.com, text = import], ответ коннектору ClientConnector [address = /127.0.0.1, port = 52812]
+[30.06.2019 04:20:06] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = INTERNAL_ERROR] через коннектор ClientConnector [address = /127.0.0.1, port = 52812]
+[30.06.2019 04:20:06] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = INTERNAL_ERROR] через коннектор ClientConnector [address = /127.0.0.1, port = 52812]
+[30.06.2019 04:22:56] [ VERBOSE ] Пришли данные от /127.0.0.1:52897
+[30.06.2019 04:22:56] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 52896, userid = 0, login = null, text = login]
+[30.06.2019 04:22:56] [ VERBOSE ] Обработка запроса: Message [sourcePort = 52896, userid = 0, login = null, text = login] от /127.0.0.1:52897
+[30.06.2019 04:22:56] [ LOG ] Пришел запрос от клиента 127.0.0.1:52897 login
+[30.06.2019 04:22:56] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 52896, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 52896]
+[30.06.2019 04:22:56] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 52896]
+[30.06.2019 04:23:02] [ VERBOSE ] Пришли данные от /127.0.0.1:52899
+[30.06.2019 04:23:02] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 52896, userid = 1, login = mmmlpmsw@gmail.com, text = import]
+[30.06.2019 04:23:02] [ VERBOSE ] Обработка запроса: Message [sourcePort = 52896, userid = 1, login = mmmlpmsw@gmail.com, text = import] от /127.0.0.1:52899
+[30.06.2019 04:23:02] [ LOG ] Пришел запрос от клиента 127.0.0.1:52899 import
+[30.06.2019 04:23:02] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 52896, userid = 1, login = mmmlpmsw@gmail.com, text = import], ответ коннектору ClientConnector [address = /127.0.0.1, port = 52896]
+[30.06.2019 04:23:02] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = INTERNAL_ERROR] через коннектор ClientConnector [address = /127.0.0.1, port = 52896]
+[30.06.2019 04:23:02] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = INTERNAL_ERROR] через коннектор ClientConnector [address = /127.0.0.1, port = 52896]
+[30.06.2019 04:24:12] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 04:24:12] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 04:24:12] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 04:24:12] [ LOG ] Соединились с базой данных!
+[30.06.2019 04:24:18] [ VERBOSE ] Пришли данные от /127.0.0.1:57267
+[30.06.2019 04:24:18] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 57264, userid = 0, login = null, text = login]
+[30.06.2019 04:24:18] [ VERBOSE ] Обработка запроса: Message [sourcePort = 57264, userid = 0, login = null, text = login] от /127.0.0.1:57267
+[30.06.2019 04:24:18] [ LOG ] Пришел запрос от клиента 127.0.0.1:57267 login
+[30.06.2019 04:24:18] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 57264, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 57264]
+[30.06.2019 04:24:18] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 57264]
+[30.06.2019 04:24:45] [ VERBOSE ] Пришли данные от /127.0.0.1:57269
+[30.06.2019 04:24:45] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 57264, userid = 1, login = mmmlpmsw@gmail.com, text = modify]
+[30.06.2019 04:24:45] [ VERBOSE ] Обработка запроса: Message [sourcePort = 57264, userid = 1, login = mmmlpmsw@gmail.com, text = modify] от /127.0.0.1:57269
+[30.06.2019 04:24:45] [ LOG ] Пришел запрос от клиента 127.0.0.1:57269 modify
+[30.06.2019 04:24:45] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 57264, userid = 1, login = mmmlpmsw@gmail.com, text = modify], ответ коннектору ClientConnector [address = /127.0.0.1, port = 57264]
+[30.06.2019 04:24:45] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = COMMAND_NOT_FOUND] через коннектор ClientConnector [address = /127.0.0.1, port = 57264]
+[30.06.2019 04:24:46] [ VERBOSE ] Пришли данные от /127.0.0.1:57271
+[30.06.2019 04:24:46] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 57264, userid = 1, login = mmmlpmsw@gmail.com, text = modify]
+[30.06.2019 04:24:46] [ VERBOSE ] Обработка запроса: Message [sourcePort = 57264, userid = 1, login = mmmlpmsw@gmail.com, text = modify] от /127.0.0.1:57271
+[30.06.2019 04:24:46] [ LOG ] Пришел запрос от клиента 127.0.0.1:57271 modify
+[30.06.2019 04:24:46] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 57264, userid = 1, login = mmmlpmsw@gmail.com, text = modify], ответ коннектору ClientConnector [address = /127.0.0.1, port = 57264]
+[30.06.2019 04:24:46] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = COMMAND_NOT_FOUND] через коннектор ClientConnector [address = /127.0.0.1, port = 57264]
+[30.06.2019 04:24:47] [ VERBOSE ] Пришли данные от /127.0.0.1:57273
+[30.06.2019 04:24:47] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 57264, userid = 1, login = mmmlpmsw@gmail.com, text = modify]
+[30.06.2019 04:24:47] [ VERBOSE ] Обработка запроса: Message [sourcePort = 57264, userid = 1, login = mmmlpmsw@gmail.com, text = modify] от /127.0.0.1:57273
+[30.06.2019 04:24:47] [ LOG ] Пришел запрос от клиента 127.0.0.1:57273 modify
+[30.06.2019 04:24:47] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 57264, userid = 1, login = mmmlpmsw@gmail.com, text = modify], ответ коннектору ClientConnector [address = /127.0.0.1, port = 57264]
+[30.06.2019 04:24:47] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = COMMAND_NOT_FOUND] через коннектор ClientConnector [address = /127.0.0.1, port = 57264]
+[30.06.2019 04:25:50] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 04:25:50] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 04:25:50] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 04:25:51] [ LOG ] Соединились с базой данных!
+[30.06.2019 04:25:55] [ VERBOSE ] Пришли данные от /127.0.0.1:59478
+[30.06.2019 04:25:55] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 59477, userid = 0, login = null, text = login]
+[30.06.2019 04:25:55] [ VERBOSE ] Обработка запроса: Message [sourcePort = 59477, userid = 0, login = null, text = login] от /127.0.0.1:59478
+[30.06.2019 04:25:55] [ LOG ] Пришел запрос от клиента 127.0.0.1:59478 login
+[30.06.2019 04:25:55] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 59477, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 59477]
+[30.06.2019 04:25:55] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 59477]
+[30.06.2019 04:26:03] [ VERBOSE ] Пришли данные от /127.0.0.1:49340
+[30.06.2019 04:26:03] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 59477, userid = 1, login = mmmlpmsw@gmail.com, text = import]
+[30.06.2019 04:26:03] [ VERBOSE ] Обработка запроса: Message [sourcePort = 59477, userid = 1, login = mmmlpmsw@gmail.com, text = import] от /127.0.0.1:49340
+[30.06.2019 04:26:03] [ LOG ] Пришел запрос от клиента 127.0.0.1:49340 import
+[30.06.2019 04:26:03] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 59477, userid = 1, login = mmmlpmsw@gmail.com, text = import], ответ коннектору ClientConnector [address = /127.0.0.1, port = 59477]
+[30.06.2019 04:26:03] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = INTERNAL_ERROR] через коннектор ClientConnector [address = /127.0.0.1, port = 59477]
+[30.06.2019 04:28:05] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 04:28:05] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 04:28:05] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 04:28:05] [ LOG ] Соединились с базой данных!
+[30.06.2019 04:29:20] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 04:29:20] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 04:29:20] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 04:29:20] [ LOG ] Соединились с базой данных!
+[30.06.2019 04:29:23] [ VERBOSE ] Пришли данные от /127.0.0.1:53271
+[30.06.2019 04:29:23] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 53270, userid = 0, login = null, text = login]
+[30.06.2019 04:29:23] [ VERBOSE ] Обработка запроса: Message [sourcePort = 53270, userid = 0, login = null, text = login] от /127.0.0.1:53271
+[30.06.2019 04:29:23] [ LOG ] Пришел запрос от клиента 127.0.0.1:53271 login
+[30.06.2019 04:29:23] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 53270, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 53270]
+[30.06.2019 04:29:23] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 53270]
+[30.06.2019 04:29:33] [ VERBOSE ] Пришли данные от /127.0.0.1:53273
+[30.06.2019 04:29:33] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 53270, userid = 1, login = mmmlpmsw@gmail.com, text = import]
+[30.06.2019 04:29:33] [ VERBOSE ] Обработка запроса: Message [sourcePort = 53270, userid = 1, login = mmmlpmsw@gmail.com, text = import] от /127.0.0.1:53273
+[30.06.2019 04:29:33] [ LOG ] Пришел запрос от клиента 127.0.0.1:53273 import
+[30.06.2019 04:29:33] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 53270, userid = 1, login = mmmlpmsw@gmail.com, text = import], ответ коннектору ClientConnector [address = /127.0.0.1, port = 53270]
+[30.06.2019 04:29:33] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 53270, userid = 1, login = mmmlpmsw@gmail.com, text = room_import] подписанным коннекторам (1)
+[30.06.2019 04:29:33] [ VERBOSE ] Отправка сообщения Message [sourcePort = 53270, userid = 1, login = mmmlpmsw@gmail.com, text = room_import] через коннектор ClientConnector [address = /127.0.0.1, port = 53270]
+[30.06.2019 04:32:19] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 04:32:19] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 04:32:19] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 04:32:20] [ LOG ] Соединились с базой данных!
+[30.06.2019 04:33:15] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 04:33:15] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 04:33:15] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 04:33:16] [ LOG ] Соединились с базой данных!
+[30.06.2019 04:33:17] [ VERBOSE ] Пришли данные от /127.0.0.1:59905
+[30.06.2019 04:33:17] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 49597, userid = 0, login = null, text = login]
+[30.06.2019 04:33:17] [ VERBOSE ] Обработка запроса: Message [sourcePort = 49597, userid = 0, login = null, text = login] от /127.0.0.1:59905
+[30.06.2019 04:33:17] [ LOG ] Пришел запрос от клиента 127.0.0.1:59905 login
+[30.06.2019 04:33:17] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 49597, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 49597]
+[30.06.2019 04:33:17] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 49597]
+[30.06.2019 04:33:38] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 04:33:38] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 04:33:38] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 04:33:38] [ LOG ] Соединились с базой данных!
+[30.06.2019 04:33:42] [ VERBOSE ] Пришли данные от /127.0.0.1:59910
+[30.06.2019 04:33:42] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 59909, userid = 0, login = null, text = login]
+[30.06.2019 04:33:42] [ VERBOSE ] Обработка запроса: Message [sourcePort = 59909, userid = 0, login = null, text = login] от /127.0.0.1:59910
+[30.06.2019 04:33:42] [ LOG ] Пришел запрос от клиента 127.0.0.1:59910 login
+[30.06.2019 04:33:42] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 59909, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 59909]
+[30.06.2019 04:33:42] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 59909]
+[30.06.2019 04:33:52] [ VERBOSE ] Пришли данные от /127.0.0.1:59912
+[30.06.2019 04:33:52] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 59909, userid = 1, login = mmmlpmsw@gmail.com, text = import]
+[30.06.2019 04:33:52] [ VERBOSE ] Обработка запроса: Message [sourcePort = 59909, userid = 1, login = mmmlpmsw@gmail.com, text = import] от /127.0.0.1:59912
+[30.06.2019 04:33:52] [ LOG ] Пришел запрос от клиента 127.0.0.1:59912 import
+[30.06.2019 04:33:52] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 59909, userid = 1, login = mmmlpmsw@gmail.com, text = import], ответ коннектору ClientConnector [address = /127.0.0.1, port = 59909]
+[30.06.2019 04:33:52] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 59909, userid = 1, login = mmmlpmsw@gmail.com, text = room_import] подписанным коннекторам (1)
+[30.06.2019 04:33:52] [ VERBOSE ] Отправка сообщения Message [sourcePort = 59909, userid = 1, login = mmmlpmsw@gmail.com, text = room_import] через коннектор ClientConnector [address = /127.0.0.1, port = 59909]
+[30.06.2019 04:34:18] [ VERBOSE ] Пришли данные от /127.0.0.1:59915
+[30.06.2019 04:34:18] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 59909, userid = 1, login = mmmlpmsw@gmail.com, text = remove_greater]
+[30.06.2019 04:34:18] [ VERBOSE ] Обработка запроса: Message [sourcePort = 59909, userid = 1, login = mmmlpmsw@gmail.com, text = remove_greater] от /127.0.0.1:59915
+[30.06.2019 04:34:18] [ LOG ] Пришел запрос от клиента 127.0.0.1:59915 remove_greater
+[30.06.2019 04:34:18] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 59909, userid = 1, login = mmmlpmsw@gmail.com, text = remove_greater], ответ коннектору ClientConnector [address = /127.0.0.1, port = 59909]
+[30.06.2019 04:34:18] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 0, userid = null, login = null, text = rooms_removed] подписанным коннекторам (1)
+[30.06.2019 04:34:18] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = rooms_removed] через коннектор ClientConnector [address = /127.0.0.1, port = 59909]
+[30.06.2019 04:34:37] [ VERBOSE ] Пришли данные от /127.0.0.1:59917
+[30.06.2019 04:34:37] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 59909, userid = 1, login = mmmlpmsw@gmail.com, text = remove_lower]
+[30.06.2019 04:34:37] [ VERBOSE ] Обработка запроса: Message [sourcePort = 59909, userid = 1, login = mmmlpmsw@gmail.com, text = remove_lower] от /127.0.0.1:59917
+[30.06.2019 04:34:37] [ LOG ] Пришел запрос от клиента 127.0.0.1:59917 remove_lower
+[30.06.2019 04:34:37] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 59909, userid = 1, login = mmmlpmsw@gmail.com, text = remove_lower], ответ коннектору ClientConnector [address = /127.0.0.1, port = 59909]
+[30.06.2019 04:34:37] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 0, userid = null, login = null, text = rooms_removed] подписанным коннекторам (1)
+[30.06.2019 04:34:37] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = rooms_removed] через коннектор ClientConnector [address = /127.0.0.1, port = 59909]
+[30.06.2019 04:37:43] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 04:37:43] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 04:37:43] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 04:37:43] [ LOG ] Соединились с базой данных!
+[30.06.2019 04:37:45] [ VERBOSE ] Пришли данные от /127.0.0.1:57254
+[30.06.2019 04:37:45] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 57249, userid = 0, login = null, text = login]
+[30.06.2019 04:37:45] [ VERBOSE ] Обработка запроса: Message [sourcePort = 57249, userid = 0, login = null, text = login] от /127.0.0.1:57254
+[30.06.2019 04:37:45] [ LOG ] Пришел запрос от клиента 127.0.0.1:57254 login
+[30.06.2019 04:37:45] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 57249, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 57249]
+[30.06.2019 04:37:45] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 57249]
+[30.06.2019 04:37:54] [ VERBOSE ] Пришли данные от /127.0.0.1:56121
+[30.06.2019 04:37:54] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove_lower]
+[30.06.2019 04:37:54] [ VERBOSE ] Обработка запроса: Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove_lower] от /127.0.0.1:56121
+[30.06.2019 04:37:54] [ LOG ] Пришел запрос от клиента 127.0.0.1:56121 remove_lower
+[30.06.2019 04:37:54] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove_lower], ответ коннектору ClientConnector [address = /127.0.0.1, port = 57249]
+[30.06.2019 04:37:54] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 0, userid = null, login = null, text = rooms_removed] подписанным коннекторам (1)
+[30.06.2019 04:37:54] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = rooms_removed] через коннектор ClientConnector [address = /127.0.0.1, port = 57249]
+[30.06.2019 04:38:16] [ VERBOSE ] Пришли данные от /127.0.0.1:63460
+[30.06.2019 04:38:16] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove]
+[30.06.2019 04:38:16] [ VERBOSE ] Обработка запроса: Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove] от /127.0.0.1:63460
+[30.06.2019 04:38:16] [ LOG ] Пришел запрос от клиента 127.0.0.1:63460 remove
+[30.06.2019 04:38:16] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove], ответ коннектору ClientConnector [address = /127.0.0.1, port = 57249]
+[30.06.2019 04:38:24] [ VERBOSE ] Пришли данные от /127.0.0.1:49973
+[30.06.2019 04:38:24] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove]
+[30.06.2019 04:38:24] [ VERBOSE ] Обработка запроса: Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove] от /127.0.0.1:49973
+[30.06.2019 04:38:24] [ LOG ] Пришел запрос от клиента 127.0.0.1:49973 remove
+[30.06.2019 04:38:24] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove], ответ коннектору ClientConnector [address = /127.0.0.1, port = 57249]
+[30.06.2019 04:38:25] [ VERBOSE ] Пришли данные от /127.0.0.1:63454
+[30.06.2019 04:38:25] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove]
+[30.06.2019 04:38:25] [ VERBOSE ] Обработка запроса: Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove] от /127.0.0.1:63454
+[30.06.2019 04:38:25] [ LOG ] Пришел запрос от клиента 127.0.0.1:63454 remove
+[30.06.2019 04:38:25] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove], ответ коннектору ClientConnector [address = /127.0.0.1, port = 57249]
+[30.06.2019 04:38:25] [ VERBOSE ] Пришли данные от /127.0.0.1:55926
+[30.06.2019 04:38:25] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove]
+[30.06.2019 04:38:25] [ VERBOSE ] Обработка запроса: Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove] от /127.0.0.1:55926
+[30.06.2019 04:38:25] [ LOG ] Пришел запрос от клиента 127.0.0.1:55926 remove
+[30.06.2019 04:38:25] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove], ответ коннектору ClientConnector [address = /127.0.0.1, port = 57249]
+[30.06.2019 04:38:26] [ VERBOSE ] Пришли данные от /127.0.0.1:58852
+[30.06.2019 04:38:26] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove]
+[30.06.2019 04:38:26] [ VERBOSE ] Обработка запроса: Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove] от /127.0.0.1:58852
+[30.06.2019 04:38:26] [ LOG ] Пришел запрос от клиента 127.0.0.1:58852 remove
+[30.06.2019 04:38:26] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 57249, userid = 1, login = mmmlpmsw@gmail.com, text = remove], ответ коннектору ClientConnector [address = /127.0.0.1, port = 57249]
+[30.06.2019 04:38:54] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 04:38:54] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 04:38:54] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 04:38:54] [ LOG ] Соединились с базой данных!
+[30.06.2019 04:38:58] [ VERBOSE ] Пришли данные от /127.0.0.1:64638
+[30.06.2019 04:38:58] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 64631, userid = 0, login = null, text = login]
+[30.06.2019 04:38:58] [ VERBOSE ] Обработка запроса: Message [sourcePort = 64631, userid = 0, login = null, text = login] от /127.0.0.1:64638
+[30.06.2019 04:38:58] [ LOG ] Пришел запрос от клиента 127.0.0.1:64638 login
+[30.06.2019 04:38:58] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 64631, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 64631]
+[30.06.2019 04:38:58] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 64631]
+[30.06.2019 04:43:12] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 04:43:12] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 04:43:12] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 04:43:12] [ LOG ] Соединились с базой данных!
+[30.06.2019 04:43:15] [ VERBOSE ] Пришли данные от /127.0.0.1:56510
+[30.06.2019 04:43:15] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 56509, userid = 0, login = null, text = login]
+[30.06.2019 04:43:15] [ VERBOSE ] Обработка запроса: Message [sourcePort = 56509, userid = 0, login = null, text = login] от /127.0.0.1:56510
+[30.06.2019 04:43:15] [ LOG ] Пришел запрос от клиента 127.0.0.1:56510 login
+[30.06.2019 04:43:15] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 56509, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 56509]
+[30.06.2019 04:43:15] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 56509]
+[30.06.2019 04:43:23] [ VERBOSE ] Пришли данные от /127.0.0.1:56512
+[30.06.2019 04:43:23] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 56509, userid = 1, login = mmmlpmsw@gmail.com, text = load]
+[30.06.2019 04:43:23] [ VERBOSE ] Обработка запроса: Message [sourcePort = 56509, userid = 1, login = mmmlpmsw@gmail.com, text = load] от /127.0.0.1:56512
+[30.06.2019 04:43:23] [ LOG ] Пришел запрос от клиента 127.0.0.1:56512 load
+[30.06.2019 04:43:23] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 56509, userid = 1, login = mmmlpmsw@gmail.com, text = load], ответ коннектору ClientConnector [address = /127.0.0.1, port = 56509]
+[30.06.2019 04:43:23] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = WRONG] через коннектор ClientConnector [address = /127.0.0.1, port = 56509]
+[30.06.2019 04:43:23] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = WRONG] через коннектор ClientConnector [address = /127.0.0.1, port = 56509]
+[30.06.2019 04:44:20] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 04:44:20] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 04:44:20] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 04:44:20] [ LOG ] Соединились с базой данных!
+[30.06.2019 04:44:26] [ VERBOSE ] Пришли данные от /127.0.0.1:53529
+[30.06.2019 04:44:26] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 53528, userid = 0, login = null, text = login]
+[30.06.2019 04:44:26] [ VERBOSE ] Обработка запроса: Message [sourcePort = 53528, userid = 0, login = null, text = login] от /127.0.0.1:53529
+[30.06.2019 04:44:26] [ LOG ] Пришел запрос от клиента 127.0.0.1:53529 login
+[30.06.2019 04:44:26] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 53528, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 53528]
+[30.06.2019 04:44:26] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 53528]
+[30.06.2019 04:44:32] [ VERBOSE ] Пришли данные от /127.0.0.1:53531
+[30.06.2019 04:44:32] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 53528, userid = 1, login = mmmlpmsw@gmail.com, text = load]
+[30.06.2019 04:44:32] [ VERBOSE ] Обработка запроса: Message [sourcePort = 53528, userid = 1, login = mmmlpmsw@gmail.com, text = load] от /127.0.0.1:53531
+[30.06.2019 04:44:32] [ LOG ] Пришел запрос от клиента 127.0.0.1:53531 load
+[30.06.2019 04:44:32] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 53528, userid = 1, login = mmmlpmsw@gmail.com, text = load], ответ коннектору ClientConnector [address = /127.0.0.1, port = 53528]
+[30.06.2019 04:44:32] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 53528, userid = 1, login = mmmlpmsw@gmail.com, text = room_load] подписанным коннекторам (1)
+[30.06.2019 04:44:32] [ VERBOSE ] Отправка сообщения Message [sourcePort = 53528, userid = 1, login = mmmlpmsw@gmail.com, text = room_load] через коннектор ClientConnector [address = /127.0.0.1, port = 53528]
+[30.06.2019 04:46:00] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 04:46:00] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 04:46:00] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 04:46:00] [ LOG ] Соединились с базой данных!
+[30.06.2019 04:46:01] [ VERBOSE ] Пришли данные от /127.0.0.1:51341
+[30.06.2019 04:46:01] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 58057, userid = 0, login = null, text = login]
+[30.06.2019 04:46:01] [ VERBOSE ] Обработка запроса: Message [sourcePort = 58057, userid = 0, login = null, text = login] от /127.0.0.1:51341
+[30.06.2019 04:46:01] [ LOG ] Пришел запрос от клиента 127.0.0.1:51341 login
+[30.06.2019 04:46:01] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 58057, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 58057]
+[30.06.2019 04:46:01] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 58057]
+[30.06.2019 04:46:10] [ VERBOSE ] Пришли данные от /127.0.0.1:51343
+[30.06.2019 04:46:10] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 58057, userid = 1, login = mmmlpmsw@gmail.com, text = load]
+[30.06.2019 04:46:10] [ VERBOSE ] Обработка запроса: Message [sourcePort = 58057, userid = 1, login = mmmlpmsw@gmail.com, text = load] от /127.0.0.1:51343
+[30.06.2019 04:46:10] [ LOG ] Пришел запрос от клиента 127.0.0.1:51343 load
+[30.06.2019 04:46:10] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 58057, userid = 1, login = mmmlpmsw@gmail.com, text = load], ответ коннектору ClientConnector [address = /127.0.0.1, port = 58057]
+[30.06.2019 04:46:10] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 58057, userid = 1, login = mmmlpmsw@gmail.com, text = rooms_import] подписанным коннекторам (1)
+[30.06.2019 04:46:10] [ VERBOSE ] Отправка сообщения Message [sourcePort = 58057, userid = 1, login = mmmlpmsw@gmail.com, text = rooms_import] через коннектор ClientConnector [address = /127.0.0.1, port = 58057]
+[30.06.2019 04:46:52] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 04:46:52] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 04:46:52] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 04:46:52] [ LOG ] Соединились с базой данных!
+[30.06.2019 04:47:00] [ VERBOSE ] Пришли данные от /127.0.0.1:51347
+[30.06.2019 04:47:00] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 51346, userid = 0, login = null, text = login]
+[30.06.2019 04:47:00] [ VERBOSE ] Обработка запроса: Message [sourcePort = 51346, userid = 0, login = null, text = login] от /127.0.0.1:51347
+[30.06.2019 04:47:00] [ LOG ] Пришел запрос от клиента 127.0.0.1:51347 login
+[30.06.2019 04:47:00] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 51346, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 51346]
+[30.06.2019 04:47:00] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 51346]
+[30.06.2019 04:47:06] [ VERBOSE ] Пришли данные от /127.0.0.1:51349
+[30.06.2019 04:47:06] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 51346, userid = 1, login = mmmlpmsw@gmail.com, text = import]
+[30.06.2019 04:47:06] [ VERBOSE ] Обработка запроса: Message [sourcePort = 51346, userid = 1, login = mmmlpmsw@gmail.com, text = import] от /127.0.0.1:51349
+[30.06.2019 04:47:06] [ LOG ] Пришел запрос от клиента 127.0.0.1:51349 import
+[30.06.2019 04:47:06] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 51346, userid = 1, login = mmmlpmsw@gmail.com, text = import], ответ коннектору ClientConnector [address = /127.0.0.1, port = 51346]
+[30.06.2019 04:47:06] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 51346, userid = 1, login = mmmlpmsw@gmail.com, text = rooms_import] подписанным коннекторам (1)
+[30.06.2019 04:47:06] [ VERBOSE ] Отправка сообщения Message [sourcePort = 51346, userid = 1, login = mmmlpmsw@gmail.com, text = rooms_import] через коннектор ClientConnector [address = /127.0.0.1, port = 51346]
+[30.06.2019 05:06:10] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 05:06:10] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 05:06:10] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 05:06:11] [ LOG ] Соединились с базой данных!
+[30.06.2019 05:06:40] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 05:06:40] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 05:06:40] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 05:06:40] [ LOG ] Соединились с базой данных!
+[30.06.2019 05:06:45] [ VERBOSE ] Пришли данные от /127.0.0.1:56958
+[30.06.2019 05:06:45] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 56957, userid = 0, login = null, text = login]
+[30.06.2019 05:06:45] [ VERBOSE ] Обработка запроса: Message [sourcePort = 56957, userid = 0, login = null, text = login] от /127.0.0.1:56958
+[30.06.2019 05:06:45] [ LOG ] Пришел запрос от клиента 127.0.0.1:56958 login
+[30.06.2019 05:06:45] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 56957, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 56957]
+[30.06.2019 05:06:45] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 56957]
+[30.06.2019 05:06:48] [ VERBOSE ] Пришли данные от /127.0.0.1:56960
+[30.06.2019 05:06:48] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 56957, userid = 1, login = mmmlpmsw@gmail.com, text = disconnect]
+[30.06.2019 05:06:48] [ VERBOSE ] Обработка запроса: Message [sourcePort = 56957, userid = 1, login = mmmlpmsw@gmail.com, text = disconnect] от /127.0.0.1:56960
+[30.06.2019 05:06:48] [ LOG ] Пришел запрос от клиента 127.0.0.1:56960 disconnect
+[30.06.2019 05:06:48] [ VERBOSE ] Отсоединение коннектора: ClientConnector [address = /127.0.0.1, port = 56957]
+[30.06.2019 05:06:48] [ LOG ] Клиент 127.0.0.1:56960 отсоединился.
+[30.06.2019 05:07:12] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 05:07:12] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 05:07:12] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 05:07:12] [ LOG ] Соединились с базой данных!
+[30.06.2019 05:07:40] [ VERBOSE ] Пришли данные от /127.0.0.1:61918
+[30.06.2019 05:07:40] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 0, userid = null, login = null, text = register]
+[30.06.2019 05:07:40] [ VERBOSE ] Обработка запроса: Message [sourcePort = 0, userid = null, login = null, text = register] от /127.0.0.1:61918
+[30.06.2019 05:07:40] [ LOG ] Пришел запрос от неавторизованного клиента register
+[30.06.2019 05:07:40] [ LOG ] Пришел запрос от клиента 127.0.0.1:61918 register
+[30.06.2019 05:07:40] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 0, userid = null, login = null, text = register], ответ коннектору ClientConnector [address = /127.0.0.1, port = 0]
+[30.06.2019 05:07:42] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 0]
+[30.06.2019 05:07:48] [ VERBOSE ] Не получилось отправить сообщение Message [sourcePort = 0, userid = null, login = null, text = OK] по коннектору ru.n4d9.server.ClientPool$ClientConnector$1@3462785d, ошибка: Сторона не отвечает
+[30.06.2019 05:08:55] [ VERBOSE ] Пришли данные от /127.0.0.1:54392
+[30.06.2019 05:08:55] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 58876, userid = 0, login = null, text = login]
+[30.06.2019 05:08:55] [ VERBOSE ] Обработка запроса: Message [sourcePort = 58876, userid = 0, login = null, text = login] от /127.0.0.1:54392
+[30.06.2019 05:08:55] [ LOG ] Пришел запрос от клиента 127.0.0.1:54392 login
+[30.06.2019 05:08:56] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 58876, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 58876]
+[30.06.2019 05:08:56] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 4, login = mmmlpmsw@yandex.ru, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 58876]
+[30.06.2019 05:09:01] [ VERBOSE ] Пришли данные от /127.0.0.1:54395
+[30.06.2019 05:09:01] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 50884, userid = 0, login = null, text = login]
+[30.06.2019 05:09:01] [ VERBOSE ] Обработка запроса: Message [sourcePort = 50884, userid = 0, login = null, text = login] от /127.0.0.1:54395
+[30.06.2019 05:09:01] [ LOG ] Пришел запрос от клиента 127.0.0.1:54395 login
+[30.06.2019 05:09:01] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 50884, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 50884]
+[30.06.2019 05:09:01] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 50884]
+[30.06.2019 05:09:39] [ VERBOSE ] Пришли данные от /127.0.0.1:64318
+[30.06.2019 05:09:39] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 58876, userid = 4, login = mmmlpmsw@yandex.ru, text = add]
+[30.06.2019 05:09:39] [ VERBOSE ] Обработка запроса: Message [sourcePort = 58876, userid = 4, login = mmmlpmsw@yandex.ru, text = add] от /127.0.0.1:64318
+[30.06.2019 05:09:39] [ LOG ] Пришел запрос от клиента 127.0.0.1:64318 add
+[30.06.2019 05:09:39] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 58876, userid = 4, login = mmmlpmsw@yandex.ru, text = add], ответ коннектору ClientConnector [address = /127.0.0.1, port = 58876]
+[30.06.2019 05:09:39] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 58876, userid = 4, login = mmmlpmsw@yandex.ru, text = room_added] подписанным коннекторам (3)
+[30.06.2019 05:09:39] [ VERBOSE ] Отправка сообщения Message [sourcePort = 58876, userid = 4, login = mmmlpmsw@yandex.ru, text = room_added] через коннектор ClientConnector [address = /127.0.0.1, port = 0]
+[30.06.2019 05:09:45] [ VERBOSE ] Не получилось отправить сообщение Message [sourcePort = 58876, userid = 4, login = mmmlpmsw@yandex.ru, text = room_added] по коннектору ru.n4d9.server.ClientPool$ClientConnector$1@2e996877, ошибка: Сторона не отвечает
+[30.06.2019 05:09:45] [ VERBOSE ] Отправка сообщения Message [sourcePort = 58876, userid = 4, login = mmmlpmsw@yandex.ru, text = room_added] через коннектор ClientConnector [address = /127.0.0.1, port = 58876]
+[30.06.2019 05:09:45] [ VERBOSE ] Отправка сообщения Message [sourcePort = 58876, userid = 4, login = mmmlpmsw@yandex.ru, text = room_added] через коннектор ClientConnector [address = /127.0.0.1, port = 50884]
+[30.06.2019 05:10:10] [ VERBOSE ] Пришли данные от /127.0.0.1:55458
+[30.06.2019 05:10:10] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 58876, userid = 4, login = mmmlpmsw@yandex.ru, text = remove]
+[30.06.2019 05:10:10] [ VERBOSE ] Обработка запроса: Message [sourcePort = 58876, userid = 4, login = mmmlpmsw@yandex.ru, text = remove] от /127.0.0.1:55458
+[30.06.2019 05:10:10] [ LOG ] Пришел запрос от клиента 127.0.0.1:55458 remove
+[30.06.2019 05:10:10] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 58876, userid = 4, login = mmmlpmsw@yandex.ru, text = remove], ответ коннектору ClientConnector [address = /127.0.0.1, port = 58876]
+[30.06.2019 05:10:10] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 0, userid = null, login = null, text = room_removed] подписанным коннекторам (3)
+[30.06.2019 05:10:10] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = room_removed] через коннектор ClientConnector [address = /127.0.0.1, port = 0]
+[30.06.2019 05:10:16] [ VERBOSE ] Не получилось отправить сообщение Message [sourcePort = 0, userid = null, login = null, text = room_removed] по коннектору ru.n4d9.server.ClientPool$ClientConnector$1@38ae8311, ошибка: Сторона не отвечает
+[30.06.2019 05:10:16] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = room_removed] через коннектор ClientConnector [address = /127.0.0.1, port = 58876]
+[30.06.2019 05:10:16] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = room_removed] через коннектор ClientConnector [address = /127.0.0.1, port = 50884]
+[30.06.2019 05:10:23] [ VERBOSE ] Пришли данные от /127.0.0.1:55463
+[30.06.2019 05:10:23] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 50884, userid = 1, login = mmmlpmsw@gmail.com, text = disconnect]
+[30.06.2019 05:10:23] [ VERBOSE ] Обработка запроса: Message [sourcePort = 50884, userid = 1, login = mmmlpmsw@gmail.com, text = disconnect] от /127.0.0.1:55463
+[30.06.2019 05:10:23] [ LOG ] Пришел запрос от клиента 127.0.0.1:55463 disconnect
+[30.06.2019 05:10:23] [ VERBOSE ] Отсоединение коннектора: ClientConnector [address = /127.0.0.1, port = 50884]
+[30.06.2019 05:10:23] [ LOG ] Клиент 127.0.0.1:55463 отсоединился.
+[30.06.2019 05:10:25] [ VERBOSE ] Пришли данные от /127.0.0.1:55464
+[30.06.2019 05:10:25] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 58876, userid = 4, login = mmmlpmsw@yandex.ru, text = disconnect]
+[30.06.2019 05:10:25] [ VERBOSE ] Обработка запроса: Message [sourcePort = 58876, userid = 4, login = mmmlpmsw@yandex.ru, text = disconnect] от /127.0.0.1:55464
+[30.06.2019 05:10:25] [ LOG ] Пришел запрос от клиента 127.0.0.1:55464 disconnect
+[30.06.2019 05:10:25] [ VERBOSE ] Отсоединение коннектора: ClientConnector [address = /127.0.0.1, port = 58876]
+[30.06.2019 05:10:25] [ LOG ] Клиент 127.0.0.1:55464 отсоединился.
+[30.06.2019 05:16:47] [ VERBOSE ] Создаётся слушатель запросов
+[30.06.2019 05:16:47] [ LOG ] Сервер слушает порт 6666...
+[30.06.2019 05:16:47] [ LOG ] Соединяемся с базой данных...
+[30.06.2019 05:16:47] [ LOG ] Соединились с базой данных!
+[30.06.2019 05:16:49] [ VERBOSE ] Пришли данные от /127.0.0.1:57228
+[30.06.2019 05:16:49] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 57435, userid = 0, login = null, text = login]
+[30.06.2019 05:16:49] [ VERBOSE ] Обработка запроса: Message [sourcePort = 57435, userid = 0, login = null, text = login] от /127.0.0.1:57228
+[30.06.2019 05:16:49] [ LOG ] Пришел запрос от клиента 127.0.0.1:57228 login
+[30.06.2019 05:16:49] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 57435, userid = 0, login = null, text = login], ответ коннектору ClientConnector [address = /127.0.0.1, port = 57435]
+[30.06.2019 05:16:49] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = 1, login = mmmlpmsw@gmail.com, text = OK] через коннектор ClientConnector [address = /127.0.0.1, port = 57435]
+[30.06.2019 05:16:58] [ VERBOSE ] Пришли данные от /127.0.0.1:57230
+[30.06.2019 05:16:58] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 57435, userid = 1, login = mmmlpmsw@gmail.com, text = add]
+[30.06.2019 05:16:58] [ VERBOSE ] Обработка запроса: Message [sourcePort = 57435, userid = 1, login = mmmlpmsw@gmail.com, text = add] от /127.0.0.1:57230
+[30.06.2019 05:16:58] [ LOG ] Пришел запрос от клиента 127.0.0.1:57230 add
+[30.06.2019 05:16:58] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 57435, userid = 1, login = mmmlpmsw@gmail.com, text = add], ответ коннектору ClientConnector [address = /127.0.0.1, port = 57435]
+[30.06.2019 05:16:58] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 57435, userid = 1, login = mmmlpmsw@gmail.com, text = room_added] подписанным коннекторам (1)
+[30.06.2019 05:16:58] [ VERBOSE ] Отправка сообщения Message [sourcePort = 57435, userid = 1, login = mmmlpmsw@gmail.com, text = room_added] через коннектор ClientConnector [address = /127.0.0.1, port = 57435]
+[30.06.2019 05:17:11] [ VERBOSE ] Пришли данные от /127.0.0.1:51231
+[30.06.2019 05:17:11] [ VERBOSE ] Пришло сообщение: Message [sourcePort = 57435, userid = 1, login = mmmlpmsw@gmail.com, text = remove]
+[30.06.2019 05:17:11] [ VERBOSE ] Обработка запроса: Message [sourcePort = 57435, userid = 1, login = mmmlpmsw@gmail.com, text = remove] от /127.0.0.1:51231
+[30.06.2019 05:17:11] [ LOG ] Пришел запрос от клиента 127.0.0.1:51231 remove
+[30.06.2019 05:17:11] [ VERBOSE ] Вызов ресолвера для сообщения Message [sourcePort = 57435, userid = 1, login = mmmlpmsw@gmail.com, text = remove], ответ коннектору ClientConnector [address = /127.0.0.1, port = 57435]
+[30.06.2019 05:17:11] [ VERBOSE ] Рассылка сообщения Message [sourcePort = 0, userid = null, login = null, text = room_removed] подписанным коннекторам (1)
+[30.06.2019 05:17:11] [ VERBOSE ] Отправка сообщения Message [sourcePort = 0, userid = null, login = null, text = room_removed] через коннектор ClientConnector [address = /127.0.0.1, port = 57435]
