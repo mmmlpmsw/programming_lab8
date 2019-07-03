@@ -5,7 +5,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.util.ResourceBundle;
+
 public class RoomsTable extends TableView<Room> {
+
+    ResourceBundle bundle = Client.currentResourceBundle();
     private TableColumn<Room, String> idColumn = new TableColumn<>("Id");
     private TableColumn<Room, String> nameColumn = new TableColumn<>();
     private TableColumn<Room, String> xColumn = new TableColumn<>("x");
@@ -18,13 +22,13 @@ public class RoomsTable extends TableView<Room> {
     public RoomsTable() {
         idColumn.setPrefWidth(40);
         nameColumn.setPrefWidth(120);
-        xColumn.setPrefWidth(40);
-        yColumn.setPrefWidth(40);
-        heightColumn.setPrefWidth(40);
-        widthColumn.setPrefWidth(40);
-
-        ownerColumn.setPrefWidth(150);
+        xColumn.setPrefWidth(80);
+        yColumn.setPrefWidth(80);
+        heightColumn.setPrefWidth(80);
+        widthColumn.setPrefWidth(80);
+        ownerColumn.setPrefWidth(40);
         createdColumn.setPrefWidth(150);
+
 
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -50,14 +54,11 @@ public class RoomsTable extends TableView<Room> {
     }
 
     public void initLocalizedData() {
-        nameColumn.setText(MainWindow.currentResourceBundle().getString("main.rooms-table.name-column-text"));
-        heightColumn.setText(MainWindow.currentResourceBundle().getString("main.rooms-table.height-column-text"));
-        widthColumn.setText(MainWindow.currentResourceBundle().getString("main.rooms-table.width-column-text"));
-        ownerColumn.setText(MainWindow.currentResourceBundle().getString("main.rooms-table.owner-column-text"));
-        createdColumn.setText(MainWindow.currentResourceBundle().getString("main.rooms-table.created-column-text"));
-        setPlaceholder(new Label(MainWindow.currentResourceBundle().getString("main.creatures-table.empty-table-text")));
-
-
-
+        nameColumn.setText(bundle.getString("main.rooms-table.name-column-text"));
+        heightColumn.setText(bundle.getString("main.rooms-table.height-column-text"));
+        widthColumn.setText(bundle.getString("main.rooms-table.width-column-text"));
+        ownerColumn.setText(bundle.getString("main.rooms-table.owner-column-text"));
+        createdColumn.setText(bundle.getString("main.rooms-table.created-column-text"));
+        setPlaceholder(new Label(bundle.getString("main.creatures-table.empty-table-text")));
     }
 }

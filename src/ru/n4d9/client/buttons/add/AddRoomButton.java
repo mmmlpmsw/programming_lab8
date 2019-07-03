@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import ru.n4d9.client.MainWindow;
+import ru.n4d9.client.Client;
 
 
 import java.util.ResourceBundle;
@@ -31,7 +31,7 @@ public class AddRoomButton extends Button {
     private Button createButton, closeButton;
 
     public AddRoomButton() {
-        setText(MainWindow.currentResourceBundle().getString("main.create") + "...");
+        setText(Client.currentResourceBundle().getString("main.create") + "...");
         setOnMouseClicked((e) -> openPopup(e.getScreenX() - 10, e.getScreenY() - 10));
 
         container = new VBox();
@@ -58,7 +58,7 @@ public class AddRoomButton extends Button {
                 closePopup();
         });
 
-        ResourceBundle bundle = MainWindow.currentResourceBundle();
+        ResourceBundle bundle = Client.currentResourceBundle();
         setPadding(new Insets(20));
 
         nameInput = new TextField();

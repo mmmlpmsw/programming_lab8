@@ -2,8 +2,10 @@ package ru.n4d9.client;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -11,7 +13,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import ru.n4d9.Utils.Message;
 import ru.n4d9.Utils.StringEntity;
-import ru.n4d9.Utils.Utilities;
 import ru.n4d9.client.buttons.add.AddRoomButton;
 import ru.n4d9.client.buttons.imp.ImportRoomButton;
 import ru.n4d9.client.buttons.load.LoadRoomButton;
@@ -41,16 +42,16 @@ public class MainWindow extends Application {
     private static final int SENDING_PORT = 6666;
     private static Receiver receiver;
     private static int id;
-    private static String login, password;
+    private static String login, password, username;
     private static ArrayList<Room> rooms;
-    private ResourceBundle bundle;
+    private ResourceBundle bundle = Client.currentResourceBundle();
 
-    private static String autofillLogin = "", autofillPassword = "";
+    static String autofillLogin = "", autofillPassword = "";
 
     @FXML private Label userNameLabel;
     @FXML private TabPane tabPane;
     @FXML private GridPane gridPane;
-    @FXML private TableView roomsTable;
+    @FXML private RoomsTable roomsTable;
     @FXML private Tab tableTab;
     @FXML private Tab canvasTab;
     @FXML private AddRoomButton addButton;
@@ -74,19 +75,10 @@ public class MainWindow extends Application {
 
     public MainWindow() {}
 
-    public static void main(String[] args) {
-        if (args.length == 2) {
-            autofillLogin = args[0];
-            autofillPassword = args[1];
-        }
-        Application.launch(MainWindow.class);
-    }
-
     @Override
     public void start(Stage primaryStage) {
         Thread.setDefaultUncaughtExceptionHandler(exceptionHandler);
         stage = primaryStage;
-        initResourceBundles();
         loadView();
 
         try {
@@ -102,19 +94,29 @@ public class MainWindow extends Application {
 
     @SuppressWarnings("unchecked")
     public void loadView(){
-        bundle = MainWindow.currentResourceBundle();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setResources(bundle);
-        loader.setController(this);
+
+        ObservableList<Room> roomObservableList = null;
+
+        if (roomsTable != null) {
+            roomObservableList = roomsTable.getItems();
+        }
 
         try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setResources(bundle);
+            loader.setController(this);
             Parent root = loader.load(getClass().getResourceAsStream("/layout/main.fxml"));
             stage = new Stage();
             stage.setScene(new Scene(root));
+            userNameLabel.setText(login);
             roomsTable.setVisible(true);
             tableTab.getTabPane().heightProperty().addListener((observable, oldValue, newValue) -> roomsTable.setPrefHeight(tableTab.getTabPane().getHeight()));
             addButton.setRoomAddListener(MainWindow::addRoom);
             addButton.setParent(stage);
+
+            if (roomObservableList != null) {
+                roomsTable.setItems(roomObservableList);
+            }
 
             roomsCanvas.clearProxy();
 
@@ -133,29 +135,34 @@ public class MainWindow extends Application {
                     roomsTable.getSelectionModel().clearSelection();
             });
             roomPropertiesPane.selectCreature(null, false);
-            roomPropertiesPane.setApplyingListener(model -> send("modify", model)); //todo
+            roomPropertiesPane.setApplyingListener(model -> send("modify", model));
             roomPropertiesPane.setDeletingListener(roomId -> send("remove", roomId));
             roomPropertiesPane.setRemovingGreaterListener(model -> send("remove_greater", model));
             roomPropertiesPane.setRemovingLowerListener(model -> send("remove_lower", model));
 
 
+            stage.setOnCloseRequest((e) -> {
+                send("disconnect", null);
+                System.exit(0);
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void setParameters(int id, String login, String password) {
+    public void setParameters(int id, String username, String login, String password) {
         this.id = id;
         this.login = login;
+        this.username = username;
         this.password = password;
     }
 
     private void promptLogin() {
-        new LoginWindow((id, login, password, rooms) -> {
+        new LoginWindow((id, username, login, password, rooms) -> {
             Platform.runLater(() -> {
                 stage.show();
-                setParameters(id, login, password);
-//                userNameLabel.setText(login);
+                setParameters(id, username, login, password);
+                userNameLabel.setText(username);
                 roomsTable.getItems().addAll(rooms);
 
             });
@@ -203,25 +210,46 @@ public class MainWindow extends Application {
     private void proccessMessage(Message message) { //todo перерисовка
         System.out.println(message.getText());
         switch (message.getText()){
-            case "room_added":
-                roomsTable.getItems().add(message.getAttachment());
+
+            case "room_added": {
+                roomsTable.getItems().add((Room)message.getAttachment());
                 break;
-            case "room_removed":
-                Room model = (Room) message.getAttachment();
-                roomsTable.getItems().remove(model);
-        //        updateCreaturesCountText();
+            }
+
+            case "room_removed": {
+                Room room = (Room) message.getAttachment();
+                roomsTable.getItems().remove(room);
+//                        updateCreaturesCountText();
                 break;
+            }
 
             case "rooms_removed": {
                 ArrayList<Room> rooms = (ArrayList<Room>) message.getAttachment();
                 roomsTable.getItems().removeAll(rooms);
                 break;
             }
+
             case "rooms_import": {
                 ArrayList<Room> rooms = (ArrayList<Room>) message.getAttachment();
                 roomsTable.getItems().addAll(rooms);
                 break;
             }
+
+            case "room_modified": {
+                Room model = (Room) message.getAttachment();
+                ObservableList<Room> items = roomsTable.getItems();
+                for (int i = 0;i < items.size(); i ++) {
+                    if (items.get(i).getId() == model.getId()) {
+//                        roomsTable.getItems().remove(i);
+//                        roomsTable.getItems().add(i, model);
+                        roomsTable.getItems().get(i).setFromRoomModel(model);
+                        roomsTable.getSelectionModel().select(i);
+                        break;
+                    }
+                }
+                break;
+            }
+
             case "INTERNAL_ERROR":
                 Platform.runLater(() -> {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -288,48 +316,4 @@ public class MainWindow extends Application {
         promptLogin();
     }
 
-
-    private static void initResourceBundles() {
-        resourceBundles.clear();
-        resourceBundles.put(
-                currentLocale,
-                ResourceBundle.getBundle("i18n/text", currentLocale)
-        );
-        resourceBundles.put(
-                new Locale("en", "US"),
-                ResourceBundle.getBundle("i18n/text", new Locale("en", "US"))
-        );
-        resourceBundles.put(
-                new Locale("es", "NI"),
-                ResourceBundle.getBundle("i18n/text", new Locale("es", "NI"), new UTF8BundleControl())
-        );
-        resourceBundles.put(
-                new Locale("et", "EE"),
-                ResourceBundle.getBundle("i18n/text", new Locale("et", "EE"), new UTF8BundleControl())
-        );
-        resourceBundles.put(
-                new Locale("fr", "FR"),
-                ResourceBundle.getBundle("i18n/text", new Locale("fr", "FR"), new UTF8BundleControl())
-        );
-        resourceBundles.put(
-                new Locale("ru", "RU"),
-                ResourceBundle.getBundle("i18n/text", new Locale("ru", "RU"), new UTF8BundleControl())
-        );
-    }
-
-    public static HashMap<Locale, ResourceBundle> getResourceBundles() {
-        return resourceBundles;
-    }
-
-    public static ResourceBundle currentResourceBundle() {
-        return resourceBundles.get(currentLocale);
-    }
-
-    public static Locale getCurrentLocale() {
-        return currentLocale;
-    }
-
-    public static void setCurrentLocale(Locale currentLocale) {
-        MainWindow.currentLocale = currentLocale;
-    }
 }

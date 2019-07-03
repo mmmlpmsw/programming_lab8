@@ -169,6 +169,17 @@ public class Room implements Comparable<Room>, Serializable {
         return result;
     }
 
+    public void setFromRoomModel(Room model) {
+        id = model.id;
+        x = model.x;
+        y = model.y;
+        width = model.width;
+        height = model.height;
+        ownerId = model.ownerId;
+        name = model.name;
+        creationDate = model.creationDate;
+    }
+
 
     public static class Thing implements Serializable {
         private int thingcount;

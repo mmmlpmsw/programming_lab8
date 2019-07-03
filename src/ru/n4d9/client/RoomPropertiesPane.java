@@ -12,6 +12,8 @@ import java.util.ResourceBundle;
 public class RoomPropertiesPane extends VBox {
     private Room selected;
 
+    ResourceBundle bundle = Client.currentResourceBundle();
+
     private RoomDeletingListener deletingListener = roomId -> {};
     private RoomApplyingListener applyingListener = model -> {};
     private RoomRemovingGreaterListener roomRemovingGreaterListener = model -> {};
@@ -29,7 +31,7 @@ public class RoomPropertiesPane extends VBox {
     private Thread debounceThread = new Thread();
 
     public RoomPropertiesPane() {
-        ResourceBundle bundle = MainWindow.currentResourceBundle();
+
         setPadding(new Insets(20));
         setFillWidth(true);
 
@@ -224,8 +226,8 @@ public class RoomPropertiesPane extends VBox {
     private void resetProperties() {
         if (selected != null) {
             idLabel.setText("ID " + selected.getId());
-            ownerIdLabel.setText(MainWindow.currentResourceBundle().getString("main.owner-id") + " " + selected.getOwnerId());
-            createdLabel.setText(MainWindow.currentResourceBundle().getString("main.created") + " " + selected.getCreationDate().toString());
+            ownerIdLabel.setText(bundle.getString("main.owner-id") + " " + selected.getOwnerId());
+            createdLabel.setText(bundle.getString("main.created") + " " + selected.getCreationDate().toString());
 
             nameInput.setText(selected.getName());
             xInput.setValue(selected.getX());

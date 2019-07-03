@@ -68,6 +68,7 @@ public class LoginCommand implements Command {
             result.setUserid(userid);
             result.setLogin(email);
             result.setPassword(password);
+            result.setUsername(username);
             return result;
         } else {
             return new Message(colorize("WRONG"));

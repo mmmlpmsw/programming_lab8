@@ -1,93 +1,67 @@
 package ru.n4d9.client;
 
-import ru.n4d9.Utils.Message;
-import ru.n4d9.transmitter.Receiver;
-import ru.n4d9.transmitter.ReceiverListener;
-import ru.n4d9.transmitter.Sender;
-import ru.n4d9.transmitter.SenderAdapter;
+import javafx.application.Application;
 
-import java.io.IOException;
-import java.net.InetAddress;
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class Client {
-    private static final int SENDING_PORT = 6666;
-    private static Scanner scanner;
-    private static Receiver receiver;
+
+    private static Locale currentLocale = Locale.getDefault();
+    private static HashMap<Locale, ResourceBundle> resourceBundles = new HashMap<>();
 
     public static void main(String[] args) {
-        scanner = new Scanner(System.in);
-        try {
-            receiver = new Receiver(true);
-            receiver.startListening();
-        } catch (IOException e) {
-            System.out.println("Не получилось запустить клиент: " + e.toString());
+        if (args.length == 2) {
+            MainWindow.autofillLogin = args[0];
+            MainWindow.autofillPassword = args[1];
         }
+        initResourceBundles();
+        Application.launch(MainWindow.class);
 
-        System.out.println("Локальный порт: " + receiver.getLocalPort());
-        IMMA_CHARGIN_MAH_LAZER();
     }
 
-    // TODO: Нормально назвать функцию
-    private static void IMMA_CHARGIN_MAH_LAZER() {
-//        System.out.print("> ");
-//        String nextLine = scanner.nextLine();
-        String nextLine = "myCommand";
-        processCommand(nextLine);
+    private static void initResourceBundles() {
+        resourceBundles.clear();
+        resourceBundles.put(
+                currentLocale,
+                ResourceBundle.getBundle("i18n/text", currentLocale)
+        );
+        resourceBundles.put(
+                new Locale("en", "US"),
+                ResourceBundle.getBundle("i18n/text", new Locale("en", "US"))
+        );
+        resourceBundles.put(
+                new Locale("es", "NI"),
+                ResourceBundle.getBundle("i18n/text", new Locale("es", "NI"), new UTF8BundleControl())
+        );
+        resourceBundles.put(
+                new Locale("et", "EE"),
+                ResourceBundle.getBundle("i18n/text", new Locale("et", "EE"), new UTF8BundleControl())
+        );
+        resourceBundles.put(
+                new Locale("fr", "FR"),
+                ResourceBundle.getBundle("i18n/text", new Locale("fr", "FR"), new UTF8BundleControl())
+        );
+        resourceBundles.put(
+                new Locale("ru", "RU"),
+                ResourceBundle.getBundle("i18n/text", new Locale("ru", "RU"), new UTF8BundleControl())
+        );
     }
 
-    private static void processCommand(String command) {
-        Message message = new Message(command);
-        message.setSourcePort(receiver.getLocalPort());
-        try {
-            Sender.send(message.serialize(), InetAddress.getByName("localhost"), SENDING_PORT, true, new SenderAdapter() {
-                @Override
-                public void onSuccess() {
-                    System.out.println("Команда отправилась, жду ответ...");
-                    waitForServerResponse();
-                }
-
-                @Override
-                public void onError(String message) {
-                    System.out.println("Не получилось отправить запрос: " + message);
-                    IMMA_CHARGIN_MAH_LAZER();
-                }
-            });
-        } catch (IOException e) {
-            System.out.println("Не получилось сформировать запрос: " + e.getMessage());
-        }
+    public static HashMap<Locale, ResourceBundle> getResourceBundles() {
+        return resourceBundles;
     }
 
-    private static void waitForServerResponse() {
-        Thread outer = Thread.currentThread();
-        receiver.setListener(new ReceiverListener() {
-            @Override
-            public void received(int requestID, byte[] data, InetAddress address, int port) {
-                try {
-                    Message message = Message.deserialize(data);
-                    System.out.println("Вот что ответил сервер: " + message.getText());
-                    Thread.sleep(30);
-                    outer.interrupt();
-                } catch (ClassNotFoundException | IOException e) {
-                    System.out.println("Не получилось обработать ответ сервера");
-                } catch (InterruptedException ignored) {
-                }
-            }
+    public static ResourceBundle currentResourceBundle() {
+        return resourceBundles.get(currentLocale);
+    }
 
-            @Override
-            public void exceptionThrown(Exception e) {
-                e.printStackTrace();
-                System.out.println("Не получилось получить ответ сервера: " + e.toString());
-                outer.interrupt();
-            }
-        });
+    public static Locale getCurrentLocale() {
+        return currentLocale;
+    }
 
-        try {
-            Thread.sleep(3000);
-            System.out.println("Сервер ничего не ответил");
-        } catch (InterruptedException ignored) {
-        } finally {
-            IMMA_CHARGIN_MAH_LAZER();
-        }
+    public static void setCurrentLocale(Locale currentLocale) {
+        Client.currentLocale = currentLocale;
     }
 }

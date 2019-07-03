@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ru.n4d9.Utils.Message;
+import ru.n4d9.client.Client;
 import ru.n4d9.client.MainWindow;
 import ru.n4d9.client.Room;
 import ru.n4d9.client.Window;
@@ -71,7 +72,7 @@ public class LoginWindow implements Window {
     private void onMessageReceived(Message m) {
         switch (m.getText()) {
             case "OK":
-                loginListener.onLogin(m.getUserid(), m.getLogin(), m.getPassword(), (ArrayList<Room>)m.getAttachment());
+                loginListener.onLogin(m.getUserid(), m.getUsername(), m.getLogin(), m.getPassword(), (ArrayList<Room>)m.getAttachment());
                 Platform.runLater(() -> stage.close());
                 break;
             case "WRONG": {
@@ -94,7 +95,7 @@ public class LoginWindow implements Window {
 
     @Override
     public void loadView() {
-        bundle = MainWindow.currentResourceBundle();
+        bundle = Client.currentResourceBundle();
         String emailTextBackup = "";
         String passwordTextBackup = "";
 
@@ -116,7 +117,7 @@ public class LoginWindow implements Window {
             loginButton = (Button) stage.getScene().getRoot().lookup("#login-button");
             registerButton = (Button) stage.getScene().getRoot().lookup("#register-button");
 
-
+            stage.setOnCloseRequest(e -> System.exit(0));
             emailField.setText(emailTextBackup);
             passwordField.setText(passwordTextBackup);
 

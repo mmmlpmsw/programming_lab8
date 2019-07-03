@@ -24,7 +24,7 @@
         <padding>
             <Insets topRightBottomLeft="20" />
         </padding>
-        <Label fx:id="userNameLabel" prefWidth="300" text="user">
+        <Label fx:id="userNameLabel" prefWidth="300">
             <font>
                 <Font size="24" />
             </font>

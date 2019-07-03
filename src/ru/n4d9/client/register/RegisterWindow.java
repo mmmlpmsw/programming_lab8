@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import ru.n4d9.Utils.Message;
-import ru.n4d9.client.MainWindow;
+import ru.n4d9.client.Client;
 import ru.n4d9.client.Window;
 import ru.n4d9.client.settings.SettingsDialog;
 import ru.n4d9.transmitter.Receiver;
@@ -25,6 +25,8 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class RegisterWindow implements Window {
+
+    ResourceBundle bundle = Client.currentResourceBundle();
     private Stage stage;
     private RegisterListener registerListener;
     private Receiver receiver;
@@ -43,6 +45,7 @@ public class RegisterWindow implements Window {
         stage = new Stage();
         loadView();
         stage.show();
+        stage.setOnCloseRequest(e -> registerListener.onRegister());
     }
 
     private void onMessageReceived(Message m) {
@@ -55,7 +58,7 @@ public class RegisterWindow implements Window {
             case "ALREADY_REGISTERED": {
                 Platform.runLater(() -> {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setContentText(MainWindow.currentResourceBundle().getString("register.alert.already-registered"));
+                    alert.setContentText(bundle.getString("register.alert.already-registered"));
                     alert.show();
                 });
                 break;
@@ -63,7 +66,7 @@ public class RegisterWindow implements Window {
             case "WRONG_EMAIL": {
                 Platform.runLater(() -> {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText(MainWindow.currentResourceBundle().getString("register.alert.incorrect-email"));
+                    alert.setContentText(bundle.getString("register.alert.incorrect-email"));
                     alert.show();
                 });
                 break;
@@ -71,7 +74,7 @@ public class RegisterWindow implements Window {
             case "INTERNAL_ERROR": {
                 Platform.runLater(() -> {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText(MainWindow.currentResourceBundle().getString("alert.internal-error"));
+                    alert.setContentText(bundle.getString("alert.internal-error"));
                     alert.show();
                 });
                break;
@@ -81,7 +84,6 @@ public class RegisterWindow implements Window {
 
     @Override
     public void loadView() {
-        ResourceBundle bundle = MainWindow.currentResourceBundle();
         FXMLLoader loader = new FXMLLoader();
         loader.setResources(bundle);
         loader.setController(this);
@@ -118,13 +120,13 @@ public class RegisterWindow implements Window {
         String name = nameField.getText();
 
         if (email.isEmpty()) {
-            showErrorMessage(MainWindow.currentResourceBundle().getString("error-message.no-email"));
+            showErrorMessage(bundle.getString("error-message.no-email"));
             nameField.clear();
             return;
         }
 
         if (name.isEmpty()) {
-            showErrorMessage(MainWindow.currentResourceBundle().getString("register.alert.no-name"));
+            showErrorMessage(bundle.getString("register.alert.no-name"));
             emailField.clear();
             return;
         }
