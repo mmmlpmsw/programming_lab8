@@ -62,8 +62,8 @@ public class AddRoomButton extends Button {
         setPadding(new Insets(20));
 
         nameInput = new TextField();
-        xInput = new Slider(0, 1000, 0);
-        yInput = new Slider(0, 1000, 0);
+        xInput = new Slider(20, 800, 0);
+        yInput = new Slider(0, 800, 0);
         heightInput = new Slider(100, 500, 0);
         widthInput = new Slider(100, 500, 0);
 

@@ -71,7 +71,8 @@ public class ClientPool implements ContextFriendly {
 
             default:
                 logger.verbose("Вызов ресолвера для сообщения " + message + ", ответ коннектору " + connector);
-                new Thread(() -> resolver.resolve(connector, message)).start();
+//                new Thread(() -> resolver.resolve(connector, message)).start();
+                resolver.resolve(connector, message);
                 break;
         }
     }

@@ -138,12 +138,9 @@ public class LoginWindow implements Window {
 
     @FXML
     public void onRegisterClick() {
-        stage.hide();
-        new RegisterWindow(MainWindow.getReceiver(), receiverListener, new RegisterListener() {
-            @Override
-            public void onRegister() {
-                 stage.show();
-            }
+        Platform.runLater(() -> {
+            stage.hide();
+            new RegisterWindow(MainWindow.getReceiver(), () -> stage.show());
         });
     }
 
@@ -153,7 +150,6 @@ public class LoginWindow implements Window {
         emailField.setDisable(true);
         passwordField.setDisable(true);
 
-//        try {
             String email = emailField.getText();
             String password = passwordField.getText();
 

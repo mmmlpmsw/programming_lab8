@@ -51,6 +51,7 @@ public class RequestResolver extends Thread implements ContextFriendly {
             if (response != null)
                 connector.send(response);
         } catch (ClassCastException e) {
+            e.printStackTrace();
             logger.warn("В пакете находится класс неверного формата");
             connector.send(new Message("INTERNAL_ERROR"));
         } catch (ClassNotFoundException e) {
@@ -59,7 +60,6 @@ public class RequestResolver extends Thread implements ContextFriendly {
             logger.warn("В пакете нашелся класс неверного формата " + e.toString());
         } catch (SQLException | MessagingException| GeneralSecurityException e) {
             logger.err(e.toString());
-            e.printStackTrace();
             connector.send(new Message("INTERNAL_ERROR"));
         }
 

@@ -3,12 +3,9 @@ package ru.n4d9.client.canvas;
 import javafx.animation.AnimationTimer;
 import javafx.collections.ObservableList;
 import javafx.geometry.Point2D;
-import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
 import ru.n4d9.client.Room;
 
 import java.util.*;

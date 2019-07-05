@@ -96,7 +96,7 @@ public class Server {
                     logger.verbose("Пришло сообщение: " + message);
                     clientPool.process(requestID, message, address, port);
                 } catch (IOException e) {
-                    e.printStackTrace(); // todo handling
+                    logger.log("Ошибка ввода-вывода " + e.getMessage());
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }

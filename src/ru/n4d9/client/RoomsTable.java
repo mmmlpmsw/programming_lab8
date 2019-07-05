@@ -27,7 +27,7 @@ public class RoomsTable extends TableView<Room> {
         heightColumn.setPrefWidth(80);
         widthColumn.setPrefWidth(80);
         ownerColumn.setPrefWidth(40);
-        createdColumn.setPrefWidth(150);
+        createdColumn.setPrefWidth(250);
 
 
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));

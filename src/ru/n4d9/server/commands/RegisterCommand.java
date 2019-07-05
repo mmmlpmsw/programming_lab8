@@ -20,20 +20,29 @@ public class RegisterCommand implements Command {
         Controller controller = (Controller)Context.get("controller");
         Connection connection = controller.getConnection();
 
+        Message response = new Message(null);
+        response.setSourcePort(message.getSourcePort());
+        response.setLogin(message.getLogin());
+        response.setPassword(message.getPassword());
+        response.setUserid(message.getUserid());
+
         Properties properties = (Properties)message.getAttachment();
 
         String name = properties.getProperty("name", "");
         String email = properties.getProperty("email", "");
         if (!Utilities.isValidEmailAddress(email)) {
-            return new Message("WRONG_EMAIL");
+            response.setText("WRONG_EMAIL");
+            return response;
         }
 
         try {
             PreparedStatement statement = connection.prepareStatement("select email from users WHERE email = ?");
             statement.setString(1, email);
 
-            if (statement.executeQuery().next())
-                return new Message("ALREADY_REGISTERED");
+            if (statement.executeQuery().next()) {
+                response.setText("ALREADY_REGISTERED");
+                return response;
+            }
 
             String password = Utilities.randomString(9);
 
@@ -50,9 +59,12 @@ public class RegisterCommand implements Command {
 
             statement1.execute();
 
-            return new Message("OK");
+            response.setText("OK");
+            return response;
+
         }  catch (AddressException e) {
-            return new Message("INTERNAL_ERROR");
+            response.setText("INTERNAL_ERROR");
+            return response;
         }
 
     }

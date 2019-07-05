@@ -19,7 +19,7 @@
 
         <Label alignment="CENTER" text="%login.enter">
             <VBox.margin>
-                <Insets bottom="20" top="20" left="90"/>
+                <Insets bottom="20" top="20" left="100"/>
             </VBox.margin>
             <font>
                 <Font size="30"/>

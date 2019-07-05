@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class MainWindow extends Application {
+public class MainWindow extends Application implements Window {
 
     private static Locale currentLocale = Locale.getDefault();
     private static HashMap<Locale, ResourceBundle> resourceBundles = new HashMap<>();
@@ -93,8 +93,8 @@ public class MainWindow extends Application {
     }
 
     @SuppressWarnings("unchecked")
+    @Override
     public void loadView(){
-
         ObservableList<Room> roomObservableList = null;
 
         if (roomsTable != null) {
@@ -103,48 +103,57 @@ public class MainWindow extends Application {
 
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setResources(bundle);
+            loader.setResources(Client.currentResourceBundle());
             loader.setController(this);
             Parent root = loader.load(getClass().getResourceAsStream("/layout/main.fxml"));
             stage = new Stage();
             stage.setScene(new Scene(root));
-            userNameLabel.setText(login);
-            roomsTable.setVisible(true);
-            tableTab.getTabPane().heightProperty().addListener((observable, oldValue, newValue) -> roomsTable.setPrefHeight(tableTab.getTabPane().getHeight()));
-            addButton.setRoomAddListener(MainWindow::addRoom);
-            addButton.setParent(stage);
+            userNameLabel.setText(username);
+
+            stage.setMinWidth(600);
+            stage.setMinHeight(400);
+
+            stage.setOnCloseRequest((e) -> {
+                send("disconnect");
+                System.exit(0);
+            });
 
             if (roomObservableList != null) {
                 roomsTable.setItems(roomObservableList);
             }
 
-            roomsCanvas.clearProxy();
+            roomPropertiesPane.setApplyingListener(model -> send("modify", model));
+
+            roomsTable.setVisible(true);
+            tableTab.getTabPane().heightProperty().addListener((observable, oldValue, newValue) -> roomsTable.setPrefHeight(tableTab.getTabPane().getHeight()));
+
+            addButton.setRoomAddListener(MainWindow::addRoom);
+            addButton.setParent(stage);
 
             importButton.setRoomImportListener(MainWindow::importRoom);
             loadButton.setRoomImportListener(MainWindow::loadRoom);
 
+            roomsCanvas.clearProxy();
             roomsCanvas.setTarget(roomsTable.getItems());
+
             roomsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> roomsCanvas.selectRoom((Room)newValue));
-            roomsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> roomPropertiesPane.selectCreature((Room)newValue, newValue != null && ((Room) newValue).getOwnerId() == id));
+            roomsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
+                    roomPropertiesPane.selectCreature((Room)newValue, newValue != null && ((Room) newValue).getOwnerId() == id));
             roomsCanvas.widthProperty().bind(canvasTab.getTabPane().widthProperty());
             roomsCanvas.heightProperty().bind(canvasTab.getTabPane().heightProperty());
+
             roomsCanvas.setSelectingListener((m) -> {
                 if (m != null)
                     roomsTable.getSelectionModel().select(m);
                 else
                     roomsTable.getSelectionModel().clearSelection();
             });
-            roomPropertiesPane.selectCreature(null, false);
-            roomPropertiesPane.setApplyingListener(model -> send("modify", model));
+
             roomPropertiesPane.setDeletingListener(roomId -> send("remove", roomId));
             roomPropertiesPane.setRemovingGreaterListener(model -> send("remove_greater", model));
             roomPropertiesPane.setRemovingLowerListener(model -> send("remove_lower", model));
+            roomPropertiesPane.selectCreature(null, false);
 
-
-            stage.setOnCloseRequest((e) -> {
-                send("disconnect", null);
-                System.exit(0);
-            });
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -163,6 +172,8 @@ public class MainWindow extends Application {
                 stage.show();
                 setParameters(id, username, login, password);
                 userNameLabel.setText(username);
+
+                roomsTable.getItems().clear();
                 roomsTable.getItems().addAll(rooms);
 
             });
@@ -238,16 +249,19 @@ public class MainWindow extends Application {
             case "room_modified": {
                 Room model = (Room) message.getAttachment();
                 ObservableList<Room> items = roomsTable.getItems();
-                for (int i = 0;i < items.size(); i ++) {
+                for (int i = 0; i < items.size(); i ++) {
                     if (items.get(i).getId() == model.getId()) {
-//                        roomsTable.getItems().remove(i);
-//                        roomsTable.getItems().add(i, model);
                         roomsTable.getItems().get(i).setFromRoomModel(model);
+                        Platform.runLater(() -> {
+                            roomsTable.getColumns().get(0).setVisible(false);
+                            roomsTable.getColumns().get(0).setVisible(true);
+                        });
                         roomsTable.getSelectionModel().select(i);
                         break;
                     }
                 }
                 break;
+
             }
 
             case "INTERNAL_ERROR":
@@ -257,6 +271,7 @@ public class MainWindow extends Application {
                     alert.show();
                 });
                 break;
+
             case "WRONG":
                 Platform.runLater(() -> {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -264,9 +279,12 @@ public class MainWindow extends Application {
                     alert.show();
                 });
                 break;
-
         }
 
+    }
+
+    public static void send(String s) {
+        send(s, null);
     }
 
     public static void send(String s, Serializable serializable) {
@@ -311,7 +329,7 @@ public class MainWindow extends Application {
 
     @FXML
     public void onExitClicked() {
-        send("disconnect", null);
+        send("disconnect");
         stage.close();
         promptLogin();
     }

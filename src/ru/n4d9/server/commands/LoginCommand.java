@@ -8,20 +8,16 @@ import ru.n4d9.server.Controller;
 
 import java.security.GeneralSecurityException;
 import java.security.SecureRandom;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 
-import static ru.n4d9.Utils.Utilities.colorize;
 
 public class LoginCommand implements Command {
-    //todo вернуть клиенту id
-    static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    static SecureRandom rnd = new SecureRandom();
 
     @Override
     public Message resolve(Message message) throws SQLException, GeneralSecurityException {
@@ -56,10 +52,15 @@ public class LoginCommand implements Command {
                 double width = set.getDouble("width");
                 double x = set.getDouble("x");
                 double y = set.getDouble("y");
-                Date creationdate = set.getDate("creationdate");
-                Room room = new Room(width, height, x, y, name);
+                Timestamp creationdate = set.getTimestamp("creationdate");
+                long millisec = creationdate.getTime();
+
+                java.util.Date date = new Date(millisec);
+                Instant instant = date.toInstant();
+                LocalDateTime dateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+
+                Room room = new Room(width, height, x, y, name, dateTime);
                 room.setId(roomid);
-                room.setD(creationdate);  //todo
                 room.setOwnerId(set.getInt("user_id"));
                 rooms.add(room);
 
@@ -71,7 +72,7 @@ public class LoginCommand implements Command {
             result.setUsername(username);
             return result;
         } else {
-            return new Message(colorize("WRONG"));
+            return new Message("WRONG");
         }
 
     }

@@ -15,8 +15,7 @@ public class Room implements Comparable<Room>, Serializable {
     private String name /*= "Безымянная";*/;
     private double height, width; //width - ширина, height - высота
     private double x, y; //только по длине и высоте
-    private LocalDateTime creationDate = LocalDateTime.now();
-    private Date d;
+    private LocalDateTime creationDate;
     private ArrayList<Thing> shelf = new ArrayList<>();
     private double size;
     private double rotation;
@@ -24,7 +23,6 @@ public class Room implements Comparable<Room>, Serializable {
     public double getRotation() {
         return rotation;
     }
-
     public void setRotation(double rotation) {
         this.rotation = rotation;
     }
@@ -35,7 +33,6 @@ public class Room implements Comparable<Room>, Serializable {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -43,7 +40,6 @@ public class Room implements Comparable<Room>, Serializable {
     public int getOwnerId() {
         return ownerId;
     }
-
     public void setOwnerId(int ownerId) {
         this.ownerId = ownerId;
     }
@@ -57,20 +53,20 @@ public class Room implements Comparable<Room>, Serializable {
     Room(double width, double height, double x, double y, String name) {
         setBounds(x, y, width, height);
         setName(name);
+        creationDate = LocalDateTime.now();
     }
 
-    public Date getD() {
-        return d;
-    }
-
-    public void setD(Date d) {
-        this.d = d;
+    Room(double width, double height, double x, double y, LocalDateTime date, String name) {
+        setBounds(x, y, width, height);
+        setName(name);
+        creationDate = date;
     }
 
     public Room(double width, double height, double x, double y, String name, Thing... things) {
         setBounds(x, y, width, height);
         size = width*height;
         setName(name);
+        creationDate = LocalDateTime.now();
         shelf = new ArrayList<Thing>(Arrays.asList(things));
     }
 
@@ -78,6 +74,23 @@ public class Room implements Comparable<Room>, Serializable {
         setBounds(x, y, width, height);
         size = width*height;
         setName(name);
+        creationDate = LocalDateTime.now();
+        this.shelf = things;
+    }
+
+    public Room(double width, double height, double x, double y, String name, LocalDateTime date, Thing... things) {
+        setBounds(x, y, width, height);
+        size = width*height;
+        setName(name);
+        creationDate = date;
+        shelf = new ArrayList<Thing>(Arrays.asList(things));
+    }
+
+    public Room(double width, double height, double x, double y, String name, LocalDateTime date, ArrayList<Thing> things) {
+        setBounds(x, y, width, height);
+        size = width*height;
+        setName(name);
+        creationDate = date;
         this.shelf = things;
     }
 
@@ -169,15 +182,16 @@ public class Room implements Comparable<Room>, Serializable {
         return result;
     }
 
-    public void setFromRoomModel(Room model) {
-        id = model.id;
-        x = model.x;
-        y = model.y;
-        width = model.width;
-        height = model.height;
-        ownerId = model.ownerId;
-        name = model.name;
-        creationDate = model.creationDate;
+    public Room setFromRoomModel(Room model) {
+        this.id = model.getId();
+        this.x = model.getX();
+        this.y = model.getY();
+        this.width = model.getWidth();
+        this.height = model.getHeight();
+        this.ownerId = model.getOwnerId();
+        this.name = model.getName();
+        this.creationDate = model.getCreationDate();
+        return model;
     }
 
 
