@@ -50,13 +50,18 @@
             </TabPane>
 
             <VBox maxWidth="Infinity" GridPane.columnIndex="3" GridPane.columnSpan="2" HBox.hgrow="ALWAYS">
-                <HBox.margin>
-                    <Insets bottom="10"/>
-                </HBox.margin>
                 <RoomPropertiesPane fx:id="roomPropertiesPane"/>
-                <AddRoomButton fx:id="addButton" text="%main.button.add" />
-                <ImportRoomButton fx:id="importButton" text="%main.button.import" />
-                <LoadRoomButton fx:id="loadButton" text="%main.button.load" />
+                <AddRoomButton fx:id="addButton" text="%main.button.add" prefWidth="220">
+                    <VBox.margin>
+                        <Insets bottom="10"/>
+                    </VBox.margin>
+                </AddRoomButton>
+                <ImportRoomButton fx:id="importButton" text="%main.button.import" prefWidth="220">
+                    <VBox.margin>
+                        <Insets bottom="10"/>
+                    </VBox.margin>
+                </ImportRoomButton>
+                <LoadRoomButton fx:id="loadButton" text="%main.button.load" prefWidth="220"/>
             </VBox>
 
             <columnConstraints>

@@ -72,8 +72,10 @@ public class RegisterWindow implements Window {
     private void onMessageReceived(Message m) {
         switch (m.getText()) {
             case "OK":
-                registerListener.onRegister();
-                stage.close();
+                Platform.runLater(() -> {
+                    registerListener.onRegister();
+                    stage.close();
+                });
                 break;
 
             case "ALREADY_REGISTERED": {

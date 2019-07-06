@@ -49,6 +49,8 @@ public class ModifyCommand implements Command, RequiresAuthorization {
             // и не модифицировать время создания
             Room room = Room.fromResultSet(resultSet);
 
+            controller.modifyRoomInMirror(room);
+
             Message response = new Message("room_modified", room);
             response.setSourcePort(message.getSourcePort());
             response.setLogin(message.getLogin());

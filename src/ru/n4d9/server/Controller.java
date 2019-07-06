@@ -25,7 +25,6 @@ public class Controller implements ContextFriendly {
     @Override
     public void onContextReady() {
         logger = (Logger)Context.get("logger");
-        mirror = (Mirror)Context.get("mirror");
         initDatabaseConnection();
         initTables();
         initEmail();
@@ -33,40 +32,37 @@ public class Controller implements ContextFriendly {
     }
 
     public void removeRoomFromMirror(Room room, int user_id) {
-        mirror.roomRemoved(room, user_id);
+        mirror = (Mirror)Context.get("mirror");
+        mirror.roomRemoved(room);
+    }
+
+    public void modifyRoomInMirror(Room room) {
+        mirror = (Mirror)Context.get("mirror");
+        mirror.roomModified(room);
     }
 
     public ArrayList<Room> getAllRoomsToMirror() {
-        PreparedStatement statement;
+
         ArrayList<Room> result = new ArrayList<>();
 
         try {
-            statement = connection.prepareStatement("select * from things");
-            ResultSet thingsResultSet = statement.executeQuery();
-
-            statement = connection.prepareStatement("select * from rooms");
+            PreparedStatement statement = connection.prepareStatement("select * from rooms");
             ResultSet roomsResultSet = statement.executeQuery();
-            if (!roomsResultSet.next()) return null;
-            do {
-                ArrayList<Room.Thing> things = new ArrayList<>();
+            if (roomsResultSet == null) return null;
+            while (roomsResultSet.next()) {
                 int room_id = roomsResultSet.getInt("id");
-
-                do {
-                    int id = thingsResultSet.getInt("room_id");
-                    String name = thingsResultSet.getString("name");
-                    int size = thingsResultSet.getInt("size");
-
-                    if (id == room_id) things.add(new Room.Thing(size, name));
-                } while (thingsResultSet.next());
+                int user_id = roomsResultSet.getInt("user_id");
 
                 Room room = new Room(roomsResultSet.getInt("width"),
                         roomsResultSet.getInt("height"),
                         roomsResultSet.getInt("x"),
                         roomsResultSet.getInt("y"),
-                        roomsResultSet.getString("name"),
-                        things);
+                        roomsResultSet.getString("name")
+                        );
+                room.setId(room_id);
+                room.setOwnerId(user_id);
                 result.add(room);
-            } while (roomsResultSet.next());
+            }
 
         } catch (SQLException e) {
             logger.err("Ошибка при работе с SQL: " + e.getMessage());
@@ -107,15 +103,16 @@ public class Controller implements ContextFriendly {
         }
         room.setId(room_id);
         room.setOwnerId(ownerid);
-        mirror.roomAdded(room, ownerid);
+
+        mirror = (Mirror)Context.get("mirror");
+        mirror.roomAdded(room);
+
         return room;
     }
 
     public static Room removeRoomById(int id, Connection connection) throws SQLException {
         if (connection == null)
             return null;
-
-        ArrayList<Room> rooms = new ArrayList<>();
 
         PreparedStatement statement = connection.prepareStatement(
                 "select * from rooms where id = ?"

@@ -19,8 +19,6 @@ public class RemoveCommand implements RequiresAuthorization, Command {
         Connection connection = controller.getConnection();
         int room_id = (int)message.getAttachment();
 
-        //controller.removeRoomFromMirror(room, message.getUserid());
-
         if (room_id == 0)
             return new Message("BAD_REQUEST");
 
@@ -33,6 +31,7 @@ public class RemoveCommand implements RequiresAuthorization, Command {
 
         if (resultSet.next()) {
             Room model = Room.fromResultSet(resultSet);
+            controller.removeRoomFromMirror(model, message.getUserid());
 
             statement = connection.prepareStatement("delete from rooms where id = ?;");
             statement.setInt(1, room_id);

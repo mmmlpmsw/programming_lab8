@@ -35,6 +35,7 @@ import java.util.ResourceBundle;
 
 public class MainWindow extends Application implements Window {
 
+
     private static Locale currentLocale = Locale.getDefault();
     private static HashMap<Locale, ResourceBundle> resourceBundles = new HashMap<>();
 

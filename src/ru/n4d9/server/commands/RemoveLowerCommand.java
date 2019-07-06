@@ -38,6 +38,11 @@ public class RemoveLowerCommand implements RequiresAuthorization, Command{
             rooms.add(Controller.removeRoomById(resultSet.getInt("id"), connection));
 
         }
+
+        for (Room r : rooms) {
+            controller.removeRoomFromMirror(r, message.getUserid());
+        }
+
         clientPool.sendAll(new Message("rooms_removed", rooms));
 
         return null;

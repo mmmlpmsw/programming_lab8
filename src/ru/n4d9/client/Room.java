@@ -191,6 +191,7 @@ public class Room implements Comparable<Room>, Serializable {
         this.ownerId = model.getOwnerId();
         this.name = model.getName();
         this.creationDate = model.getCreationDate();
+        this.rotation = model.getRotation();
         return model;
     }
 

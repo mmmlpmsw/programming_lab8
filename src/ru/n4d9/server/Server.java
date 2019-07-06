@@ -30,8 +30,6 @@ public class Server {
         RequestResolver requestResolver = new RequestResolver();
         Context.set("request_resolver", requestResolver);
 
-        Mirror mirror = new Mirror();
-        Context.set("mirror", mirror);
 
         try {
             if (args.length != 0) {
@@ -52,6 +50,8 @@ public class Server {
                 clientPool.onContextReady();
                 controller.onContextReady();
                 requestResolver.onContextReady();
+                Mirror mirror = new Mirror(controller, logger);
+                Context.set("mirror", mirror);
                 mirror.onContextReady();
             } else {
                 Controller.sendDown("Не указан файл настроек.");
