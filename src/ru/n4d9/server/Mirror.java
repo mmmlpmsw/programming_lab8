@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mirror implements ContextFriendly {
-    //todo Mirror
     private Controller controller;
     private ClientPool clientPool;
     private Logger logger;
@@ -36,19 +35,19 @@ public class Mirror implements ContextFriendly {
         } else return rooms;
     }
 
-    public void roomAdded(Room room) {
+    void roomAdded(Room room) {
         rooms.add(room);
         logger.verbose("Добавлена комната: " + room.toString());
         logger.verbose("Сейчас в коллекции " + rooms.size() + " комнат.");
     }
 
-    public void roomRemoved(Room room) {
+    void roomRemoved(Room room) {
         rooms.remove(room);
         logger.verbose("Удалена комната: " + room.toString());
         logger.verbose("Сейчас в коллекции " + rooms.size() + " комнат.");
     }
 
-    public void roomModified (Room room) {
+    void roomModified (Room room) {
         logger.verbose("Внесены изменения в комнату " + room.getId());
         for (Room r : rooms) {
             if (r.getId() == room.getId()) {
@@ -61,17 +60,16 @@ public class Mirror implements ContextFriendly {
         logger.verbose("Стало: " + room.toString());
     }
 
-    public void sendState() {
+    private void sendState() {
         Thread thread = Thread.currentThread();
         while (true) {
             clientPool.sendAll(new Message("collection_state", rooms));
             try {
-                thread.sleep(200);
+                thread.sleep(2000);
             } catch (InterruptedException ignored) {}
 
         }
     }
-
 
     @Override
     public void onContextReady() {

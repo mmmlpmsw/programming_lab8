@@ -34,7 +34,8 @@ public class ClientPool implements ContextFriendly {
      * Отправляет сообщение всем подключенным клиентам
      */
     public void sendAll(Message message) {
-        logger.verbose("Рассылка сообщения " + message + " подписанным коннекторам (" + connectors.size() + ")");
+        if (!message.getText().equals("collection_state"))
+            logger.verbose("Рассылка сообщения " + message + " подписанным коннекторам (" + connectors.size() + ")");
         for (ClientConnector connector: connectors) {
             connector.send(message);
         }
@@ -71,8 +72,8 @@ public class ClientPool implements ContextFriendly {
 
             default:
                 logger.verbose("Вызов ресолвера для сообщения " + message + ", ответ коннектору " + connector);
-//                new Thread(() -> resolver.resolve(connector, message)).start();
-                resolver.resolve(connector, message);
+                new Thread(() -> resolver.resolve(connector, message)).start();
+//                resolver.resolve(connector, message);
                 break;
         }
     }

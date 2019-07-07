@@ -59,7 +59,7 @@ public class RegisterCommand implements Command {
 
             statement1.execute();
 
-            response.setText("OK");
+            response.setText("OK_REGISTER");
             return response;
 
         }  catch (AddressException e) {

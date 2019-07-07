@@ -31,7 +31,6 @@ public class RegisterWindow implements Window {
     private Stage stage;
     private RegisterListener registerListener;
     private Receiver receiver;
-    private ReceiverListener listener;
     private static final int SENDING_PORT = 6666;
 
 
@@ -71,7 +70,7 @@ public class RegisterWindow implements Window {
 
     private void onMessageReceived(Message m) {
         switch (m.getText()) {
-            case "OK":
+            case "OK_REGISTER":
                 Platform.runLater(() -> {
                     registerListener.onRegister();
                     stage.close();

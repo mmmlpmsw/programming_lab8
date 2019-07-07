@@ -265,6 +265,38 @@ public class MainWindow extends Application implements Window {
 
             }
 
+            case "collection_state": {
+                ArrayList<Room> rooms = (ArrayList<Room>) message.getAttachment();
+                ObservableList<Room> items = roomsTable.getItems();
+                for (Room r : rooms) {
+                    for (int i = 0; i < items.size(); i ++) {
+                        if (items.get(i).getId() == r.getId()) {
+                            roomsTable.getItems().get(i).setFromRoomModel(r);
+                            if (items.get(i).getX() == r.getX())
+                                roomsTable.getItems().get(i).setX(r.getX());
+                            if (items.get(i).getY() == r.getY())
+                                roomsTable.getItems().get(i).setY(r.getY());
+                            if (items.get(i).getWidth() == r.getWidth())
+                                roomsTable.getItems().get(i).setWidth(r.getWidth());
+                            if (items.get(i).getHeight() == r.getHeight())
+                                roomsTable.getItems().get(i).setHeight(r.getHeight());
+                            if (items.get(i).getName() == r.getName())
+                                roomsTable.getItems().get(i).setName(r.getName());
+                            if (items.get(i).getRotation() == r.getRotation())
+                                roomsTable.getItems().get(i).setRotation(r.getRotation());
+                            roomsTable.getSelectionModel().select(i);
+                            break;
+                        }
+                    }
+
+                }
+                Platform.runLater(() -> {
+                                roomsTable.getColumns().get(0).setVisible(false);
+                                roomsTable.getColumns().get(0).setVisible(true);
+                            });
+                break;
+            }
+
             case "INTERNAL_ERROR":
                 Platform.runLater(() -> {
                     Alert alert = new Alert(Alert.AlertType.ERROR);

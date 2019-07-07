@@ -12,7 +12,6 @@ import ru.n4d9.client.Client;
 import ru.n4d9.client.MainWindow;
 import ru.n4d9.client.Room;
 import ru.n4d9.client.Window;
-import ru.n4d9.client.register.RegisterListener;
 import ru.n4d9.client.register.RegisterWindow;
 import ru.n4d9.client.settings.SettingsDialog;
 import ru.n4d9.transmitter.ReceiverListener;
@@ -24,8 +23,6 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class LoginWindow implements Window {
-
-    private static final int SENDING_PORT = 6666;
 
     private Stage stage;
     private LoginListener loginListener;
