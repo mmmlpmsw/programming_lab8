@@ -2,19 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2ede128-258c-4abd-a700-1a83c7d0d721" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/gdx_box2d_1_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/gdx-box2d-1.9.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SuperPooperUDeePee.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SuperPooperUDeePee.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/im.json" beforeDir="false" afterPath="$PROJECT_DIR$/im.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/err.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/err.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/out.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool$ClientConnector$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool$ClientConnector$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool$ClientConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool$ClientConnector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/Room.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas$RoomVisualBuffer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas$RoomVisualBuffer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Mirror.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Mirror.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/login/LoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/login/LoginWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/register/RegisterWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/register/RegisterWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/server/ClientPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/server/ClientPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/RoomPropertiesPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/RoomPropertiesPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/canvas/RoomsCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/canvas/RoomsCanvas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ru/n4d9/server/Mirror.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/server/Mirror.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/server/commands/RegisterCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/server/commands/RegisterCommand.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -74,6 +80,16 @@
         <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="pg@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="studs: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="users: table" type="69fad909:PgImplModel$LocalTable" />
+      </path>
     </expand>
     <select />
   </component>
@@ -83,10 +99,17 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/n4d9/server/Server.java">
+        <entry file="file://$PROJECT_DIR$/src/ru/n4d9/client/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-937">
-              <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+            <state relative-caret-position="-446">
+              <caret line="258" column="27" selection-start-line="258" selection-start-column="27" selection-end-line="258" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#12909#12910#0" expanded="true" />
+                <element signature="e#12938#12939#0" expanded="true" />
+                <element signature="e#13937#13938#0" expanded="true" />
+                <element signature="e#13968#13969#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,23 +117,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/n4d9/server/Mirror.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1037">
-              <caret line="67" column="31" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/n4d9/client/MainWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1348">
-              <caret line="285" column="90" selection-start-line="285" selection-start-column="90" selection-end-line="285" selection-end-column="90" />
+            <state relative-caret-position="119">
+              <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#11196#11197#0" expanded="true" />
-                <element signature="e#11225#11226#0" expanded="true" />
-                <element signature="e#12163#12164#0" expanded="true" />
-                <element signature="e#12194#12195#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -193,7 +203,6 @@
         <option value="$PROJECT_DIR$/src/ru/n4d9/client/RoomRemovingListener.java" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/client/RoomRemovingGreaterListener.java" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/client/RoomRemovingLowerListener.java" />
-        <option value="$PROJECT_DIR$/im.json" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/server/commands/ImportCommand.java" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/server/commands/LoadCommand.java" />
         <option value="49934867-bc24-41a9-9601-d23f4e144b69/database/studs/schema/public/table/rooms.sql" />
@@ -209,9 +218,7 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/client/buttons/add/AddRoomButton.java" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/server/RequestResolver.java" />
-        <option value="$PROJECT_DIR$/src/ru/n4d9/client/canvas/RoomsCanvas.java" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/server/commands/LoginCommand.java" />
-        <option value="$PROJECT_DIR$/src/ru/n4d9/client/RoomPropertiesPane.java" />
         <option value="$PROJECT_DIR$/resources/layout/main.fxml" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/server/commands/RemoveCommand.java" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/server/Server.java" />
@@ -219,11 +226,14 @@
         <option value="$PROJECT_DIR$/src/ru/n4d9/server/commands/ModifyCommand.java" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/server/commands/RemoveGreaterCommand.java" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/server/commands/RemoveLowerCommand.java" />
-        <option value="$PROJECT_DIR$/src/ru/n4d9/client/Room.java" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/server/commands/RegisterCommand.java" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/client/login/LoginWindow.java" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/client/register/RegisterWindow.java" />
+        <option value="$PROJECT_DIR$/src/ru/n4d9/client/Room.java" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/server/ClientPool.java" />
+        <option value="$PROJECT_DIR$/im.json" />
+        <option value="$PROJECT_DIR$/src/ru/n4d9/client/canvas/RoomsCanvas.java" />
+        <option value="$PROJECT_DIR$/src/ru/n4d9/client/RoomPropertiesPane.java" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/client/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/ru/n4d9/server/Mirror.java" />
       </list>
@@ -241,6 +251,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -276,6 +288,14 @@
               <item name="SuperPooperUDeePee" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="n4d9" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="canvas" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SuperPooperUDeePee" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SuperPooperUDeePee" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="n4d9" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -290,8 +310,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -301,34 +319,25 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Properties" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/ru/n4d9" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/gdx-box2d-1.9.2.jar!/" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Nadya\Desktop\SuperPooperUDeePee\src\ru\n4d9" />
-      <recent name="C:\Users\Nadya\Desktop\SuperPooperUDeePee\lib" />
-      <recent name="C:\Users\Nadya\Desktop\SuperPooperUDeePee\resources\i18n" />
-      <recent name="C:\Users\Nadya\Desktop\SuperPooperUDeePee\resources" />
-      <recent name="C:\Users\Nadya\Desktop\SuperPooperUDeePee" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="ru.n4d9.client.buttons" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="ru.n4d9.client" />
-      <recent name="ru.n4d9.Utils" />
-      <recent name="ru.n4d9.server" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Nadya\Desktop\SuperPooperUDeePee\src\ru\n4d9" />
@@ -336,6 +345,18 @@
       <recent name="C:\Users\Nadya\Desktop\SuperPooperUDeePee\src\ru\n4d9\client" />
       <recent name="C:\Users\Nadya\Desktop\SuperPooperUDeePee\resources\i18n" />
       <recent name="C:\Users\Nadya\Desktop\SuperPooperUDeePee\src\ru\n4d9\client\canvas" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ru.n4d9.client" />
+      <recent name="ru.n4d9.Utils" />
+      <recent name="ru.n4d9.server" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Nadya\Desktop\SuperPooperUDeePee\lib" />
+      <recent name="C:\Users\Nadya\Desktop\SuperPooperUDeePee\src\ru\n4d9" />
+      <recent name="C:\Users\Nadya\Desktop\SuperPooperUDeePee\resources\i18n" />
+      <recent name="C:\Users\Nadya\Desktop\SuperPooperUDeePee\resources" />
+      <recent name="C:\Users\Nadya\Desktop\SuperPooperUDeePee" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -465,11 +486,16 @@
       <workItem from="1562453543027" duration="2254000" />
       <workItem from="1562491982045" duration="1838000" />
       <workItem from="1562513189059" duration="3731000" />
+      <workItem from="1563403882779" duration="3904000" />
+      <workItem from="1563447677074" duration="5663000" />
+      <workItem from="1563527864813" duration="565000" />
+      <workItem from="1563568863584" duration="37000" />
+      <workItem from="1563570272936" duration="730000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="250060000" />
+    <option name="totallyTimeSpent" value="262882000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -481,10 +507,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8464419" visible="true" weight="0.21275167" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8464419" visible="true" weight="0.24832214" />
       <window_info id="Designer" order="1" />
       <window_info id="Image Layers" order="2" />
       <window_info id="DB Browser" order="3" />
@@ -494,7 +520,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.33002833" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49731544" visible="true" weight="0.39518413" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49731544" weight="0.43201134" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49798658" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -514,7 +540,7 @@
       <window_info anchor="right" id="PlantUML" order="4" weight="0.3295302" />
       <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Database" order="7" visible="true" weight="0.25100672" />
+      <window_info anchor="right" id="Database" order="7" visible="true" weight="0.047651008" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info anchor="right" id="Preview" order="10" weight="0.3295302" />
@@ -554,31 +580,6 @@
     </SUITE>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ru/n4d9/client/login/LoginListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/sql/Date.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="303" column="14" selection-start-line="303" selection-start-column="14" selection-end-line="303" selection-end-column="14" />
-          <folding>
-            <element signature="e#9643#9644#0" expanded="true" />
-            <element signature="e#9710#9711#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/n4d9/Utils/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="117" column="29" selection-start-line="117" selection-start-column="29" selection-end-line="117" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/layout/register.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
@@ -614,13 +615,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/n4d9/client/RoomApplyingListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -676,26 +670,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="122" column="23" selection-start-line="122" selection-start-column="23" selection-end-line="122" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/n4d9/client/canvas/RoomsCanvas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="149" column="11" selection-start-line="149" selection-start-column="11" selection-end-line="149" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/n4d9/client/RoomsTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-211">
-          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -770,16 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/n4d9/client/RoomPropertiesPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1982">
-          <caret line="195" column="16" selection-start-line="195" selection-start-column="16" selection-end-line="195" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/n4d9/Box2D/Rope/b2Rope.h" />
     <entry file="file://$PROJECT_DIR$/src/ru/n4d9/Box2D/Box2D.h" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/ArrayList.java">
@@ -844,23 +808,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/n4d9/server/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="201" selection-start-line="201" selection-end-line="201" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://49934867-bc24-41a9-9601-d23f4e144b69/database/studs/schema/public/table/rooms">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="09f3552a-6add-43e9-a92f-5fa836995936">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://49934867-bc24-41a9-9601-d23f4e144b69/database/studs/schema/public/table/users">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state projectRestartId="09f3552a-6add-43e9-a92f-5fa836995936">
           <filtering>
@@ -910,17 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/n4d9/server/ClientPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
-          <folding>
-            <element signature="e#541#542#0" expanded="true" />
-            <element signature="e#574#575#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/n4d9/server/Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-937">
@@ -928,31 +865,124 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="287" column="47" lean-forward="true" selection-start-line="284" selection-start-column="7" selection-end-line="287" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/n4d9/client/canvas/RoomSelectingListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/n4d9/client/RoomsTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-655">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/n4d9/client/Room.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="193" column="44" selection-start-line="191" selection-start-column="8" selection-end-line="193" selection-end-column="44" />
+        <state relative-caret-position="135">
+          <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
+          <folding>
+            <element signature="e#880#881#0" expanded="true" />
+            <element signature="e#905#906#0" expanded="true" />
+            <marker date="1563406309973" expanded="true" signature="7243:7458" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/n4d9/server/ClientPool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+          <folding>
+            <element signature="e#541#542#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/n4d9/server/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/im.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/n4d9/client/canvas/RoomsCanvas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="244" column="39" selection-start-line="244" selection-start-column="39" selection-end-line="244" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://49934867-bc24-41a9-9601-d23f4e144b69/database/studs/schema/public/table/users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="892db1a2-e50b-4044-b4d6-d164f4265e79">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/n4d9/client/RoomApplyingListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/n4d9/client/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1348">
-          <caret line="285" column="90" selection-start-line="285" selection-start-column="90" selection-end-line="285" selection-end-column="90" />
+        <state relative-caret-position="-446">
+          <caret line="258" column="27" selection-start-line="258" selection-start-column="27" selection-end-line="258" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#11196#11197#0" expanded="true" />
-            <element signature="e#11225#11226#0" expanded="true" />
-            <element signature="e#12163#12164#0" expanded="true" />
-            <element signature="e#12194#12195#0" expanded="true" />
+            <element signature="e#12909#12910#0" expanded="true" />
+            <element signature="e#12938#12939#0" expanded="true" />
+            <element signature="e#13937#13938#0" expanded="true" />
+            <element signature="e#13968#13969#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/n4d9/client/RoomPropertiesPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1904">
+          <caret line="119" selection-start-line="119" selection-end-line="119" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/n4d9/server/Mirror.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="67" column="31" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="31" />
+        <state relative-caret-position="119">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1033,7 +1063,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>postgresql-42.2.5</last-edited>
+          <last-edited>gdx-box2d-1.9.2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

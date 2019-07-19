@@ -179,7 +179,7 @@ public class RoomPropertiesPane extends VBox {
         applyButton.setDisable(false);
         resetButton.setDisable(false);
 
-        if (autoApplyCheckbox.isSelected() && autoApplyingEnabled)
+        if (autoApplyCheckbox.isSelected() && autoApplyingEnabled) //todo
             onApply();
     }
 

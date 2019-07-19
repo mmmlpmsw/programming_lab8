@@ -237,12 +237,13 @@ public class Room implements Comparable<Room>, Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Room room = (Room) o;
-        return height == room.height &&
-                width == room.width &&
-                x == room.x &&
-                y == room.y &&
-                Objects.equals(name, room.name) &&
-                Objects.equals(shelf, room.shelf);
+        return id == room.getId();
+//        return height == room.height &&
+//                width == room.width &&
+//                x == room.x &&
+//                y == room.y &&
+//                Objects.equals(name, room.name) &&
+//                Objects.equals(shelf, room.shelf);
     }
 
     @Override

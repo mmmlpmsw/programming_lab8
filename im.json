@@ -3,11 +3,11 @@
   "collection":
   [
     {
-      "x": 10,
-      "y": 12,
-      "width": 5,
+      "x": 200,
+      "y": 120,
+      "width": 160,
       "name": "хрущевка",
-      "height": 10,
+      "height": 100,
       "shelf": [
         {
           "size": 1,

@@ -28,13 +28,9 @@ import ru.n4d9.transmitter.SenderAdapter;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.InetAddress;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MainWindow extends Application implements Window {
-
 
     private static Locale currentLocale = Locale.getDefault();
     private static HashMap<Locale, ResourceBundle> resourceBundles = new HashMap<>();
@@ -219,7 +215,8 @@ public class MainWindow extends Application implements Window {
     }
 
     @SuppressWarnings("unchecked")
-    private void proccessMessage(Message message) { //todo перерисовка
+    private void proccessMessage(Message message) {
+        //todo перерисовка
         System.out.println(message.getText());
         switch (message.getText()){
 
@@ -248,52 +245,71 @@ public class MainWindow extends Application implements Window {
             }
 
             case "room_modified": {
-                Room model = (Room) message.getAttachment();
-                ObservableList<Room> items = roomsTable.getItems();
-                for (int i = 0; i < items.size(); i ++) {
-                    if (items.get(i).getId() == model.getId()) {
-                        roomsTable.getItems().get(i).setFromRoomModel(model);
-                        Platform.runLater(() -> {
+
+//                Platform.runLater(() -> {
+                    Room model = (Room) message.getAttachment();
+                    ObservableList<Room> items = roomsTable.getItems();
+                    for (int i = 0; i < items.size(); i ++) {
+                        if (items.get(i).getId() == model.getId()) {
+                            roomsTable.getItems().get(i).setFromRoomModel((Room)message.getAttachment());
+                            Platform.runLater(() -> {
                             roomsTable.getColumns().get(0).setVisible(false);
                             roomsTable.getColumns().get(0).setVisible(true);
                         });
-                        roomsTable.getSelectionModel().select(i);
-                        break;
+//                            roomsTable.getItems().set(i, (Room)message.getAttachment()); //не меняет канвас
+//
+
+                            roomsTable.getSelectionModel().select(i);
+                            break;
+                        }
                     }
-                }
+//                });
+
+//                Room model = (Room) message.getAttachment();
+//                ObservableList<Room> items = roomsTable.getItems();
+//                for (int i = 0; i < items.size(); i ++) {
+//                    if (items.get(i).getId() == model.getId()) {
+//                        roomsTable.getItems().get(i).setFromRoomModel(model);
+//                        Platform.runLater(() -> {
+//                            roomsTable.getColumns().get(0).setVisible(false);
+//                            roomsTable.getColumns().get(0).setVisible(true);
+//                        });
+//                        roomsTable.getSelectionModel().select(i);
+//                        break;
+//                    }
+//                }
                 break;
 
             }
 
             case "collection_state": {
-                ArrayList<Room> rooms = (ArrayList<Room>) message.getAttachment();
+                HashSet<Room> rooms = (HashSet<Room>) message.getAttachment();
                 ObservableList<Room> items = roomsTable.getItems();
                 for (Room r : rooms) {
                     for (int i = 0; i < items.size(); i ++) {
                         if (items.get(i).getId() == r.getId()) {
                             roomsTable.getItems().get(i).setFromRoomModel(r);
-                            if (items.get(i).getX() == r.getX())
+                            if (items.get(i).getX() != r.getX())
                                 roomsTable.getItems().get(i).setX(r.getX());
-                            if (items.get(i).getY() == r.getY())
+                            if (items.get(i).getY() != r.getY())
                                 roomsTable.getItems().get(i).setY(r.getY());
-                            if (items.get(i).getWidth() == r.getWidth())
+                            if (items.get(i).getWidth() != r.getWidth())
                                 roomsTable.getItems().get(i).setWidth(r.getWidth());
-                            if (items.get(i).getHeight() == r.getHeight())
+                            if (items.get(i).getHeight() != r.getHeight())
                                 roomsTable.getItems().get(i).setHeight(r.getHeight());
-                            if (items.get(i).getName() == r.getName())
+                            if (items.get(i).getName() != r.getName())
                                 roomsTable.getItems().get(i).setName(r.getName());
-                            if (items.get(i).getRotation() == r.getRotation())
+                            if (items.get(i).getRotation() != r.getRotation())
                                 roomsTable.getItems().get(i).setRotation(r.getRotation());
-                            roomsTable.getSelectionModel().select(i);
                             break;
                         }
                     }
 
                 }
-                Platform.runLater(() -> {
-                                roomsTable.getColumns().get(0).setVisible(false);
-                                roomsTable.getColumns().get(0).setVisible(true);
-                            });
+//                Platform.runLater(() -> {
+//                    roomsTable.getColumns().get(0).setVisible(false);
+//                    roomsTable.getColumns().get(0).setVisible(true);
+//                });
                 break;
             }
 
@@ -334,9 +350,10 @@ public class MainWindow extends Application implements Window {
 
                 @Override
                 public void onError(String message) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText(message);
-                    alert.show();
+                    Platform.runLater(() -> {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText(message);
+                        alert.show();});
 
                 }
             });

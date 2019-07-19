@@ -272,7 +272,11 @@ public class RoomsCanvas extends Canvas {
                     origin.getWidth(),
                     origin.getHeight()
             );
-
+            context.translate(origin.getX()+0.5*origin.getWidth(), origin.getY()+0.5*origin.getHeight());
+            context.rotate(origin.getRotation());
+            double[] xPoints = {-origin.getWidth()/2 - 17, origin.getWidth()/2 + 17, 0d};
+            double[] yPoints = {-origin.getHeight()/2, -origin.getHeight()/2, ((-30*origin.getHeight())/origin.getWidth()) - origin.getHeight()};
+            context.strokePolygon(xPoints, yPoints, 3);
             context.restore();
         }
 
