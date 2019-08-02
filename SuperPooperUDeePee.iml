@@ -10,6 +10,10 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="javax.mail" level="project" />
     <orderEntry type="library" name="postgresql-42.2.5" level="project" />
+    <orderEntry type="library" name="jbox2d-2.0.1-full" level="project" />
+    <orderEntry type="library" name="gdx-box2d-platform-1.9.9-natives-desktop" level="project" />
+    <orderEntry type="library" name="gdx-box2d-1.9.9-sources" level="project" />
     <orderEntry type="library" name="gdx-box2d-1.9.2" level="project" />
+    <orderEntry type="library" name="gdx-1.9.9" level="project" />
   </component>
 </module>
