@@ -69,7 +69,7 @@ public class LoginWindow implements Window {
     private void onMessageReceived(Message m) {
         switch (m.getText()) {
             case "OK":
-                loginListener.onLogin(m.getUserid(), m.getUsername(), m.getLogin(), m.getPassword(), (ArrayList<Room>)m.getAttachment());
+                loginListener.onLogin(m.getUserid(), m.getUsername(), m.getLogin(), m.getPassword(), (ArrayList<Room>)m.getAttachment(), m.getUserColor());
                 Platform.runLater(() -> stage.close());
                 break;
             case "WRONG": {

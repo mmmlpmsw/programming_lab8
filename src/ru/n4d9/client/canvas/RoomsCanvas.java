@@ -6,6 +6,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.FillRule;
 import ru.n4d9.client.Room;
 
 import java.util.*;
@@ -236,17 +237,37 @@ public class RoomsCanvas extends Canvas {
 
             context.setFill(color);
             context.setStroke(color.darker());
+//            context.setLineWidth(10);
 
             context.translate(origin.getX()+0.5*origin.getWidth(), origin.getY()+0.5*origin.getHeight());
             context.rotate(origin.getRotation());
             context.strokeRect(-origin.getWidth()/2, -origin.getHeight()/2, origin.getWidth(), origin.getHeight());
+            context.fillRect(-origin.getWidth()/2, -origin.getHeight()/2, origin.getWidth(), origin.getHeight());
             double[] xPoints = {-origin.getWidth()/2 - 17, origin.getWidth()/2 + 17, 0d};
             double[] yPoints = {-origin.getHeight()/2, -origin.getHeight()/2, ((-30*origin.getHeight())/origin.getWidth()) - origin.getHeight()};
             context.strokePolygon(xPoints, yPoints, 3);
+            context.fillPolygon(xPoints, yPoints, 3);
+
+            //door
             context.strokeRect(-3*origin.getWidth()/8, -origin.getHeight()/4,
                                 origin.getWidth()/4, 3*origin.getHeight()/4);
+            context.setFill(Color.rgb(255, 255, 255));
+            context.fillRect(-3*origin.getWidth()/8, -origin.getHeight()/4,
+                    origin.getWidth()/4, 3*origin.getHeight()/4);
+            context.setFill(Color.rgb(118, 57, 0, .7));
+            context.fillRect(-3*origin.getWidth()/8, -origin.getHeight()/4,
+                    origin.getWidth()/4, 3*origin.getHeight()/4);
+
+            //window
             context.strokeRect(origin.getWidth()/8, -3*origin.getHeight()/8,
                                     origin.getWidth()/4, origin.getHeight()/4);
+            context.setFill(Color.rgb(255, 255, 255));
+            context.fillRect(origin.getWidth()/8, -3*origin.getHeight()/8,
+                    origin.getWidth()/4, origin.getHeight()/4);
+            context.setFill(Color.rgb(186, 218, 255));
+            context.fillRect(origin.getWidth()/8, -3*origin.getHeight()/8,
+                    origin.getWidth()/4, origin.getHeight()/4);
+
 
             context.restore();
         }

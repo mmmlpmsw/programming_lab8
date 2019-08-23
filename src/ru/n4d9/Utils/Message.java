@@ -14,7 +14,15 @@ public class Message implements Serializable {
     private String login;
     private String password;
     private String username;
+    private String userColor;
 
+    public String getUserColor() {
+        return userColor;
+    }
+
+    public void setUserColor(String userColor) {
+        this.userColor = userColor;
+    }
 
     /**
      * Создаёт сообщение с указанным текстом без вложенного объекта

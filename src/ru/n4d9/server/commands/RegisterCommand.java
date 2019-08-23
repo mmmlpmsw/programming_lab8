@@ -51,11 +51,12 @@ public class RegisterCommand implements Command {
                             password
             );
             PreparedStatement statement1 = connection.prepareStatement("insert into users " +
-                    "(name, email, password_hash) values (?, ?, ?)");
+                    "(name, email, password_hash, color) values (?, ?, ?, ?)");
 
             statement1.setString(1, name);
             statement1.setString(2, email);
             statement1.setBytes(3, Utilities.hashPassword(password + Utilities.getPasswordSalt()));
+            statement1.setInt(4, (int)(0x1000000*Math.random()));
 
             statement1.execute();
 

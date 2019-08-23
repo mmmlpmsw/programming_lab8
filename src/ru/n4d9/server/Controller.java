@@ -227,7 +227,7 @@ public class Controller implements ContextFriendly {
                     "creationdate timestamp, rotation double precision, user_id integer)"
             );
             statement.execute("create table if not exists users (" +
-                    "id serial primary key not null, name text, email text unique, password_hash bytea)"
+                    "id serial primary key not null, name text, email text unique, password_hash bytea, color integer)"
             );
             statement.execute("create table if not exists things (" +
                     "id serial primary key not null, name text, size integer, room_id integer)"

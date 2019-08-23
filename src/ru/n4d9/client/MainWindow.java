@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ru.n4d9.Utils.Message;
 import ru.n4d9.Utils.StringEntity;
@@ -164,12 +165,13 @@ public class MainWindow extends Application implements Window {
     }
 
     private void promptLogin() {
-        new LoginWindow((id, username, login, password, rooms) -> {
+        new LoginWindow((id, username, login, password, rooms, color) -> {
             Platform.runLater(() -> {
                 stage.show();
                 setParameters(id, username, login, password);
                 userNameLabel.setText(username);
-
+                //TODO color
+                roomsCanvas.getUserColors().put(id, Color.valueOf(color));
                 roomsTable.getItems().clear();
                 roomsTable.getItems().addAll(rooms);
 
@@ -216,7 +218,6 @@ public class MainWindow extends Application implements Window {
 
     @SuppressWarnings("unchecked")
     private void proccessMessage(Message message) {
-        //todo перерисовка
         System.out.println(message.getText());
         switch (message.getText()){
 
@@ -245,7 +246,6 @@ public class MainWindow extends Application implements Window {
             }
 
             case "room_modified": {
-
 //                Platform.runLater(() -> {
                     Room model = (Room) message.getAttachment();
                     ObservableList<Room> items = roomsTable.getItems();
@@ -283,7 +283,7 @@ public class MainWindow extends Application implements Window {
             }
 
             case "collection_state": {
-                HashSet<Room> rooms = (HashSet<Room>) message.getAttachment();
+                ArrayList<Room> rooms = (ArrayList<Room>) message.getAttachment();
                 ObservableList<Room> items = roomsTable.getItems();
                 for (Room r : rooms) {
                     for (int i = 0; i < items.size(); i ++) {

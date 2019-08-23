@@ -40,6 +40,7 @@ public class LoginCommand implements Command {
         if (resultSet.next()) {
             int userid = resultSet.getInt("id");
             String username = resultSet.getString("name");
+            int userColor = resultSet.getInt("color");
 
             statement = connection.prepareStatement("select * from rooms");
             ResultSet set = statement.executeQuery();
@@ -70,6 +71,7 @@ public class LoginCommand implements Command {
             result.setLogin(email);
             result.setPassword(password);
             result.setUsername(username);
+            result.setUserColor(String.format("#%06x", userColor));
             return result;
         } else {
             return new Message("WRONG");
