@@ -47,11 +47,12 @@ public class Server {
 
                 logger.log("Сервер слушает порт " + config.getPort() + "...");
 
+                Mirror mirror = new Mirror();
+                Context.set("mirror", mirror);
+
                 clientPool.onContextReady();
                 controller.onContextReady();
                 requestResolver.onContextReady();
-                Mirror mirror = new Mirror(controller, logger);
-                Context.set("mirror", mirror);
                 mirror.onContextReady();
             } else {
                 Controller.sendDown("Не указан файл настроек.");

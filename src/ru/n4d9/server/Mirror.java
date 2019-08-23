@@ -22,32 +22,12 @@ public class Mirror implements ContextFriendly {
 
     private ArrayList<RoomShell> roomShells;
 
-    Mirror(Controller controller, Logger logger) {
-        this.controller = controller;
-        this.logger = logger;
-        roomShells = new ArrayList<>();
-        for (Room r : getRooms()) {
-            roomShells.add(new RoomShell(r));
-        }
-        world = new World(new Vector2(0, 10), true);
-        createWorld();
-        new Thread(() -> {
-            while (true) {
-                world.step(1/60, 10, 10);
-                changeState();
-                sendState();
-
-            }
-        }).start();
-
-    }
-
     /**
      * вызывается после очередного изменения-шага
      * в мире (world) и меняет состояние во всех объектах
      * room и связанных с ними телами в world
      */
-    void changeState() {
+    void updateState() {
         Array<Body> bodies = new Array<>();
         world.getBodies(bodies);
         for (Body b : bodies) {
@@ -89,7 +69,7 @@ public class Mirror implements ContextFriendly {
      * @param room объект, на основе которого создается
      * @return созданный Body-объект
      */
-    Body createRoom(Room room) {
+    private Body createRoom(Room room) {
         BodyDef roomDef = new BodyDef();
         roomDef.position.set((float) room.getX(), (float) room.getY());
         roomDef.position.setAngle((float)room.getRotation());
@@ -196,6 +176,21 @@ public class Mirror implements ContextFriendly {
     public void onContextReady() {
         clientPool = (ClientPool) Context.get("clientpool");
         logger = (Logger) Context.get("logger");
+        controller = (Controller) Context.get("controller");
+
+        roomShells = new ArrayList<>();
+        for (Room r : getRooms()) {
+            roomShells.add(new RoomShell(r));
+        }
+        world = new World(new Vector2(0, 10), true);
+        createWorld();
+        new Thread(() -> {
+            while (true) {
+                world.step(1f/60, 10, 10);
+                updateState();
+                sendState();
+            }
+        }).start();
 //        controller = (Controller) Context.get("controller");
     }
 

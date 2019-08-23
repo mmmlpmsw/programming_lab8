@@ -25,6 +25,11 @@ public class Controller implements ContextFriendly {
     @Override
     public void onContextReady() {
         logger = (Logger)Context.get("logger");
+        mirror = (Mirror)Context.get("mirror");
+
+//        mirror.getRooms().clear();
+//        mirror.getRooms().addAll(getAllRooms());
+
         initDatabaseConnection();
         initTables();
         initEmail();
@@ -32,12 +37,12 @@ public class Controller implements ContextFriendly {
     }
 
     public void removeRoomFromMirror(Room room, int user_id) {
-        mirror = (Mirror)Context.get("mirror");
+//        mirror = (Mirror)Context.get("mirror");
         mirror.roomRemoved(room);
     }
 
     public void modifyRoomInMirror(Room room) {
-        mirror = (Mirror)Context.get("mirror");
+//        mirror = (Mirror)Context.get("mirror");
         mirror.roomModified(room);
     }
 
@@ -104,7 +109,7 @@ public class Controller implements ContextFriendly {
         room.setId(room_id);
         room.setOwnerId(ownerid);
 
-        mirror = (Mirror)Context.get("mirror");
+//        mirror = (Mirror)Context.get("mirror");
         mirror.roomAdded(room);
 
         return room;
