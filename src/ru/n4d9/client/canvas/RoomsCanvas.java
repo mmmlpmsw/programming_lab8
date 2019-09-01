@@ -1,5 +1,6 @@
 package ru.n4d9.client.canvas;
 
+import com.badlogic.gdx.math.Vector2;
 import javafx.animation.AnimationTimer;
 import javafx.collections.ObservableList;
 import javafx.geometry.Point2D;
@@ -47,6 +48,10 @@ public class RoomsCanvas extends Canvas {
                 while (true) {
                     Thread.sleep(1000 / 60);
                     synchronized (proxy) {
+                        for (RoomVisualBuffer b : proxy)
+                            if (!target.contains(b.origin))
+                                proxy.remove(b);
+
                         update(System.currentTimeMillis() - lastMillis);
                     }
                     lastMillis = System.currentTimeMillis();
@@ -148,7 +153,6 @@ public class RoomsCanvas extends Canvas {
             }
             toRemove.forEach(proxy::remove);
         }
-        // TODO: remove from proxy
     }
 
     private void draw() {
@@ -237,39 +241,63 @@ public class RoomsCanvas extends Canvas {
 
             context.setFill(color);
             context.setStroke(color.darker());
-//            context.setLineWidth(10);
 
-            context.translate(origin.getX()+0.5*origin.getWidth(), origin.getY()+0.5*origin.getHeight());
+            context.translate(origin.getX(), origin.getY());
             context.rotate(origin.getRotation());
-            context.strokeRect(-origin.getWidth()/2, -origin.getHeight()/2, origin.getWidth(), origin.getHeight());
+
+            //room
             context.fillRect(-origin.getWidth()/2, -origin.getHeight()/2, origin.getWidth(), origin.getHeight());
-            double[] xPoints = {-origin.getWidth()/2 - 17, origin.getWidth()/2 + 17, 0d};
-            double[] yPoints = {-origin.getHeight()/2, -origin.getHeight()/2, ((-30*origin.getHeight())/origin.getWidth()) - origin.getHeight()};
+
+           //roof
+            double[] xPoints = {
+                    -origin.getWidth()/1.8 /*+ origin.getX()*/,
+                    0 /*+ origin.getX()*/,
+                    origin.getWidth()/1.8 /*+ origin.getX()*/
+            },
+                    yPoints = {
+                            -origin.getHeight()/2 /*+ origin.getY() */,
+                            -origin.getHeight() /*+ origin.getY()*/,
+                            -origin.getHeight()/2 /*+ origin.getY()*/
+            };
             context.strokePolygon(xPoints, yPoints, 3);
             context.fillPolygon(xPoints, yPoints, 3);
 
-            //door
-            context.strokeRect(-3*origin.getWidth()/8, -origin.getHeight()/4,
-                                origin.getWidth()/4, 3*origin.getHeight()/4);
-            context.setFill(Color.rgb(255, 255, 255));
-            context.fillRect(-3*origin.getWidth()/8, -origin.getHeight()/4,
-                    origin.getWidth()/4, 3*origin.getHeight()/4);
-            context.setFill(Color.rgb(118, 57, 0, .7));
-            context.fillRect(-3*origin.getWidth()/8, -origin.getHeight()/4,
-                    origin.getWidth()/4, 3*origin.getHeight()/4);
-
-            //window
-            context.strokeRect(origin.getWidth()/8, -3*origin.getHeight()/8,
-                                    origin.getWidth()/4, origin.getHeight()/4);
-            context.setFill(Color.rgb(255, 255, 255));
-            context.fillRect(origin.getWidth()/8, -3*origin.getHeight()/8,
-                    origin.getWidth()/4, origin.getHeight()/4);
-            context.setFill(Color.rgb(186, 218, 255));
-            context.fillRect(origin.getWidth()/8, -3*origin.getHeight()/8,
-                    origin.getWidth()/4, origin.getHeight()/4);
-
-
             context.restore();
+
+
+//            context.setLineWidth(10);
+
+//            context.translate(origin.getX()+0.5*origin.getWidth(), origin.getY()+0.5*origin.getHeight());
+//            context.rotate(origin.getRotation());
+//            context.strokeRect(-origin.getWidth()/2, -origin.getHeight()/2, origin.getWidth(), origin.getHeight());
+//            context.fillRect(-origin.getWidth()/2, -origin.getHeight()/2, origin.getWidth(), origin.getHeight());
+//            double[] xPoints = {-origin.getWidth()/2 - 17, origin.getWidth()/2 + 17, 0d};
+//            double[] yPoints = {-origin.getHeight()/2, -origin.getHeight()/2, ((-30*origin.getHeight())/origin.getWidth()) - origin.getHeight()};
+//            context.strokePolygon(xPoints, yPoints, 3);
+//            context.fillPolygon(xPoints, yPoints, 3);
+//
+//            //door
+//            context.strokeRect(-3*origin.getWidth()/8, -origin.getHeight()/4,
+//                                origin.getWidth()/4, 3*origin.getHeight()/4);
+//            context.setFill(Color.rgb(255, 255, 255));
+//            context.fillRect(-3*origin.getWidth()/8, -origin.getHeight()/4,
+//                    origin.getWidth()/4, 3*origin.getHeight()/4);
+//            context.setFill(Color.rgb(118, 57, 0, .7));
+//            context.fillRect(-3*origin.getWidth()/8, -origin.getHeight()/4,
+//                    origin.getWidth()/4, 3*origin.getHeight()/4);
+//
+//            //window
+//            context.strokeRect(origin.getWidth()/8, -3*origin.getHeight()/8,
+//                                    origin.getWidth()/4, origin.getHeight()/4);
+//            context.setFill(Color.rgb(255, 255, 255));
+//            context.fillRect(origin.getWidth()/8, -3*origin.getHeight()/8,
+//                    origin.getWidth()/4, origin.getHeight()/4);
+//            context.setFill(Color.rgb(186, 218, 255));
+//            context.fillRect(origin.getWidth()/8, -3*origin.getHeight()/8,
+//                    origin.getWidth()/4, origin.getHeight()/4);
+
+
+//            context.restore();
         }
 
         /**
@@ -287,18 +315,32 @@ public class RoomsCanvas extends Canvas {
             context.setLineDashes(10);
             context.setLineDashOffset(10);
 
+            context.translate(origin.getX(), origin.getY());
+            context.rotate(origin.getRotation());
             context.strokeRect(
-                    visualX,
-                    visualY,
+                    /*visualX*/ - origin.getWidth()/2,
+                    /*visualY */- origin.getHeight()/2,
                     origin.getWidth(),
                     origin.getHeight()
             );
-            context.translate(origin.getX()+0.5*origin.getWidth(), origin.getY()+0.5*origin.getHeight());
-            context.rotate(origin.getRotation());
-            double[] xPoints = {-origin.getWidth()/2 - 17, origin.getWidth()/2 + 17, 0d};
-            double[] yPoints = {-origin.getHeight()/2, -origin.getHeight()/2, ((-30*origin.getHeight())/origin.getWidth()) - origin.getHeight()};
+
+
+
+            //roof
+            double[] xPoints = {
+                    -origin.getWidth()/1.8 /*+ origin.getX()*/,
+                    0 /*+ origin.getX()*/,
+                    origin.getWidth()/1.8 /*+ origin.getX()*/
+            },
+            yPoints = {
+                    -origin.getHeight()/2 /*+ origin.getY() */,
+                    -origin.getHeight() /*+ origin.getY()*/,
+                    -origin.getHeight()/2 /*+ origin.getY()*/
+            };
             context.strokePolygon(xPoints, yPoints, 3);
+
             context.restore();
+
         }
 
         /**
@@ -306,9 +348,9 @@ public class RoomsCanvas extends Canvas {
          *
          */
         private void update(long delta) {
-            visualX += (origin.getX() - visualX)/25f;
-            visualY += (origin.getY() - visualY)/25f;
-            visualRotation += (origin.getRotation() - visualRotation)/25f;
+            visualX += (origin.getX() - visualX)/60f;
+            visualY += (origin.getY() - visualY)/60f;
+            visualRotation += (origin.getRotation() - visualRotation)/60f;
         }
 
         @Override

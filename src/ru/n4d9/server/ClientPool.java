@@ -33,7 +33,7 @@ public class ClientPool implements ContextFriendly {
     /**
      * Отправляет сообщение всем подключенным клиентам
      */
-    public void sendAll(Message message) {
+    public synchronized void sendAll(Message message) {
         if (!message.getText().equals("collection_state"))
             logger.verbose("Рассылка сообщения " + message + " подписанным коннекторам (" + connectors.size() + ")");
         for (ClientConnector connector: connectors) {
@@ -93,7 +93,7 @@ public class ClientPool implements ContextFriendly {
          *
          * @param m сообщение
          */
-        public void send(Message m) {
+        public synchronized void send(Message m) {
             logger.verbose("Отправка сообщения " + m + " через коннектор " + this);
             try {
                 Sender.send(m.serialize(), address, port, false, new SenderAdapter() {

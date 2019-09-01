@@ -218,7 +218,7 @@ public class MainWindow extends Application implements Window {
 
     @SuppressWarnings("unchecked")
     private void proccessMessage(Message message) {
-        System.out.println(message.getText());
+//        System.out.println(message.getText());
         switch (message.getText()){
 
             case "room_added": {
@@ -229,7 +229,6 @@ public class MainWindow extends Application implements Window {
             case "room_removed": {
                 Room room = (Room) message.getAttachment();
                 roomsTable.getItems().remove(room);
-//                        updateCreaturesCountText();
                 break;
             }
 
@@ -247,22 +246,22 @@ public class MainWindow extends Application implements Window {
 
             case "room_modified": {
 //                Platform.runLater(() -> {
-                    Room model = (Room) message.getAttachment();
-                    ObservableList<Room> items = roomsTable.getItems();
-                    for (int i = 0; i < items.size(); i ++) {
-                        if (items.get(i).getId() == model.getId()) {
-                            roomsTable.getItems().get(i).setFromRoomModel((Room)message.getAttachment());
-                            Platform.runLater(() -> {
+                Room model = (Room) message.getAttachment();
+                ObservableList<Room> items = roomsTable.getItems();
+                for (int i = 0; i < items.size(); i ++) {
+                    if (items.get(i).getId() == model.getId()) {
+                        roomsTable.getItems().get(i).setFromRoomModel((Room)message.getAttachment());
+                        Platform.runLater(() -> {
                             roomsTable.getColumns().get(0).setVisible(false);
                             roomsTable.getColumns().get(0).setVisible(true);
                         });
 //                            roomsTable.getItems().set(i, (Room)message.getAttachment()); //не меняет канвас
 //
 
-                            roomsTable.getSelectionModel().select(i);
-                            break;
-                        }
+                        roomsTable.getSelectionModel().select(i);
+                        break;
                     }
+                }
 //                });
 
 //                Room model = (Room) message.getAttachment();
@@ -288,19 +287,14 @@ public class MainWindow extends Application implements Window {
                 for (Room r : rooms) {
                     for (int i = 0; i < items.size(); i ++) {
                         if (items.get(i).getId() == r.getId()) {
-                            roomsTable.getItems().get(i).setFromRoomModel(r);
-                            if (items.get(i).getX() != r.getX())
-                                roomsTable.getItems().get(i).setX(r.getX());
-                            if (items.get(i).getY() != r.getY())
-                                roomsTable.getItems().get(i).setY(r.getY());
-                            if (items.get(i).getWidth() != r.getWidth())
-                                roomsTable.getItems().get(i).setWidth(r.getWidth());
-                            if (items.get(i).getHeight() != r.getHeight())
-                                roomsTable.getItems().get(i).setHeight(r.getHeight());
-                            if (items.get(i).getName() != r.getName())
-                                roomsTable.getItems().get(i).setName(r.getName());
-                            if (items.get(i).getRotation() != r.getRotation())
-                                roomsTable.getItems().get(i).setRotation(r.getRotation());
+                            Room target = roomsTable.getItems().get(i);
+                            target.setFromRoomModel(r);
+                            target.setX(r.getX());
+                            target.setY(r.getY());
+                            target.setWidth(r.getWidth());
+                            target.setHeight(r.getHeight());
+                            target.setName(r.getName());
+                            target.setRotation(r.getRotation());
                             break;
                         }
                     }

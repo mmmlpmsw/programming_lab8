@@ -248,6 +248,6 @@ public class Room implements Comparable<Room>, Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, height, width, x, y, creationDate, shelf);
+        return id;
     }
 }

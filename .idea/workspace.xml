@@ -2,21 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2ede128-258c-4abd-a700-1a83c7d0d721" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Nadya.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Nadya.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/err.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/err.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/out.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/META-INF/SuperPooperUDeePee.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/META-INF/SuperPooperUDeePee.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Controller$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/Room.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas$RoomVisualBuffer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas$RoomVisualBuffer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool$ClientConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool$ClientConnector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Mirror$RoomShell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Mirror$RoomShell.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Mirror.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Mirror.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/MyWorld.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Server$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Server$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Server$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Server$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/server/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/server/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/canvas/RoomsCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/canvas/RoomsCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/server/ClientPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/server/ClientPool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ru/n4d9/server/Mirror.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/server/Mirror.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/server/Server.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -98,46 +102,6 @@
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>Click</find>
-      <find>put</find>
-      <find>Send</find>
-      <find>onM</find>
-      <find>int</find>
-      <find>main</find>
-      <find>text</find>
-      <find>tableTab</find>
-      <find>tableT</find>
-      <find>getSele</find>
-      <find>pro</find>
-      <find>owner</find>
-      <find>room_re</find>
-      <find>INTERNAL</find>
-      <find>send</find>
-      <find>re</find>
-      <find>room_</find>
-      <find>AlertType.ERROR</find>
-      <find>ALERTType.ERROR</find>
-      <find>table</find>
-      <find>modi</find>
-      <find>Mai</find>
-      <find>MainW</find>
-      <find>setOnClose</find>
-      <find>args</find>
-      <find>setA</find>
-      <find>getL</find>
-      <find>Label</find>
-      <find>ro</find>
-      <find>rota</find>
-    </findStrings>
-    <replaceStrings>
-      <replace />
-    </replaceStrings>
-    <dirStrings>
-      <dir>C:\Users\Nadya\Desktop\SuperPooperUDeePee\src\ru\n4d9\client\buttons\import</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -270,8 +234,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Server (dev)" />
         <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Server (dev)" />
       </list>
     </recent_temporary>
   </component>
@@ -350,7 +314,11 @@
       <workItem from="1565780792306" duration="11000" />
       <workItem from="1566341477900" duration="219000" />
       <workItem from="1566474187167" duration="5338000" />
-      <workItem from="1566505982685" duration="4251000" />
+      <workItem from="1566505982685" duration="4668000" />
+      <workItem from="1566668226573" duration="638000" />
+      <workItem from="1566671065528" duration="303000" />
+      <workItem from="1566671390690" duration="4167000" />
+      <workItem from="1567335840392" duration="17888000" />
     </task>
     <servers />
   </component>
