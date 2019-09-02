@@ -2,25 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2ede128-258c-4abd-a700-1a83c7d0d721" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Nadya.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Nadya.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/49934867-bc24-41a9-9601-d23f4e144b69.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/49934867-bc24-41a9-9601-d23f4e144b69.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/49934867-bc24-41a9-9601-d23f4e144b69/storage_v2/_src_/database/studs.ww2LBg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/49934867-bc24-41a9-9601-d23f4e144b69/storage_v2/_src_/database/studs.ww2LBg/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/err.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/err.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/out.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/Room.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/RoomPropertiesPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/RoomPropertiesPane.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas$RoomVisualBuffer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas$RoomVisualBuffer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool$ClientConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool$ClientConnector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/login/LoginWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/login/LoginWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/register/RegisterWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/register/RegisterWindow$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/register/RegisterWindow$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/register/RegisterWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/register/RegisterWindow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Mirror$RoomShell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Mirror$RoomShell.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Mirror.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/Mirror.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/commands/RemoveCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/commands/RemoveCommand.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/RoomPropertiesPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/RoomPropertiesPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/buttons/add/AddRoomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/buttons/add/AddRoomButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/buttons/imp/ImportRoomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/buttons/imp/ImportRoomButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/buttons/load/LoadRoomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/buttons/load/LoadRoomButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/canvas/RoomsCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/canvas/RoomsCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/server/ClientPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/server/ClientPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/login/LoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/login/LoginWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/register/RegisterWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/register/RegisterWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ru/n4d9/server/Mirror.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/server/Mirror.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/server/commands/RemoveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/server/commands/RemoveCommand.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -132,7 +142,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -170,7 +180,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Client (dev)">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Client (dev)" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="ru.n4d9.client.Client" />
       <module name="SuperPooperUDeePee" />
@@ -243,7 +253,12 @@
     <option name="allServicesViewState">
       <serviceView>
         <treeState>
-          <expand />
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@705ad57a" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+          </expand>
           <select />
         </treeState>
       </serviceView>
@@ -318,18 +333,10 @@
       <workItem from="1566668226573" duration="638000" />
       <workItem from="1566671065528" duration="303000" />
       <workItem from="1566671390690" duration="4167000" />
-      <workItem from="1567335840392" duration="17888000" />
+      <workItem from="1567335840392" duration="18632000" />
+      <workItem from="1567408347829" duration="15729000" />
     </task>
     <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -368,16 +375,6 @@
           <url>file://$PROJECT_DIR$/src/ru/n4d9/server/commands/ModifyCommand.java</url>
           <line>65</line>
           <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ru/n4d9/server/commands/RemoveCommand.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ru/n4d9/server/Controller.java</url>
-          <line>112</line>
-          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

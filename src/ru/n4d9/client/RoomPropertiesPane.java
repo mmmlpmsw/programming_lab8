@@ -41,7 +41,7 @@ public class RoomPropertiesPane extends VBox {
 
         nameInput = new TextField();
         xInput = new Slider(20, 800, 0);
-        yInput = new Slider(0, 800, 0);
+        yInput = new Slider(0, 950, 0);
         heightInput = new Slider(100, 500, 0);
         widthInput = new Slider(100, 500, 0);
 
@@ -185,7 +185,7 @@ public class RoomPropertiesPane extends VBox {
 
     private void onApply() {
         if (nameInput.getText().length() == 0 || nameInput.getText().length() > 32)
-            return;  // todo check name and show warning
+            return;
         if (!debounceThread.isAlive()) {
             debounceThread = new Thread(() -> {
                 try {

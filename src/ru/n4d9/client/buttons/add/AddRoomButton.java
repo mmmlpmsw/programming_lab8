@@ -141,7 +141,7 @@ public class AddRoomButton extends Button {
 
     private void onCreate() {
         if (nameInput.getText().length() == 0 || nameInput.getText().length() > 32)
-            return; // TODO check name
+            return;
 
         listener.onCreateRequested(
                 nameInput.getText(),

@@ -245,7 +245,6 @@ public class MainWindow extends Application implements Window {
             }
 
             case "room_modified": {
-//                Platform.runLater(() -> {
                 Room model = (Room) message.getAttachment();
                 ObservableList<Room> items = roomsTable.getItems();
                 for (int i = 0; i < items.size(); i ++) {
@@ -255,14 +254,11 @@ public class MainWindow extends Application implements Window {
                             roomsTable.getColumns().get(0).setVisible(false);
                             roomsTable.getColumns().get(0).setVisible(true);
                         });
-//                            roomsTable.getItems().set(i, (Room)message.getAttachment()); //не меняет канвас
-//
 
                         roomsTable.getSelectionModel().select(i);
                         break;
                     }
                 }
-//                });
 
 //                Room model = (Room) message.getAttachment();
 //                ObservableList<Room> items = roomsTable.getItems();
@@ -300,10 +296,6 @@ public class MainWindow extends Application implements Window {
                     }
 
                 }
-//                Platform.runLater(() -> {
-//                    roomsTable.getColumns().get(0).setVisible(false);
-//                    roomsTable.getColumns().get(0).setVisible(true);
-//                });
                 break;
             }
 

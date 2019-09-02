@@ -46,44 +46,50 @@ public class RegisterWindow implements Window {
         loadView();
         stage.show();
         stage.setOnCloseRequest(e -> registerListener.onRegister());
-        receiver.setListener(new ReceiverListener() {
-            @Override
-            public void received(int requestID, byte[] data, InetAddress address, int port) {
-                Thread outer = Thread.currentThread();
-                try {
-                    Message message = Message.deserialize(data);
-                    onMessageReceived(message);
-                    Thread.sleep(30);
-                    outer.interrupt();
-                } catch (IOException | ClassNotFoundException e) {
-                    e.printStackTrace(); // todo handling
-                } catch (InterruptedException ignored) {
-                }
-            }
-
-            @Override
-            public void exceptionThrown(Exception e) {
-                e.printStackTrace(); // todo handling
-            }
-        });
+//        receiver.setListener(new ReceiverListener() {
+//            @Override
+//            public void received(int requestID, byte[] data, InetAddress address, int port) {
+//                Thread outer = Thread.currentThread();
+//                try {
+//                    Message message = Message.deserialize(data);
+//                    onMessageReceived(message);
+////                    stage.close();
+//                    Thread.sleep(30);
+//                    outer.interrupt();
+//                } catch (IOException | ClassNotFoundException e) {
+//                    e.printStackTrace(); // todo handling
+//                } catch (InterruptedException ignored) {
+//                }
+//            }
+//
+//            @Override
+//            public void exceptionThrown(Exception e) {
+//                e.printStackTrace(); // todo handling
+//            }
+//        });
     }
 
     private void onMessageReceived(Message m) {
         switch (m.getText()) {
             case "OK_REGISTER":
+                registerListener.onRegister();
                 Platform.runLater(() -> {
-                    registerListener.onRegister();
                     stage.close();
                 });
                 break;
 
             case "ALREADY_REGISTERED": {
-                setDisable(false);
                 Platform.runLater(() -> {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setContentText(bundle.getString("register.alert.already-registered"));
                     alert.show();
+
+                    setDisable(false);
+
+//                    registerListener.onRegister();
+//                    stage.close();
                 });
+
                 break;
             }
             case "WRONG_EMAIL": {
@@ -173,6 +179,7 @@ public class RegisterWindow implements Window {
 
     @FXML
     public void onCancelClicked() {
+        Platform.runLater(stage :: close);
         registerListener.onRegister();
     }
 

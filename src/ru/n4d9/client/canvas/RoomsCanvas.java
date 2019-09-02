@@ -7,9 +7,10 @@ import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.FillRule;
 import ru.n4d9.client.Room;
+import static java.lang.Math.*;
 
+import java.awt.*;
 import java.util.*;
 
 public class RoomsCanvas extends Canvas {
@@ -116,6 +117,59 @@ public class RoomsCanvas extends Canvas {
         return new Point2D(x, y);
     }
 
+    int product(int Px, int Py, int Ax, int Ay, int Bx, int By)
+    {
+        return (Bx - Ax) * (Py - Ay) - (By - Ay) * (Px - Ax);
+    }
+
+    private boolean check (double x, double y, double w, double h, double rot, double x0, double y0) {
+
+        Point2D c = new Point2D(x+w/2, y+h/2);
+
+        //p - массив вершин повернутого прямоугольника
+        Point2D[] points = {
+                new Point2D((x-c.getX())*cos(rot) - (y-c.getY())*sin(rot) + c.getX(),
+                        (x-c.getX())*sin(rot)+(y-c.getY())*cos(rot) + c.getY()),
+
+                new Point2D((x+w-c.getX())*cos(rot) - (y-c.getY())*sin(rot) + c.getX(),
+                        (x+w-c.getX())*sin(rot)+(y-c.getY())*cos(rot) + c.getY()),
+
+                new Point2D((x+w-c.getX())*cos(rot) - (y+h-c.getY())*sin(rot)+c.getX(),
+                        (x+w-c.getX())*sin(rot)+(y+h-c.getY())*cos(rot) + c.getY()),
+
+                new Point2D((x-c.getX())*cos(rot) - (y+h-c.getY())*sin(rot)+c.getX(),
+                        (x-c.getX())*sin(rot)+(y+h-c.getX())*cos(rot) + c.getY())
+        };
+
+        //point - точка, которую надо проверить
+        Point2D point = new Point2D(x0, y0);
+
+        boolean result = false;
+
+        int x1 = (int)points[0].getX();
+        int y1 = (int)points[0].getY();
+        int x2 = (int)points[1].getX();
+        int y2 = (int)points[1].getY();
+        int x3 = (int)points[2].getX();
+        int y3 = (int)points[2].getY();
+        int x4 = (int)points[3].getX();
+        int y4 = (int)points[3].getY();
+
+
+        int
+                p1 = product((int)x0, (int)y0, x1, y1, x2, y2),
+                p2 = product((int)x0, (int)y0, x2, y2, x3, y3),
+                p3 = product((int)x0, (int)y0, x3, y3, x4, y4),
+                p4 = product((int)x0, (int)y0, x4, y4, x1, y1);
+
+        if ((p1 < 0 && p2 < 0 && p3 < 0 && p4 < 0) ||
+                (p1 > 0 && p2 > 0 && p3 > 0 && p4 > 0))
+            result = true;
+        else result = false;
+
+        return result;
+    }
+
     private void onClicked(double x, double y) {
 
         Point2D unprojected = unproject(new Point2D(x, y));
@@ -123,9 +177,16 @@ public class RoomsCanvas extends Canvas {
         x = unprojected.getX();
         y = unprojected.getY();
 
+
         for (RoomVisualBuffer current : proxy) {
-            if (x > current.visualX && x < current.visualX + current.origin.getWidth() &&
-            y > current.visualY && y < current.visualY + current.origin.getHeight()) {
+            double r = (current.origin.getHeight() + current.origin.getWidth())/2;
+            Point2D center = new Point2D(current.visualX + current.origin.getWidth()/2, current.visualY + current.origin.getHeight()/2);
+            //прямоугольник
+//            if (x > (current.visualX * current.visualRotation) && x < current.visualX + current.origin.getWidth() &&
+//            y > current.visualY && y < current.visualY + current.origin.getHeight()) {
+            //условие, которое не смогло
+//            if (check(current.visualX, current.visualY, current.origin.getWidth(), current.origin.getHeight(), current.visualRotation, x, y)) {
+            if (r*r >= pow(center.getX() - x, 2) + pow(center.getY() - y, 2)) {
                 listener.selected(current.origin);
                 return;
             }
@@ -232,6 +293,7 @@ public class RoomsCanvas extends Canvas {
          */
 
         private void draw(GraphicsContext context) {
+
             context.save();
 
             Color color = Color.rgb(128, 128, 128, .5);
@@ -250,54 +312,39 @@ public class RoomsCanvas extends Canvas {
 
            //roof
             double[] xPoints = {
-                    -origin.getWidth()/1.8 /*+ origin.getX()*/,
-                    0 /*+ origin.getX()*/,
-                    origin.getWidth()/1.8 /*+ origin.getX()*/
+                    -origin.getWidth()/1.8,
+                    0 ,
+                    origin.getWidth()/1.8
             },
                     yPoints = {
-                            -origin.getHeight()/2 /*+ origin.getY() */,
-                            -origin.getHeight() /*+ origin.getY()*/,
-                            -origin.getHeight()/2 /*+ origin.getY()*/
+                            -origin.getHeight()/2 ,
+                            -origin.getHeight() ,
+                            -origin.getHeight()/2
             };
             context.strokePolygon(xPoints, yPoints, 3);
             context.fillPolygon(xPoints, yPoints, 3);
 
+            //door
+            context.strokeRect(-3*origin.getWidth()/8, -origin.getHeight()/4,
+                                origin.getWidth()/4, 3*origin.getHeight()/4);
+            context.setFill(Color.rgb(255, 255, 255));
+            context.fillRect(-3*origin.getWidth()/8, -origin.getHeight()/4,
+                    origin.getWidth()/4, 3*origin.getHeight()/4);
+            context.setFill(Color.rgb(118, 57, 0, .7));
+            context.fillRect(-3*origin.getWidth()/8, -origin.getHeight()/4,
+                    origin.getWidth()/4, 3*origin.getHeight()/4);
+
+            //window
+            context.strokeRect(origin.getWidth()/8, -3*origin.getHeight()/8,
+                                    origin.getWidth()/4, origin.getHeight()/4);
+            context.setFill(Color.rgb(255, 255, 255));
+            context.fillRect(origin.getWidth()/8, -3*origin.getHeight()/8,
+                    origin.getWidth()/4, origin.getHeight()/4);
+            context.setFill(Color.rgb(186, 218, 255));
+            context.fillRect(origin.getWidth()/8, -3*origin.getHeight()/8,
+                    origin.getWidth()/4, origin.getHeight()/4);
+
             context.restore();
-
-
-//            context.setLineWidth(10);
-
-//            context.translate(origin.getX()+0.5*origin.getWidth(), origin.getY()+0.5*origin.getHeight());
-//            context.rotate(origin.getRotation());
-//            context.strokeRect(-origin.getWidth()/2, -origin.getHeight()/2, origin.getWidth(), origin.getHeight());
-//            context.fillRect(-origin.getWidth()/2, -origin.getHeight()/2, origin.getWidth(), origin.getHeight());
-//            double[] xPoints = {-origin.getWidth()/2 - 17, origin.getWidth()/2 + 17, 0d};
-//            double[] yPoints = {-origin.getHeight()/2, -origin.getHeight()/2, ((-30*origin.getHeight())/origin.getWidth()) - origin.getHeight()};
-//            context.strokePolygon(xPoints, yPoints, 3);
-//            context.fillPolygon(xPoints, yPoints, 3);
-//
-//            //door
-//            context.strokeRect(-3*origin.getWidth()/8, -origin.getHeight()/4,
-//                                origin.getWidth()/4, 3*origin.getHeight()/4);
-//            context.setFill(Color.rgb(255, 255, 255));
-//            context.fillRect(-3*origin.getWidth()/8, -origin.getHeight()/4,
-//                    origin.getWidth()/4, 3*origin.getHeight()/4);
-//            context.setFill(Color.rgb(118, 57, 0, .7));
-//            context.fillRect(-3*origin.getWidth()/8, -origin.getHeight()/4,
-//                    origin.getWidth()/4, 3*origin.getHeight()/4);
-//
-//            //window
-//            context.strokeRect(origin.getWidth()/8, -3*origin.getHeight()/8,
-//                                    origin.getWidth()/4, origin.getHeight()/4);
-//            context.setFill(Color.rgb(255, 255, 255));
-//            context.fillRect(origin.getWidth()/8, -3*origin.getHeight()/8,
-//                    origin.getWidth()/4, origin.getHeight()/4);
-//            context.setFill(Color.rgb(186, 218, 255));
-//            context.fillRect(origin.getWidth()/8, -3*origin.getHeight()/8,
-//                    origin.getWidth()/4, origin.getHeight()/4);
-
-
-//            context.restore();
         }
 
         /**

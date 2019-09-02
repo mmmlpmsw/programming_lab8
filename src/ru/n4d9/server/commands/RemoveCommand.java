@@ -32,10 +32,15 @@ public class RemoveCommand implements RequiresAuthorization, Command {
         if (resultSet.next()) {
             Room model = Room.fromResultSet(resultSet);
             controller.removeRoomFromMirror(model, message.getUserid());
+            Controller.removeRoomById(room_id, connection);
 
-            statement = connection.prepareStatement("delete from rooms where id = ?;");
-            statement.setInt(1, room_id);
-            statement.execute();
+//            statement = connection.prepareStatement("delete from rooms where id = ?;");
+//            statement.setInt(1, room_id);
+//            statement.execute();
+//
+//            statement = connection.prepareStatement("delete from things where room_id = ?");
+//            statement.setInt(1, room_id);
+//            statement.execute();
 
             clientPool.sendAll(new Message("room_removed", model));
         }

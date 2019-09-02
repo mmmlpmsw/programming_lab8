@@ -88,6 +88,7 @@ public class LoginWindow implements Window {
                 });
                 break;
         }
+
     }
 
     @Override

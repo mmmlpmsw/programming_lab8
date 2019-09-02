@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Mirror implements ContextFriendly {
+    //TODO обновление базы данных
     private static final float RATIO = 1f;
 
     private Controller controller;
@@ -101,7 +102,8 @@ public class Mirror implements ContextFriendly {
         }
 
         makeBox(-5000, 1000, 100000, 1000); // пол
-        makeBox(-100, 0, 100, 1000); // пол
+        makeBox(-100, 0, 100, 1000); // стена
+        makeBox(1000, 0, 100, 1000); // стена
     }
 
     private void makeBox(float x, float y, float w, float h) {
@@ -145,10 +147,6 @@ public class Mirror implements ContextFriendly {
         PolygonShape roomShape = new PolygonShape();
         roomShape.setAsBox((float)room.getWidth()/2, (float)room.getHeight()/2);
 
-//        roomBody.createFixture(roofShape, 1f);
-//        FixtureDef fDef = new FixtureDef();
-//        fDef.shape = roomShape;
-
         roomBody.createFixture(roomShape, 1);
 
         PolygonShape roofShape = new PolygonShape();
@@ -160,11 +158,7 @@ public class Mirror implements ContextFriendly {
         roofShape.set(roofCoords);
         roomBody.createFixture(roofShape, 1);
 
-//        roomBody.createFixture(roomShape, 1f);
-
         roomBody.setUserData(room);
-
-//        roomBody.setTransform((float)room.getX(), (float)room.getY(), (float)room.getRotation());
 
         return roomBody;
     }
@@ -207,7 +201,7 @@ public class Mirror implements ContextFriendly {
         world.destroyBody(roomShell.getBody());
         boolean a = roomShells.remove(roomShell);
 
-//        logger.verbose("Результат удаления: " + a);
+        logger.verbose("Результат удаления: " + a);
         logger.verbose("Удалена комната: " + room.toString());
         logger.verbose("Сейчас в коллекции " + roomShells.size() + " комнат.");
     }
@@ -233,15 +227,13 @@ public class Mirror implements ContextFriendly {
     }
 
     private void sendState() {
-//        while (true) {
-            ArrayList<Room> roomShellsRooms = new ArrayList<>();
-            for (RoomShell shell : roomShells) {
-                roomShellsRooms.add(shell.getRoom());
-            }
+                ArrayList<Room> roomShellsRooms = new ArrayList<>();
+                for (RoomShell shell : roomShells) {
+                    roomShellsRooms.add(shell.getRoom());
+                }
 
 
-            clientPool.sendAll(new Message("collection_state", roomShellsRooms));
-//        }
+                clientPool.sendAll(new Message("collection_state", roomShellsRooms));
     }
 
     private class RoomShell {
@@ -255,8 +247,6 @@ public class Mirror implements ContextFriendly {
         public Body getBody() { return body; }
 
         public void setBody(Body body) { this.body = body; }
-
-        public RoomShell() {}
 
         public RoomShell(Room room) {
             setRoom(room);
