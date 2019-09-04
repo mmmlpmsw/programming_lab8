@@ -138,7 +138,9 @@ public class LoginWindow implements Window {
     public void onRegisterClick() {
         Platform.runLater(() -> {
             stage.hide();
-            new RegisterWindow(MainWindow.getReceiver(), () -> stage.show());
+            new RegisterWindow(MainWindow.getReceiver(), () -> {
+                Platform.runLater(stage :: show);
+            });
         });
     }
 

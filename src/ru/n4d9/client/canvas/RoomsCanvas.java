@@ -73,6 +73,7 @@ public class RoomsCanvas extends Canvas {
         return userColors;
     }
 
+
     public void selectRoom(Room model) {
         if (model == null) {
             selected = null;

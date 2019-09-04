@@ -16,10 +16,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-/**
- * Ультра-прокачанная утяжелённая экспериментальная сверхпрочная сверхкрутая
- * сверхдизайнерская сверх-гипер-ссылка. При клике создаёт поп-ап для создания существа.
- */
 public class ImportRoomButton extends Button {
     private ImportRoomButtonListener listener = (filename) -> {};
     private Stage popup;
@@ -119,8 +115,6 @@ public class ImportRoomButton extends Button {
     }
 
     private void onCreate() {
-        if (nameInput.getText().length() == 0 || nameInput.getText().length() > 32)
-            return;
 
         listener.onCreateRequested(
                 nameInput.getText()

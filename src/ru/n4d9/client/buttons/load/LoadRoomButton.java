@@ -16,10 +16,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import ru.n4d9.client.buttons.imp.ImportRoomButtonListener;
 
-/**
- * Ультра-прокачанная утяжелённая экспериментальная сверхпрочная сверхкрутая
- * сверхдизайнерская сверх-гипер-ссылка. При клике создаёт поп-ап для создания существа.
- */
 public class LoadRoomButton extends Button {
     private ImportRoomButtonListener listener = (filename) -> {};
     private Stage popup;

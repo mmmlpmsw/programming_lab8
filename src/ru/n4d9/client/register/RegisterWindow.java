@@ -46,27 +46,28 @@ public class RegisterWindow implements Window {
         loadView();
         stage.show();
         stage.setOnCloseRequest(e -> registerListener.onRegister());
-//        receiver.setListener(new ReceiverListener() {
-//            @Override
-//            public void received(int requestID, byte[] data, InetAddress address, int port) {
-//                Thread outer = Thread.currentThread();
-//                try {
-//                    Message message = Message.deserialize(data);
-//                    onMessageReceived(message);
-////                    stage.close();
-//                    Thread.sleep(30);
-//                    outer.interrupt();
-//                } catch (IOException | ClassNotFoundException e) {
-//                    e.printStackTrace(); // todo handling
-//                } catch (InterruptedException ignored) {
-//                }
-//            }
+        receiver.setListener(new ReceiverListener() {
+            @Override
+            public void received(int requestID, byte[] data, InetAddress address, int port) {
+                Thread outer = Thread.currentThread();
+                try {
+                    Message message = Message.deserialize(data);
+                    onMessageReceived(message);
+                    registerListener.onRegister();
 //
-//            @Override
-//            public void exceptionThrown(Exception e) {
-//                e.printStackTrace(); // todo handling
-//            }
-//        });
+                    Thread.sleep(30);
+                    outer.interrupt();
+                } catch (IOException | ClassNotFoundException e) {
+                    e.printStackTrace(); // todo handling
+                } catch (InterruptedException ignored) {
+                }
+            }
+
+            @Override
+            public void exceptionThrown(Exception e) {
+                e.printStackTrace(); // todo handling
+            }
+        });
     }
 
     private void onMessageReceived(Message m) {
@@ -86,8 +87,6 @@ public class RegisterWindow implements Window {
 
                     setDisable(false);
 
-//                    registerListener.onRegister();
-//                    stage.close();
                 });
 
                 break;
@@ -99,7 +98,6 @@ public class RegisterWindow implements Window {
                     alert.setContentText(bundle.getString("register.alert.incorrect-email"));
                     alert.show();
                 });
-               //showErrorMessage(bundle.getString("register.alert.incorrect-email"));
                 break;
             }
             case "INTERNAL_ERROR": {

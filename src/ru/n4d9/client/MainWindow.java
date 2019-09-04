@@ -14,12 +14,14 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ru.n4d9.Utils.Message;
 import ru.n4d9.Utils.StringEntity;
+import ru.n4d9.client.buttons.add.AddFromJSONButton;
 import ru.n4d9.client.buttons.add.AddRoomButton;
 import ru.n4d9.client.buttons.imp.ImportRoomButton;
 import ru.n4d9.client.buttons.load.LoadRoomButton;
 import ru.n4d9.client.canvas.RoomsCanvas;
 import ru.n4d9.client.login.LoginWindow;
 import ru.n4d9.client.settings.SettingsDialog;
+import ru.n4d9.json.JSONParseException;
 import ru.n4d9.server.FileLoader;
 import ru.n4d9.transmitter.Receiver;
 import ru.n4d9.transmitter.ReceiverListener;
@@ -53,6 +55,7 @@ public class MainWindow extends Application implements Window {
     @FXML private Tab tableTab;
     @FXML private Tab canvasTab;
     @FXML private AddRoomButton addButton;
+    @FXML private AddFromJSONButton addJSONButton;
     @FXML private ImportRoomButton importButton;
     @FXML private LoadRoomButton loadButton;
     @FXML private RoomsCanvas roomsCanvas;
@@ -130,6 +133,8 @@ public class MainWindow extends Application implements Window {
 
             importButton.setRoomImportListener(MainWindow::importRoom);
             loadButton.setRoomImportListener(MainWindow::loadRoom);
+
+            addJSONButton.setRoomImportListener(MainWindow :: addfromJSONroom);
 
             roomsCanvas.clearProxy();
             roomsCanvas.setTarget(roomsTable.getItems());
@@ -216,9 +221,23 @@ public class MainWindow extends Application implements Window {
         send("load", new StringEntity().set(filename));
     }
 
+    private static void addfromJSONroom(String JSONroom) {
+        try {
+            Room room = RoomFactory.makeRoomFromJSON(JSONroom);
+            System.out.println(room);
+            send("add", room);
+        } catch (JSONParseException e) {
+            e.printStackTrace();
+            Platform.runLater(() -> {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setContentText(e.getMessage());
+                alert.show();
+            });
+        }
+
+    }
     @SuppressWarnings("unchecked")
     private void proccessMessage(Message message) {
-//        System.out.println(message.getText());
         switch (message.getText()){
 
             case "room_added": {
