@@ -34,6 +34,7 @@ public class Mirror implements ContextFriendly {
         }
         world = new World(new Vector2(0,  10), true);
         createWorld();
+
         new Thread(() -> {
             long iteration = 0;
             while (true) {

@@ -38,6 +38,7 @@ public class ClientPool implements ContextFriendly {
             logger.verbose("Рассылка сообщения " + message + " подписанным коннекторам (" + connectors.size() + ")");
         for (ClientConnector connector: connectors) {
             connector.send(message);
+
         }
     }
 
@@ -58,7 +59,7 @@ public class ClientPool implements ContextFriendly {
         logger.verbose("Обработка запроса: " + message + " от " + address + ":" + port);
 
         ClientConnector connector = new ClientConnector(address, message.getSourcePort());
-        connectors.add(connector);
+//        connectors.add(connector);
         if (message.getUserid() == null)
             logger.log("Пришел запрос от неавторизованного клиента " + message.getText());
         logger.log("Пришел запрос от клиента " + address.getHostAddress() + ":" + port + " "  + message.getText());
@@ -76,6 +77,13 @@ public class ClientPool implements ContextFriendly {
 //                resolver.resolve(connector, message);
                 break;
         }
+
+                try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        connectors.add(connector);
     }
 
 
@@ -94,7 +102,8 @@ public class ClientPool implements ContextFriendly {
          * @param m сообщение
          */
         public synchronized void send(Message m) {
-            logger.verbose("Отправка сообщения " + m + " через коннектор " + this);
+            if (!m.getText().equals("collection_state"))
+                logger.verbose("Отправка сообщения " + m + " через коннектор " + this);
             try {
                 Sender.send(m.serialize(), address, port, false, new SenderAdapter() {
                     @Override

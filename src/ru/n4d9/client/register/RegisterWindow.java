@@ -54,6 +54,7 @@ public class RegisterWindow implements Window {
                     Message message = Message.deserialize(data);
                     onMessageReceived(message);
                     registerListener.onRegister();
+                    send("disconnect", null);
 //
                     Thread.sleep(30);
                     outer.interrupt();
@@ -88,6 +89,7 @@ public class RegisterWindow implements Window {
                     setDisable(false);
 
                 });
+                registerListener.onRegister();
 
                 break;
             }

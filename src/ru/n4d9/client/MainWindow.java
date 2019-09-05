@@ -102,7 +102,9 @@ public class MainWindow extends Application implements Window {
             roomObservableList = roomsTable.getItems();
         }
 
+
         try {
+//            HashMap<Integer, Color> a = roomsCanvas.getUserColors();
             FXMLLoader loader = new FXMLLoader();
             loader.setResources(Client.currentResourceBundle());
             loader.setController(this);
@@ -110,6 +112,77 @@ public class MainWindow extends Application implements Window {
             stage = new Stage();
             stage.setScene(new Scene(root));
             userNameLabel.setText(username);
+//            roomsCanvas.setUserColors(a);
+
+            stage.setMinWidth(600);
+            stage.setMinHeight(400);
+
+            stage.setOnCloseRequest((e) -> {
+                send("disconnect");
+                System.exit(0);
+            });
+
+            if (roomObservableList != null) {
+                roomsTable.setItems(roomObservableList);
+            }
+
+            roomPropertiesPane.setApplyingListener(model -> send("modify", model));
+
+            roomsTable.setVisible(true);
+            tableTab.getTabPane().heightProperty().addListener((observable, oldValue, newValue) -> roomsTable.setPrefHeight(tableTab.getTabPane().getHeight()));
+
+            addButton.setRoomAddListener(MainWindow::addRoom);
+            addButton.setParent(stage);
+
+            importButton.setRoomImportListener(MainWindow::importRoom);
+            loadButton.setRoomImportListener(MainWindow::loadRoom);
+
+            addJSONButton.setRoomImportListener(MainWindow :: addfromJSONroom);
+
+            roomsCanvas.clearProxy();
+            roomsCanvas.setTarget(roomsTable.getItems());
+
+            roomsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> roomsCanvas.selectRoom((Room)newValue));
+            roomsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
+                    roomPropertiesPane.selectCreature((Room)newValue, newValue != null && ((Room) newValue).getOwnerId() == id));
+            roomsCanvas.widthProperty().bind(canvasTab.getTabPane().widthProperty());
+            roomsCanvas.heightProperty().bind(canvasTab.getTabPane().heightProperty());
+
+            roomsCanvas.setSelectingListener((m) -> {
+                if (m != null)
+                    roomsTable.getSelectionModel().select(m);
+                else
+                    roomsTable.getSelectionModel().clearSelection();
+            });
+
+            roomPropertiesPane.setDeletingListener(roomId -> send("remove", roomId));
+            roomPropertiesPane.setRemovingGreaterListener(model -> send("remove_greater", model));
+            roomPropertiesPane.setRemovingLowerListener(model -> send("remove_lower", model));
+            roomPropertiesPane.selectCreature(null, false);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loadView1(){
+        ObservableList<Room> roomObservableList = null;
+
+        if (roomsTable != null) {
+            roomObservableList = roomsTable.getItems();
+        }
+
+
+        try {
+            HashMap<Integer, Color> a = roomsCanvas.getUserColors();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setResources(Client.currentResourceBundle());
+            loader.setController(this);
+            Parent root = loader.load(getClass().getResourceAsStream("/layout/main.fxml"));
+            stage = new Stage();
+            stage.setScene(new Scene(root));
+            userNameLabel.setText(username);
+            roomsCanvas.setUserColors(a);
 
             stage.setMinWidth(600);
             stage.setMinHeight(400);
@@ -375,7 +448,7 @@ public class MainWindow extends Application implements Window {
     public void onSettingsClicked() {
         new SettingsDialog((changed) -> {
             if (changed) {
-                loadView();
+                loadView1();
             }
             stage.show();
         });

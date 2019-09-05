@@ -38,6 +38,7 @@ public class LoginWindow implements Window {
             Thread outer = Thread.currentThread();
             try {
                 Message message = Message.deserialize(data);
+                System.out.println(message.getText());
                 onMessageReceived(message);
                 Thread.sleep(30);
                 outer.interrupt();
@@ -140,6 +141,7 @@ public class LoginWindow implements Window {
             stage.hide();
             new RegisterWindow(MainWindow.getReceiver(), () -> {
                 Platform.runLater(stage :: show);
+                MainWindow.getReceiver().setListener(receiverListener);
             });
         });
     }

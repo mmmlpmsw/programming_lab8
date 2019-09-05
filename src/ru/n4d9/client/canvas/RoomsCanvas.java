@@ -74,6 +74,11 @@ public class RoomsCanvas extends Canvas {
     }
 
 
+    public void setUserColors(HashMap<Integer, Color>f) {
+        this.userColors = f;
+    }
+
+
     public void selectRoom(Room model) {
         if (model == null) {
             selected = null;
@@ -299,8 +304,9 @@ public class RoomsCanvas extends Canvas {
 
             Color color = Color.rgb(128, 128, 128, .5);
 
-            if (userColors.containsKey(origin.getOwnerId()))
+            if (userColors.containsKey(origin.getOwnerId())) {
                 color = userColors.get(origin.getOwnerId()).deriveColor(0, 1, 1, .5);
+            }
 
             context.setFill(color);
             context.setStroke(color.darker());
