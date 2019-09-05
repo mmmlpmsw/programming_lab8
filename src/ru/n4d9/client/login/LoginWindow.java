@@ -68,6 +68,7 @@ public class LoginWindow implements Window {
     }
 
     private void onMessageReceived(Message m) {
+        System.out.println("LoginWindow: "+m.getText());
         switch (m.getText()) {
             case "OK":
                 loginListener.onLogin(m.getUserid(), m.getUsername(), m.getLogin(), m.getPassword(), (ArrayList<Room>)m.getAttachment(), m.getUserColor());
@@ -141,7 +142,7 @@ public class LoginWindow implements Window {
             stage.hide();
             new RegisterWindow(MainWindow.getReceiver(), () -> {
                 Platform.runLater(stage :: show);
-                MainWindow.getReceiver().setListener(receiverListener);
+
             });
         });
     }

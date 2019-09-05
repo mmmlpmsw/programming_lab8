@@ -233,8 +233,8 @@ public class Mirror implements ContextFriendly {
                     roomShellsRooms.add(shell.getRoom());
                 }
 
-
-                clientPool.sendAll(new Message("collection_state", roomShellsRooms));
+                if (!(clientPool.getConnectors().size() == 0))
+                    clientPool.sendAll(new Message("collection_state", roomShellsRooms));
     }
 
     private class RoomShell {

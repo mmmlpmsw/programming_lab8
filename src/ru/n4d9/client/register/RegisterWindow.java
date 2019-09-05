@@ -72,7 +72,9 @@ public class RegisterWindow implements Window {
     }
 
     private void onMessageReceived(Message m) {
+        System.out.println("RegistrationWindow: " +m.getText());
         switch (m.getText()) {
+
             case "OK_REGISTER":
                 registerListener.onRegister();
                 Platform.runLater(() -> {

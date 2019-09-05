@@ -104,7 +104,6 @@ public class MainWindow extends Application implements Window {
 
 
         try {
-//            HashMap<Integer, Color> a = roomsCanvas.getUserColors();
             FXMLLoader loader = new FXMLLoader();
             loader.setResources(Client.currentResourceBundle());
             loader.setController(this);
@@ -112,7 +111,6 @@ public class MainWindow extends Application implements Window {
             stage = new Stage();
             stage.setScene(new Scene(root));
             userNameLabel.setText(username);
-//            roomsCanvas.setUserColors(a);
 
             stage.setMinWidth(600);
             stage.setMinHeight(400);

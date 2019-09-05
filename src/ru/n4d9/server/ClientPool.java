@@ -6,21 +6,22 @@ import ru.n4d9.transmitter.SenderAdapter;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 public class ClientPool implements ContextFriendly {
 
-    private Set<ClientConnector> connectors;
+    private ArrayList<ClientConnector> connectors;
     private Logger logger;
     private RequestResolver resolver;
 
     ClientPool() {
-        connectors = new HashSet<>();
+        connectors = new ArrayList<>();
     }
 
-    public Set<ClientConnector> getConnectors() {
+    public ArrayList<ClientConnector> getConnectors() {
         return connectors;
     }
 
@@ -36,8 +37,8 @@ public class ClientPool implements ContextFriendly {
     public synchronized void sendAll(Message message) {
         if (!message.getText().equals("collection_state"))
             logger.verbose("Рассылка сообщения " + message + " подписанным коннекторам (" + connectors.size() + ")");
-        for (ClientConnector connector: connectors) {
-            connector.send(message);
+        for (int i = 0; i < connectors.size(); i ++) {
+            connectors.get(i).send(message);
 
         }
     }
@@ -67,7 +68,12 @@ public class ClientPool implements ContextFriendly {
         switch (message.getText()) {
             case "disconnect":
                 logger.verbose("Отсоединение коннектора: " + connector);
-                connectors.remove(connector);
+                boolean a = connectors.remove(connector);
+                if (a) {
+                    logger.verbose("yes");
+                }
+
+                else logger.verbose("no");
                 logger.log("Клиент " + address.getHostAddress() + ":" + port + " отсоединился.");
                 break;
 
