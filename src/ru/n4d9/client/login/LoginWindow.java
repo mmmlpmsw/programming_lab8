@@ -32,31 +32,8 @@ public class LoginWindow implements Window {
     private PasswordField passwordField;
     private Button loginButton, registerButton;
 
-    private ReceiverListener receiverListener = new ReceiverListener() {
-        @Override
-        public void received(int requestID, byte[] data, InetAddress address, int port) {
-            Thread outer = Thread.currentThread();
-            try {
-                Message message = Message.deserialize(data);
-                System.out.println(message.getText());
-                onMessageReceived(message);
-                Thread.sleep(30);
-                outer.interrupt();
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace(); // todo handling
-            } catch (InterruptedException ignored) {
-            }
-        }
-
-        @Override
-        public void exceptionThrown(Exception e) {
-            e.printStackTrace();
-            // todo handling
-        }
-    };
 
     public LoginWindow(LoginListener listener, String autofillLogin, String autofillPassword) {
-        MainWindow.getReceiver().setListener(receiverListener);
       //  send("unsubscribe", null);
         this.loginListener = listener;
         stage = new Stage();
@@ -64,13 +41,16 @@ public class LoginWindow implements Window {
         loadView();
         emailField.setText(autofillLogin);
         passwordField.setText(autofillPassword);
-        stage.show();
+//        stage.show();
+        stage.hide();
+        promptRegister();
     }
 
     private void onMessageReceived(Message m) {
         System.out.println("LoginWindow: "+m.getText());
         switch (m.getText()) {
             case "OK":
+                MainWindow.send("subscribe");
                 loginListener.onLogin(m.getUserid(), m.getUsername(), m.getLogin(), m.getPassword(), (ArrayList<Room>)m.getAttachment(), m.getUserColor());
                 Platform.runLater(() -> stage.close());
                 break;
@@ -89,7 +69,28 @@ public class LoginWindow implements Window {
                     alert.show();
                 });
                 break;
+
         }
+
+    }
+
+    private void promptRegister() {
+        new RegisterWindow(() ->
+            Platform.runLater(stage::show)
+        );
+            MainWindow.getReceiver().setListener(new ReceiverListener() {
+                public void received(int requestID, byte[] data, InetAddress address, int port) {
+                    try {
+                        onMessageReceived(Message.deserialize(data));
+                    } catch (IOException | ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+                public void exceptionThrown(Exception e) {
+                    e.printStackTrace(); // todo handle
+                }
+        });
 
     }
 
@@ -135,17 +136,6 @@ public class LoginWindow implements Window {
         }
     }
 
-
-    @FXML
-    public void onRegisterClick() {
-        Platform.runLater(() -> {
-            stage.hide();
-            new RegisterWindow(MainWindow.getReceiver(), () -> {
-                Platform.runLater(stage :: show);
-
-            });
-        });
-    }
 
     @FXML
     public void onLoginClick() {

@@ -14,15 +14,21 @@ import java.util.Set;
 public class ClientPool implements ContextFriendly {
 
     private ArrayList<ClientConnector> connectors;
+    private ArrayList<ClientConnector> subscribedConnectors;
     private Logger logger;
     private RequestResolver resolver;
 
     ClientPool() {
         connectors = new ArrayList<>();
+        subscribedConnectors = new ArrayList<>();
     }
 
-    public ArrayList<ClientConnector> getConnectors() {
+    ArrayList<ClientConnector> getConnectors() {
         return connectors;
+    }
+
+    public ArrayList<ClientConnector> getSubscribedConnectors() {
+        return subscribedConnectors;
     }
 
     @Override
@@ -37,7 +43,8 @@ public class ClientPool implements ContextFriendly {
     public synchronized void sendAll(Message message) {
         if (!message.getText().equals("collection_state"))
             logger.verbose("Рассылка сообщения " + message + " подписанным коннекторам (" + connectors.size() + ")");
-        for (int i = 0; i < connectors.size(); i ++) {
+//        for (int i = 0; i < connectors.size(); i ++) {
+        for (int i = 0; i < subscribedConnectors.size(); i ++) {
             connectors.get(i).send(message);
 
         }
@@ -75,8 +82,13 @@ public class ClientPool implements ContextFriendly {
 
                 else logger.verbose("no");
                 logger.log("Клиент " + address.getHostAddress() + ":" + port + " отсоединился.");
+
+                subscribedConnectors.remove(connector);
                 break;
 
+            case "subscribe": {
+                subscribedConnectors.add(connector);
+            }
             default:
                 logger.verbose("Вызов ресолвера для сообщения " + message + ", ответ коннектору " + connector);
                 new Thread(() -> resolver.resolve(connector, message)).start();

@@ -42,7 +42,6 @@
                 <Insets bottom="20"/>
             </VBox.margin>
             <Button defaultButton="true" id="login-button" text="%login.login.button" onAction="#onLoginClick"/>
-            <Button text="%login.register.button" onAction="#onRegisterClick"/>
 
         </HBox>
     </VBox>

@@ -163,7 +163,7 @@ public class MainWindow extends Application implements Window {
         }
     }
 
-    public void loadView1(){
+    public void reload(){
         ObservableList<Room> roomObservableList = null;
 
         if (roomsTable != null) {
@@ -349,20 +349,6 @@ public class MainWindow extends Application implements Window {
                         break;
                     }
                 }
-
-//                Room model = (Room) message.getAttachment();
-//                ObservableList<Room> items = roomsTable.getItems();
-//                for (int i = 0; i < items.size(); i ++) {
-//                    if (items.get(i).getId() == model.getId()) {
-//                        roomsTable.getItems().get(i).setFromRoomModel(model);
-//                        Platform.runLater(() -> {
-//                            roomsTable.getColumns().get(0).setVisible(false);
-//                            roomsTable.getColumns().get(0).setVisible(true);
-//                        });
-//                        roomsTable.getSelectionModel().select(i);
-//                        break;
-//                    }
-//                }
                 break;
 
             }
@@ -446,7 +432,7 @@ public class MainWindow extends Application implements Window {
     public void onSettingsClicked() {
         new SettingsDialog((changed) -> {
             if (changed) {
-                loadView1();
+                reload();
             }
             stage.show();
         });

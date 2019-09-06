@@ -35,7 +35,7 @@
             </VBox.margin>
         </TextField>
 
-        <HBox alignment="CENTER">
+<!--        <HBox alignment="CENTER">-->
             <Button text="%register.send-password" alignment="CENTER" textAlignment="CENTER"
                     fx:id = "registerButton" onAction="#onSendClick" >
                 <VBox.margin>
@@ -43,14 +43,14 @@
                 </VBox.margin>
             </Button>
 
-            <Hyperlink text = "%main.cancel" fx:id="cancelLink" alignment="CENTER" onMouseClicked="#onCancelClicked">
-                <HBox.margin>
-                    <Insets top="10" right="10" left="30" bottom="10"></Insets>
-                </HBox.margin>
-            </Hyperlink>
 
+<!--        </HBox>-->
 
-        </HBox>
+        <Hyperlink text = "%already.have.account" fx:id="cancelLink" alignment="CENTER" onMouseClicked="#onCancelClicked">
+            <HBox.margin>
+                <Insets top="10" right="10" left="30" bottom="10"></Insets>
+            </HBox.margin>
+        </Hyperlink>
 
 
     </VBox>

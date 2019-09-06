@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import ru.n4d9.Utils.Message;
 import ru.n4d9.client.Client;
+import ru.n4d9.client.MainWindow;
 import ru.n4d9.client.Window;
 import ru.n4d9.client.settings.SettingsDialog;
 import ru.n4d9.transmitter.Receiver;
@@ -39,13 +40,10 @@ public class RegisterWindow implements Window {
     @FXML private Button registerButton;
     @FXML private Hyperlink cancelLink;
 
-    public RegisterWindow(Receiver receiver, RegisterListener l) {
+    public RegisterWindow(RegisterListener l) {
         registerListener = l;
-        this.receiver = receiver;
+        this.receiver = MainWindow.getReceiver();
         stage = new Stage();
-        loadView();
-        stage.show();
-        stage.setOnCloseRequest(e -> registerListener.onRegister());
         receiver.setListener(new ReceiverListener() {
             @Override
             public void received(int requestID, byte[] data, InetAddress address, int port) {
@@ -53,9 +51,9 @@ public class RegisterWindow implements Window {
                 try {
                     Message message = Message.deserialize(data);
                     onMessageReceived(message);
-                    registerListener.onRegister();
+//                    registerListener.onRegister();
                     send("disconnect", null);
-//
+
                     Thread.sleep(30);
                     outer.interrupt();
                 } catch (IOException | ClassNotFoundException e) {
@@ -69,6 +67,9 @@ public class RegisterWindow implements Window {
                 e.printStackTrace(); // todo handling
             }
         });
+        loadView();
+        stage.show();
+        stage.setOnCloseRequest(e -> System.exit(0));
     }
 
     private void onMessageReceived(Message m) {
@@ -77,9 +78,7 @@ public class RegisterWindow implements Window {
 
             case "OK_REGISTER":
                 registerListener.onRegister();
-                Platform.runLater(() -> {
-                    stage.close();
-                });
+                Platform.runLater(() -> { stage.close(); });
                 break;
 
             case "ALREADY_REGISTERED": {
