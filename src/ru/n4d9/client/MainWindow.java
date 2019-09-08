@@ -46,6 +46,8 @@ public class MainWindow extends Application implements Window {
     private static ArrayList<Room> rooms;
     private ResourceBundle bundle = Client.currentResourceBundle();
 
+    private LoginWindow loginWindow;
+
     static String autofillLogin = "", autofillPassword = "";
 
     @FXML private Label userNameLabel;
@@ -90,7 +92,7 @@ public class MainWindow extends Application implements Window {
         }
 
         stage.hide();
-        promptLogin();
+        promptLogin(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -113,7 +115,7 @@ public class MainWindow extends Application implements Window {
             userNameLabel.setText(username);
 
             stage.setMinWidth(600);
-            stage.setMinHeight(400);
+            stage.setMinHeight(600);
 
             stage.setOnCloseRequest((e) -> {
                 send("disconnect");
@@ -183,7 +185,7 @@ public class MainWindow extends Application implements Window {
             roomsCanvas.setUserColors(a);
 
             stage.setMinWidth(600);
-            stage.setMinHeight(400);
+            stage.setMinHeight(600);
 
             stage.setOnCloseRequest((e) -> {
                 send("disconnect");
@@ -240,10 +242,12 @@ public class MainWindow extends Application implements Window {
         this.password = password;
     }
 
-    private void promptLogin() {
-        new LoginWindow((id, username, login, password, rooms, color) -> {
+    private void promptLogin(boolean isInit) {
+        this.loginWindow = new LoginWindow(isInit, (id, username, login, password, rooms, color) -> {
             Platform.runLater(() -> {
+
                 stage.show();
+
                 setParameters(id, username, login, password);
                 userNameLabel.setText(username);
                 //TODO color
@@ -257,11 +261,11 @@ public class MainWindow extends Application implements Window {
                     try {
                         proccessMessage(Message.deserialize(data));
                     } catch (IOException | ClassNotFoundException e) {
-                        e.printStackTrace(); // todo handle
+                        e.printStackTrace(); // handle
                     }
                 }
                 public void exceptionThrown(Exception e) {
-                    e.printStackTrace(); // todo handle
+                    e.printStackTrace(); // handle
                 }
             });
             receiver.startListening();
@@ -309,8 +313,9 @@ public class MainWindow extends Application implements Window {
     }
     @SuppressWarnings("unchecked")
     private void proccessMessage(Message message) {
+        if (!message.getText().equals("collection_state"))
+            System.out.println("MainWindow: " + message.getText());
         switch (message.getText()){
-
             case "room_added": {
                 roomsTable.getItems().add((Room)message.getAttachment());
                 break;
@@ -344,6 +349,8 @@ public class MainWindow extends Application implements Window {
                             roomsTable.getColumns().get(0).setVisible(false);
                             roomsTable.getColumns().get(0).setVisible(true);
                         });
+//                        roomsCanvas.clearProxy();
+                        roomsCanvas.setTarget(roomsTable.getItems());
 
                         roomsTable.getSelectionModel().select(i);
                         break;
@@ -390,6 +397,14 @@ public class MainWindow extends Application implements Window {
                     alert.show();
                 });
                 break;
+
+            case "OK":
+                MainWindow.send("subscribe");
+                loginWindow.getLoginListener().onLogin(
+                        message.getUserid(), message.getUsername(), message.getLogin(), message.getPassword(),
+                        (ArrayList<Room>)message.getAttachment(), message.getUserColor());
+                Platform.runLater(() -> loginWindow.getStage().close()); //todo maybe here
+                break;
         }
 
     }
@@ -420,7 +435,7 @@ public class MainWindow extends Application implements Window {
                 }
             });
         } catch (IOException e) {
-            e.printStackTrace(); // todo handling
+            e.printStackTrace(); // handle
         }
     }
 
@@ -439,11 +454,12 @@ public class MainWindow extends Application implements Window {
         stage.hide();
     }
 
+
     @FXML
     public void onExitClicked() {
         send("disconnect");
         stage.close();
-        promptLogin();
+        promptLogin(false);
     }
 
 }

@@ -31,7 +31,7 @@ public class RegisterWindow implements Window {
     ResourceBundle bundle = Client.currentResourceBundle();
     private Stage stage;
     private RegisterListener registerListener;
-    private Receiver receiver;
+//    private Receiver receiver;
     private static final int SENDING_PORT = 6666;
 
 
@@ -42,9 +42,9 @@ public class RegisterWindow implements Window {
 
     public RegisterWindow(RegisterListener l) {
         registerListener = l;
-        this.receiver = MainWindow.getReceiver();
+//        this.receiver = MainWindow.getReceiver();
         stage = new Stage();
-        receiver.setListener(new ReceiverListener() {
+        MainWindow.getReceiver().setListener(new ReceiverListener() {
             @Override
             public void received(int requestID, byte[] data, InetAddress address, int port) {
                 Thread outer = Thread.currentThread();
@@ -57,14 +57,14 @@ public class RegisterWindow implements Window {
                     Thread.sleep(30);
                     outer.interrupt();
                 } catch (IOException | ClassNotFoundException e) {
-                    e.printStackTrace(); // todo handling
+                    e.printStackTrace(); // handle
                 } catch (InterruptedException ignored) {
                 }
             }
 
             @Override
             public void exceptionThrown(Exception e) {
-                e.printStackTrace(); // todo handling
+                e.printStackTrace(); // handle
             }
         });
         loadView();
@@ -83,14 +83,14 @@ public class RegisterWindow implements Window {
 
             case "ALREADY_REGISTERED": {
                 Platform.runLater(() -> {
+                    setDisable(false);
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setContentText(bundle.getString("register.alert.already-registered"));
                     alert.show();
 
-                    setDisable(false);
+                   setDisable(false);
 
                 });
-                registerListener.onRegister();
 
                 break;
             }
@@ -117,6 +117,7 @@ public class RegisterWindow implements Window {
 
     @Override
     public void loadView() {
+        bundle = Client.currentResourceBundle();
         FXMLLoader loader = new FXMLLoader();
         loader.setResources(bundle);
         loader.setController(this);
@@ -187,7 +188,7 @@ public class RegisterWindow implements Window {
     private void send(String s, Serializable serializable) {
         try {
             Message message = new Message(s, serializable);
-            message.setSourcePort(receiver.getLocalPort());
+            message.setSourcePort(MainWindow.getReceiver().getLocalPort());
             Sender.send(message.serialize(), InetAddress.getByName("localhost"), SENDING_PORT, true, new SenderAdapter(){
                 @Override
                 public void onSuccess() {}
@@ -200,14 +201,21 @@ public class RegisterWindow implements Window {
                 }
             });
         } catch (IOException e) {
-            e.printStackTrace(); // todo handling
+            e.printStackTrace(); // handle
         }
     }
 
-    private void setDisable (boolean b) {
+    public void setDisable (boolean b) {
         nameField.setDisable(b);
         emailField.setDisable(b);
         registerButton.setDisable(b);
     }
 
+    public Stage getStage() {
+        return stage;
+    }
+
+    public RegisterListener getRegisterListener() {
+        return registerListener;
+    }
 }

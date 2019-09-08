@@ -9,8 +9,6 @@ import javax.mail.MessagingException;
 import java.security.GeneralSecurityException;
 import java.sql.SQLException;
 
-//todo answers COMMAND_NOT_FOUND, AUTH_FAILED, file_empty
-
 /**
  * класс, выполняющий дальнейшую обработку команды
  */

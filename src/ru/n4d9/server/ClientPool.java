@@ -42,12 +42,15 @@ public class ClientPool implements ContextFriendly {
      */
     public synchronized void sendAll(Message message) {
         if (!message.getText().equals("collection_state"))
-            logger.verbose("Рассылка сообщения " + message + " подписанным коннекторам (" + connectors.size() + ")");
+            logger.verbose("Рассылка сообщения " + message + " подписанным коннекторам (" + subscribedConnectors.size() + ")");
 //        for (int i = 0; i < connectors.size(); i ++) {
-        for (int i = 0; i < subscribedConnectors.size(); i ++) {
-            connectors.get(i).send(message);
-
-        }
+//        for (int i = 0; i < subscribedConnectors.size(); i++) {
+//            connectors.get(i).send(message);
+//
+//        }
+            for (ClientConnector c : subscribedConnectors) {
+                c.send(message);
+            }
     }
 
     /**
@@ -70,7 +73,7 @@ public class ClientPool implements ContextFriendly {
 //        connectors.add(connector);
         if (message.getUserid() == null)
             logger.log("Пришел запрос от неавторизованного клиента " + message.getText());
-        logger.log("Пришел запрос от клиента " + address.getHostAddress() + ":" + port + " "  + message.getText());
+        logger.log("Пришел запрос от клиента " + address.getHostAddress() + ":" + port + " " + message.getText());
 
         switch (message.getText()) {
             case "disconnect":
@@ -78,9 +81,7 @@ public class ClientPool implements ContextFriendly {
                 boolean a = connectors.remove(connector);
                 if (a) {
                     logger.verbose("yes");
-                }
-
-                else logger.verbose("no");
+                } else logger.verbose("no");
                 logger.log("Клиент " + address.getHostAddress() + ":" + port + " отсоединился.");
 
                 subscribedConnectors.remove(connector);
@@ -88,7 +89,16 @@ public class ClientPool implements ContextFriendly {
 
             case "subscribe": {
                 subscribedConnectors.add(connector);
+                break;
             }
+
+            case "add":
+            case "remove":
+            case "modify" :
+                connectors.add(connector);
+                if (!subscribedConnectors.contains(connector))
+                    subscribedConnectors.add(connector);
+
             default:
                 logger.verbose("Вызов ресолвера для сообщения " + message + ", ответ коннектору " + connector);
                 new Thread(() -> resolver.resolve(connector, message)).start();
@@ -96,11 +106,6 @@ public class ClientPool implements ContextFriendly {
                 break;
         }
 
-                try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         connectors.add(connector);
     }
 

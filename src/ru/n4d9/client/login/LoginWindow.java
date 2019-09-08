@@ -32,8 +32,15 @@ public class LoginWindow implements Window {
     private PasswordField passwordField;
     private Button loginButton, registerButton;
 
-
-    public LoginWindow(LoginListener listener, String autofillLogin, String autofillPassword) {
+    private RegisterWindow registerWindow;
+//
+    /**
+     * конструктор, использующийся при инициализации
+     * @param listener
+     * @param autofillLogin
+     * @param autofillPassword
+     */
+    public LoginWindow(boolean isBegin, LoginListener listener, String autofillLogin, String autofillPassword) {
       //  send("unsubscribe", null);
         this.loginListener = listener;
         stage = new Stage();
@@ -41,13 +48,14 @@ public class LoginWindow implements Window {
         loadView();
         emailField.setText(autofillLogin);
         passwordField.setText(autofillPassword);
-//        stage.show();
-        stage.hide();
-        promptRegister();
+        if (isBegin) {
+            stage.hide();
+            promptRegister();
+        } else stage.show();
     }
 
     private void onMessageReceived(Message m) {
-        System.out.println("LoginWindow: "+m.getText());
+        System.out.println("LoginWindow: "+ m.getText());
         switch (m.getText()) {
             case "OK":
                 MainWindow.send("subscribe");
@@ -70,12 +78,49 @@ public class LoginWindow implements Window {
                 });
                 break;
 
+
+            case "ALREADY_REGISTERED": {
+                Platform.runLater(() -> {
+//                    registerWindow.setDisable(false);
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setContentText(bundle.getString("register.alert.already-registered"));
+                    alert.show();
+
+                    registerWindow.setDisable(false);
+
+                });
+
+                break;
+            }
+
+            case "WRONG_EMAIL": {
+                Platform.runLater(() -> {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText(bundle.getString("register.alert.incorrect-email"));
+                    alert.show();
+                });
+                registerWindow.setDisable(false);
+                break;
+
+            }
+
+            case "OK_REGISTER":
+                Platform.runLater(() -> {
+                    registerWindow.getStage().close();
+                    stage.show();
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText(bundle.getString("register.alert.ok"));
+                    alert.show();
+                });
+//                registerWindow.getRegisterListener().onRegister();
+
+                break;
         }
 
     }
 
     private void promptRegister() {
-        new RegisterWindow(() ->
+        registerWindow = new RegisterWindow(() ->
             Platform.runLater(stage::show)
         );
             MainWindow.getReceiver().setListener(new ReceiverListener() {
@@ -88,7 +133,7 @@ public class LoginWindow implements Window {
 
                 }
                 public void exceptionThrown(Exception e) {
-                    e.printStackTrace(); // todo handle
+                    e.printStackTrace(); // handle
                 }
         });
 
@@ -177,10 +222,19 @@ public class LoginWindow implements Window {
     @FXML
     public void onSettingsClicked() {
         new SettingsDialog((changed) -> {
-            if (changed)
+            if (changed) {
                 loadView();
+            }
             stage.show();
         });
         stage.hide();
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public LoginListener getLoginListener() {
+        return loginListener;
     }
 }

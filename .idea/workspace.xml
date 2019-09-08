@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b2ede128-258c-4abd-a700-1a83c7d0d721" name="Default Changelist" comment="" />
+    <list default="true" id="b2ede128-258c-4abd-a700-1a83c7d0d721" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/err.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/err.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/out.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/i18n/text.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/i18n/text.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/i18n/text_es_NI.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/i18n/text_es_NI.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/i18n/text_et_EE.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/i18n/text_et_EE.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/i18n/text_fr_FR.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/i18n/text_fr_FR.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/i18n/text_ru_RU.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/i18n/text_ru_RU.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/MainWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/RoomPropertiesPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/RoomPropertiesPane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas$RoomVisualBuffer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas$RoomVisualBuffer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/canvas/RoomsCanvas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/login/LoginWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/login/LoginWindow$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/login/LoginWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/login/LoginWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/register/RegisterWindow$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/register/RegisterWindow$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/register/RegisterWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/client/register/RegisterWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool$ClientConnector$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool$ClientConnector$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool$ClientConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool$ClientConnector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/ClientPool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/RequestResolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SuperPooperUDeePee/ru/n4d9/server/RequestResolver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/i18n/text.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/i18n/text.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/i18n/text_es_NI.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/i18n/text_es_NI.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/i18n/text_et_EE.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/i18n/text_et_EE.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/i18n/text_fr_FR.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/i18n/text_fr_FR.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/i18n/text_ru_RU.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/i18n/text_ru_RU.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/RoomPropertiesPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/RoomPropertiesPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/canvas/RoomsCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/canvas/RoomsCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/login/LoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/login/LoginWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/client/register/RegisterWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/client/register/RegisterWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/server/ClientPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/server/ClientPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/n4d9/server/RequestResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/n4d9/server/RequestResolver.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +186,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Server (dev)">
+  <component name="RunManager" selected="Application.Client (dev)">
     <configuration name="Client (dev)" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="ru.n4d9.client.Client" />
       <module name="SuperPooperUDeePee" />
@@ -214,8 +250,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Server (dev)" />
         <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Server (dev)" />
       </list>
     </recent_temporary>
   </component>
@@ -226,7 +262,12 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@705ad57a" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@1e9f94e1" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@1e9f94e1" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@3c84e42f" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -308,7 +349,9 @@
       <workItem from="1567624537782" duration="5100000" />
       <workItem from="1567691236382" duration="7994000" />
       <workItem from="1567708597202" duration="4769000" />
-      <workItem from="1567794678772" duration="6219000" />
+      <workItem from="1567794678772" duration="6972000" />
+      <workItem from="1567850181731" duration="10540000" />
+      <workItem from="1567931642840" duration="5915000" />
     </task>
     <servers />
   </component>
@@ -355,11 +398,38 @@
           <line>112</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/ru/n4d9/server/ClientPool.java</url>
-          <line>15</line>
-          <properties field="connectors" class="ru.n4d9.server.ClientPool" />
-          <option name="timeStamp" value="43" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/n4d9/client/register/RegisterWindow.java</url>
+          <line>173</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/n4d9/client/register/RegisterWindow.java</url>
+          <line>174</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/n4d9/client/register/RegisterWindow.java</url>
+          <line>175</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/n4d9/client/register/RegisterWindow.java</url>
+          <line>176</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/n4d9/client/register/RegisterWindow.java</url>
+          <line>178</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/ru/n4d9/client/register/RegisterWindow.java</url>
+          <line>172</line>
+          <properties class="ru.n4d9.client.register.RegisterWindow" method="onSettingsClicked">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

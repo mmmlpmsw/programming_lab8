@@ -18,7 +18,8 @@ public class RoomsCanvas extends Canvas {
     private static final int PADDING = 50;
 
     private ObservableList<Room> target;
-    private final Set<RoomVisualBuffer> proxy = new HashSet<>();
+//    private final Set<RoomVisualBuffer> proxy = new HashSet<>();
+    private final ArrayList<RoomVisualBuffer> proxy = new ArrayList<>();
     private Thread updatingThread = new Thread();
     private HashMap<Integer, Color> userColors = new HashMap<>();
     private RoomVisualBuffer selected = null;
@@ -49,9 +50,10 @@ public class RoomsCanvas extends Canvas {
                 while (true) {
                     Thread.sleep(1000 / 60);
                     synchronized (proxy) {
-                        for (RoomVisualBuffer b : proxy)
-                            if (!target.contains(b.origin))
-                                proxy.remove(b);
+//                        for (RoomVisualBuffer b : proxy)
+                        for (int i = 0; i < proxy.size(); i ++)
+                            if (!target.contains(proxy.get(i).origin))
+                                proxy.remove(i);
 
                         update(System.currentTimeMillis() - lastMillis);
                     }

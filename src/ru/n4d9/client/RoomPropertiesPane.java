@@ -23,7 +23,7 @@ public class RoomPropertiesPane extends VBox {
 
     private TextField nameInput;
     private Slider xInput, yInput, widthInput, heightInput;
-    private Button applyButton, resetButton, deleteButton, removeGreaterButton, removeLowerButton;
+    private Button applyButton, /*resetButton,*/ deleteButton, removeGreaterButton, removeLowerButton;
     private CheckBox autoApplyCheckbox;
 
     private boolean autoApplyingEnabled = true;
@@ -46,7 +46,7 @@ public class RoomPropertiesPane extends VBox {
         widthInput = new Slider(100, 500, 0);
 
         applyButton = new Button(bundle.getString("main.apply"));
-        resetButton = new Button(bundle.getString("main.reset"));
+//        resetButton = new Button(bundle.getString("main.reset"));
         deleteButton = new Button(bundle.getString("main.delete"));
         removeGreaterButton = new Button(bundle.getString("main.remove-greater"));
         removeLowerButton = new Button(bundle.getString("main.remove-lower"));
@@ -81,7 +81,7 @@ public class RoomPropertiesPane extends VBox {
         HBox.setHgrow(heightInput, Priority.ALWAYS);
         HBox.setHgrow(widthInput, Priority.ALWAYS);
 
-        HBox buttonsPane = new HBox(applyButton, resetButton, deleteButton);
+        HBox buttonsPane = new HBox(applyButton, /*resetButton,*/ deleteButton);
         buttonsPane.setAlignment(Pos.CENTER);
 
         HBox buttons2Pane = new HBox(removeGreaterButton, removeLowerButton);
@@ -91,7 +91,7 @@ public class RoomPropertiesPane extends VBox {
 
         HBox.setMargin(nameInput, new Insets(5));
         HBox.setMargin(applyButton, new Insets(5));
-        HBox.setMargin(resetButton, new Insets(5));
+//        HBox.setMargin(resetButton, new Insets(5));
         HBox.setMargin(deleteButton, new Insets(5));
         HBox.setMargin(removeGreaterButton, new Insets(5));
         HBox.setMargin(removeLowerButton, new Insets(5));
@@ -119,7 +119,7 @@ public class RoomPropertiesPane extends VBox {
         widthInput.valueProperty().addListener((observable, oldValue, newValue) -> onEdited());
 
         applyButton.setOnAction((e) -> onApply());
-        resetButton.setOnAction((e) -> onReset());
+//        resetButton.setOnAction((e) -> onReset());
         deleteButton.setOnAction((e) -> onDelete());
         removeGreaterButton.setOnAction(e -> onRemoveGreater());
         removeLowerButton.setOnAction(e -> onRemoveLower());
@@ -139,7 +139,7 @@ public class RoomPropertiesPane extends VBox {
         selected = model;
 
         applyButton.setDisable(true);
-        resetButton.setDisable(true);
+//        resetButton.setDisable(true);
         deleteButton.setDisable(!editable);
         removeGreaterButton.setDisable(!editable);
         removeLowerButton.setDisable(!editable);
@@ -177,7 +177,7 @@ public class RoomPropertiesPane extends VBox {
 
     private void onEdited() {
         applyButton.setDisable(false);
-        resetButton.setDisable(false);
+//        resetButton.setDisable(false);
 
         if (autoApplyCheckbox.isSelected() && autoApplyingEnabled) //todo
             onApply();
@@ -207,9 +207,9 @@ public class RoomPropertiesPane extends VBox {
         }
     }
 
-    private void onReset() {
-        resetProperties();
-    }
+//    private void onReset() {
+//        resetProperties();
+//    }
 
     private void onDelete() {
         deletingListener.deleteRequested(selected.getId());
@@ -236,7 +236,7 @@ public class RoomPropertiesPane extends VBox {
             widthInput.setValue(selected.getWidth());
 
             applyButton.setDisable(true);
-            resetButton.setDisable(true);
+//            resetButton.setDisable(true);
         }
     }
 }
