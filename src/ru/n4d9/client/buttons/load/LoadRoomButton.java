@@ -14,7 +14,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import ru.n4d9.client.Client;
 import ru.n4d9.client.buttons.imp.ImportRoomButtonListener;
+
+import java.util.ResourceBundle;
 
 public class LoadRoomButton extends Button {
     private ImportRoomButtonListener listener = (filename) -> {};
@@ -56,24 +59,19 @@ public class LoadRoomButton extends Button {
                 closePopup();
         });
 
-//        ResourceBundle bundle = Client.currentResourceBundle();
+        ResourceBundle bundle = Client.currentResourceBundle();
         setPadding(new Insets(20));
 
         nameInput = new TextField();
         nameInput.setPromptText("введите название файла импорта");
 
 
-//        createButton = new Button(bundle.getString("main.create"));
-//        closeButton = new Button(bundle.getString("main.close"));
+        createButton = new Button(bundle.getString("main.create"));
+        closeButton = new Button(bundle.getString("main.close"));
 
 
-        createButton = new Button("create");
-        closeButton = new Button("close");
-
-
-//        HBox nameInputPane = new HBox(new Label(bundle.getString("main.name")), nameInput);
         Label label = new Label("import");
-        HBox nameInputPane = new HBox(new Label("import from"), nameInput);
+        HBox nameInputPane = new HBox(new Label(bundle.getString("main.import")), nameInput);
 
         nameInputPane.setAlignment(Pos.CENTER_LEFT);
         HBox.setMargin(nameInput, new Insets(0, 0, 0, 20));

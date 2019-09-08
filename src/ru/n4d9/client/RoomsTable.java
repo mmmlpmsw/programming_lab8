@@ -59,6 +59,6 @@ public class RoomsTable extends TableView<Room> {
         widthColumn.setText(bundle.getString("main.rooms-table.width-column-text"));
         ownerColumn.setText(bundle.getString("main.rooms-table.owner-column-text"));
         createdColumn.setText(bundle.getString("main.rooms-table.created-column-text"));
-        setPlaceholder(new Label(bundle.getString("main.creatures-table.empty-table-text")));
+        setPlaceholder(new Label(bundle.getString("main.rooms-table.empty-table-text")));
     }
 }

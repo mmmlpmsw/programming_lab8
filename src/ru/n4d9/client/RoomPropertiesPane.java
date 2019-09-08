@@ -125,7 +125,7 @@ public class RoomPropertiesPane extends VBox {
         removeLowerButton.setOnAction(e -> onRemoveLower());
     }
 
-    void selectCreature(Room model, boolean editable) {
+    void selectRoom(Room model, boolean editable) {
         if (model == null) {
             setManaged(false);
             setVisible(false);

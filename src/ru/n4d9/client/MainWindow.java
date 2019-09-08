@@ -5,7 +5,6 @@ import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -144,7 +143,7 @@ public class MainWindow extends Application implements Window {
 
             roomsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> roomsCanvas.selectRoom((Room)newValue));
             roomsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
-                    roomPropertiesPane.selectCreature((Room)newValue, newValue != null && ((Room) newValue).getOwnerId() == id));
+                    roomPropertiesPane.selectRoom((Room)newValue, newValue != null && ((Room) newValue).getOwnerId() == id));
             roomsCanvas.widthProperty().bind(canvasTab.getTabPane().widthProperty());
             roomsCanvas.heightProperty().bind(canvasTab.getTabPane().heightProperty());
 
@@ -158,7 +157,7 @@ public class MainWindow extends Application implements Window {
             roomPropertiesPane.setDeletingListener(roomId -> send("remove", roomId));
             roomPropertiesPane.setRemovingGreaterListener(model -> send("remove_greater", model));
             roomPropertiesPane.setRemovingLowerListener(model -> send("remove_lower", model));
-            roomPropertiesPane.selectCreature(null, false);
+            roomPropertiesPane.selectRoom(null, false);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -214,7 +213,7 @@ public class MainWindow extends Application implements Window {
 
             roomsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> roomsCanvas.selectRoom((Room)newValue));
             roomsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
-                    roomPropertiesPane.selectCreature((Room)newValue, newValue != null && ((Room) newValue).getOwnerId() == id));
+                    roomPropertiesPane.selectRoom((Room)newValue, newValue != null && ((Room) newValue).getOwnerId() == id));
             roomsCanvas.widthProperty().bind(canvasTab.getTabPane().widthProperty());
             roomsCanvas.heightProperty().bind(canvasTab.getTabPane().heightProperty());
 
@@ -228,7 +227,7 @@ public class MainWindow extends Application implements Window {
             roomPropertiesPane.setDeletingListener(roomId -> send("remove", roomId));
             roomPropertiesPane.setRemovingGreaterListener(model -> send("remove_greater", model));
             roomPropertiesPane.setRemovingLowerListener(model -> send("remove_lower", model));
-            roomPropertiesPane.selectCreature(null, false);
+            roomPropertiesPane.selectRoom(null, false);
 
         } catch (IOException e) {
             e.printStackTrace();

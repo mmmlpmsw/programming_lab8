@@ -206,9 +206,9 @@ public class RoomsCanvas extends Canvas {
     private void update(long delta) {
         synchronized (proxy) {
             for (Room model : target) {
-                Optional<RoomVisualBuffer> creatureBuffer = proxy.stream().filter((b) -> b.origin.getId() == model.getId()).findAny();
-                if (creatureBuffer.isPresent())
-                   creatureBuffer.get().update(delta);
+                Optional<RoomVisualBuffer> roomBuffer = proxy.stream().filter((b) -> b.origin.getId() == model.getId()).findAny();
+                if (roomBuffer.isPresent())
+                   roomBuffer.get().update(delta);
                 else
                     proxy.add(new RoomVisualBuffer(model));
             }

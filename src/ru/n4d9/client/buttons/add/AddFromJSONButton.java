@@ -6,7 +6,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.KeyCode;
@@ -66,10 +65,10 @@ public class AddFromJSONButton extends Button {
         nameInput = new TextField();
 
 
-        createButton = new Button("ok");
+        createButton = new Button("Ok");
         closeButton = new Button(bundle.getString("main.close"));
 
-        HBox nameInputPane = new HBox(new Label("enter your room >>"), nameInput);
+        HBox nameInputPane = new HBox(new Label(bundle.getString("main.enter_room")), nameInput);
 
         nameInputPane.setAlignment(Pos.CENTER_LEFT);
         HBox.setMargin(nameInput, new Insets(0, 0, 0, 20));

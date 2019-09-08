@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.Array;
 import ru.n4d9.Utils.Message;
 import ru.n4d9.client.Room;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -44,10 +45,48 @@ public class Mirror implements ContextFriendly {
                 } catch (InterruptedException ignored) {
                 }
                 updateState();
-                if (++iteration%4 == 0)
+                iteration++;
+                if (iteration%4 == 0)
                     sendState();
+
+                if (iteration%60 == 0)
+                    updateDB();
+
             }
         }).start();
+    }
+
+    void updateDB() {
+        ArrayList<Room> roomShellsRooms = new ArrayList<>();
+        for (RoomShell shell : roomShells) {
+            roomShellsRooms.add(shell.getRoom());
+        }
+
+        PreparedStatement statement = null;
+        try {
+            statement = controller.getConnection().prepareStatement(
+                    "update rooms set name = ?, x = ?, y = ?, height = ?, width = ?, rotation = ?, creationdate = creationdate where id = ?"
+            );
+
+            for (Room model : roomShellsRooms) {
+
+                statement.setString(1, model.getName());
+                statement.setDouble(2, model.getX());
+                statement.setDouble(3, model.getY());
+                statement.setDouble(4, model.getHeight());
+                statement.setDouble(5, model.getWidth());
+                statement.setDouble(6, model.getRotation());
+                statement.setInt(7, model.getId());
+                statement.execute();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+
     }
 
     /**
