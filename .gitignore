@@ -1,5 +1,6 @@
 .idea/
 build/
+out/
 logs/
 jars/
 saves/
@@ -7,4 +8,5 @@ javadoc/
 config/
 test_*.xml
 *.plantuml
+*.iml
 ~$*

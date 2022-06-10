@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Objects;
 
 public class Mirror implements ContextFriendly {
@@ -231,9 +232,13 @@ public class Mirror implements ContextFriendly {
 
         Array<Body> bodies = new Array<>();
         world.getBodies(bodies);
-        for (Body b : bodies) {
+        Iterator<Body> iter = bodies.iterator();
+
+        while (iter.hasNext()){
+            Body b = iter.next();
             if (b.getUserData() != null && ((Room)b.getUserData()).getId() == room.getId()) {
                 world.destroyBody(b);
+                iter.remove();
                 break;
             }
         }

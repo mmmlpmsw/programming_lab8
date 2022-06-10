@@ -9,8 +9,8 @@
 
   "db_name": "studs",
 
-  "db_user": "s264429",
-  "db_password": "hku668",
+  "db_user": "",
+  "db_password": "",
 
   "jdbc_driver": "org.postgresql.Driver",
   "jdbc_lang_protocol": "postgresql",
